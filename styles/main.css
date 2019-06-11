@@ -1,0 +1,129 @@
+
+
+/* iCheck plugin Square skin, blue
+----------------------------------- */
+.icheckbox_square-blue,
+.iradio_square-blue {
+    display: inline-block;
+    *display: inline;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    width: 22px;
+    height: 22px;
+    background: url(blue.png) no-repeat;
+    border: none;
+    cursor: pointer;
+}
+
+.icheckbox_square-blue {
+    background-position: 0 0;
+}
+    .icheckbox_square-blue.hover {
+        background-position: -24px 0;
+    }
+    .icheckbox_square-blue.checked {
+        background-position: -48px 0;
+    }
+    .icheckbox_square-blue.disabled {
+        background-position: -72px 0;
+        cursor: default;
+    }
+    .icheckbox_square-blue.checked.disabled {
+        background-position: -96px 0;
+    }
+
+.iradio_square-blue {
+    background-position: -120px 0;
+}
+    .iradio_square-blue.hover {
+        background-position: -144px 0;
+    }
+    .iradio_square-blue.checked {
+        background-position: -168px 0;
+    }
+    .iradio_square-blue.disabled {
+        background-position: -192px 0;
+        cursor: default;
+    }
+    .iradio_square-blue.checked.disabled {
+        background-position: -216px 0;
+    }
+
+/* Retina support */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+       only screen and (-moz-min-device-pixel-ratio: 1.5),
+       only screen and (-o-min-device-pixel-ratio: 3/2),
+       only screen and (min-device-pixel-ratio: 1.5) {
+    .icheckbox_square-blue,
+    .iradio_square-blue {
+        background-image: url(blue@2x.png);
+        -webkit-background-size: 240px 24px;
+        background-size: 240px 24px;
+    }
+}
+
+.right
+    {
+    float:right
+    }
+
+.errorbox {
+    background: #dd4b39;
+    padding: 3px;
+    margin: 3px;
+    border-radius: 5px;
+    color: white;
+}
+.successbox {
+    background: #72FF8A;
+    padding: 3px;
+    margin: 3px;
+    border-radius: 5px;
+    color: #014708;
+}
+.processing
+  {
+     position: fixed;
+    left: 45%;
+    display: none;
+    right: 45%;
+    background: white;
+    height: 30px;
+    text-align: center;
+    /* border: 1px solid #b0ffe2; */
+    color: #208e65;
+    padding: 4px;
+    font-weight: bold;
+    top: 45%;
+    bottom: 45%;
+  }
+.form-control {
+    border-radius: 5px !important;
+    box-shadow: none;
+    border-color: #9a9a98;
+    border: 1px solid #8b8b8a;
+    font-size: 15px
+}
+.login-page, .register-page {
+    /*background: linear-gradient(to bottom right, #367fa9,#f4c016);*/
+    background-color: #F7F7F7;
+}
+
+#rep_
+  {
+    padding: 5px;
+    background: #C5E2E1;
+  }
+.dt-buttons {
+    float: left;
+}
+
+.box-body {
+     overflow-x: scroll;
+}
+
+
+
+
+   
