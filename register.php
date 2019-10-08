@@ -18,7 +18,7 @@ include_once 'session.php';
   <main class="pt-5 mx-lg-5">
     <div class="container-fluid mt-5">
 
-      
+
       <!--Grid row-->
       <div class="row wow fadeIn">
 
@@ -28,8 +28,8 @@ include_once 'session.php';
             <!--Card content-->
             <div class="card-body">
                     <div class="card-header">
-               <?php      
-                           
+               <?php
+
                  $course_id = fetchrow('d_users_courses',"user='$id' AND status='1'",'uid');
                  $cid=encurl($course_id);
 
@@ -47,7 +47,7 @@ include_once 'session.php';
                  }
 
                  $courseExists = checkrowexists('d_users_courses', "user='$id' AND status='1'");
-                 if ($courseExists == 1) 
+                 if ($courseExists == 1)
                  {
                      echo "<p class=\"text-left text-success\">
                      <i>You already have an active registered course.</i>
@@ -57,12 +57,12 @@ include_once 'session.php';
                      echo "<p><i>Thereafter consult your administrator to do so.</i></p><br>";
                      echo "<p><i><span class=\"text-left text-danger\">$days_to_go</span> to course completion.</i></p>";
                  }
-                 else 
+                 else
                  {
                      echo "<p class=\"text-left text-warning\"><i>No active course details found</i>&emsp;<button class=\"btn btn-sm\" data-toggle=\"modal\" data-target=\"#centralModalLGInfoDemo\" style=\"background-color: rgb( 17, 122, 101);color: #ffff\">Register Course</button></p>";
                  }
-                
-              
+
+
              if(isset($_GET['edit-course']))
               {
                   $esid = $_GET['edit-course'];     $sid = decurl($esid);
@@ -72,7 +72,7 @@ include_once 'session.php';
               $school = $sd['school'];
               $admission_date = $sd['admission_date'];
               $course_duration = $sd['course_duration'];
-              
+
                    $action = "Edit Course";
                    $edi = 1;
               }
@@ -81,11 +81,10 @@ include_once 'session.php';
               $sid = 0;
               $action = "Register Course";
               }
-   
-              
+
+
              ?>
-              </div> 
-              <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+              </div>
               <!-- modal-------------------------------------------start of modal window -->
                <!-- Central Modal Large Info-->
               <div class="modal fade" id="centralModalLGInfoDemo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -103,7 +102,7 @@ include_once 'session.php';
                     </div>
 
                     <!--Body-->
-                    <div class="modal-body">                      
+                    <div class="modal-body">
                        <!-- form start -->
                 <form role="form" method="POST" onsubmit="return false;">
                   <div class="box-body">
@@ -154,7 +153,7 @@ include_once 'session.php';
                              }
                          ?>
                       </select>
-                    </div>         
+                    </div>
                     <div class="form-group">
                       <label for="user_group">School/Faculty</label>
                       <select class="form-control" id="school" <?php echo $disabled; ?>>
@@ -177,23 +176,23 @@ include_once 'session.php';
                              }
                          ?>
                       </select>
-                    </div>                
+                    </div>
                     <div class="form-group">
                       <label for="primary_email">Date of Admission</label>
                       <input type="date" value="<?php echo $admission_date; ?>" class="form-control" id="admission_date" <?php echo $disabled; ?>/>
-                    </div>  
-                    
+                    </div>
+
                     <div id="course_feedback"></div>
-                 
+
                 </form>
                     </div>
 
                     <!--Footer-->
                     <div class="modal-footer">
-                      
+
                           <button type="submit" onclick="savecourse();" class="btn " style="background-color: rgb( 17, 122, 101);color: #ffff" <?php echo $disabled; ?>>Save</button>
                         <i class="far fa-gem ml-1"></i>
-                     
+
                       <a role="button" class="btn waves-effect" data-dismiss="modal" style="color: rgb( 17, 122, 101)">No,
                         thanks</a>
                     </div>
@@ -215,17 +214,17 @@ include_once 'session.php';
 </main>
 <script>
                $('document').ready(function()
-                   {                  
+                   {
                   var edit = '<?php echo $edi; ?>';
                   if(edit == '1')
                       {
-                      $('#centralModalLGInfoDemo').modal('toggle'); 
+                      $('#centralModalLGInfoDemo').modal('toggle');
                       }
                    }
                    );
            </script>
   <!--Main layout-->
-<script src="js/main.js" type="text/javascript"></script> 
+<script src="js/main.js" type="text/javascript"></script>
   <?php include_once 'footer.php'; ?>
 </body>
 
