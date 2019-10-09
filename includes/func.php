@@ -8,22 +8,22 @@ $date = date('Y-m-d');
 $yr = date('Y');
 $mnt = date('m');
 $day = date('m');
-$thisurl=$_SERVER['REQUEST_URI']; 
+$thisurl=$_SERVER['REQUEST_URI'];
 
-function passencrypt($pass) 
+function passencrypt($pass)
    {
   $oursalt=crazystring(32);  //generate a random number
   $longpass=$oursalt.$pass;                          //Prepend to the password
   $hash=hash('SHA256',$longpass);
-  
+
   return $hash.$oursalt;
   //save hash and salt in diffrent tables
-   } 
+   }
 function checkrowexists($table, $where)            ////##########################################Fetch only one row
       {
   global $con;
   $query="SELECT * FROM $table WHERE $where"; //var_dump($query);
-  $result=mysqli_query($con,$query);  
+  $result=mysqli_query($con,$query);
   $totalrows=mysqli_num_rows($result);
   if($totalrows>0)
         {
@@ -33,7 +33,7 @@ function checkrowexists($table, $where)            ////#########################
         {
     return 0;
         }
-        
+
       }
 function validate_session($session_id)
     {
@@ -51,10 +51,10 @@ function profile($sid)
        $rid = decurl($sid);
         $d = fetchonerow('d_users_primary',"uid='$rid'");
         $fname = $d['first_name'];
-        $lname = $d['last_name'];        
-        
+        $lname = $d['last_name'];
+
         return $fname.' '.$lname ;
-       
+
     }
 
 function usergroup($sid)
@@ -71,7 +71,7 @@ function emailOk($emaill)
     if(filter_var($emaill,FILTER_VALIDATE_EMAIL))
       {
       return 1;
-      }    
+      }
     else
       {
       return 0;
@@ -80,12 +80,12 @@ function emailOk($emaill)
 
 function username($sid)
     {
-       
+
          $rid = decurl($sid);
         $d = fetchonerow('d_users_primary',"uid='$rid'","user_name");
         $username = $d['user_name'];
-           
-        
+
+
         return $username;
     }
 
@@ -115,7 +115,7 @@ function crazystring($length)
      if(empty($x))
         {
         return 0;
-        }   
+        }
      else
         {
         return 1;
@@ -125,14 +125,14 @@ function input_exists($table,$where,$field,$value)
     {
       $where = "$field='$value' && $where";
       $ch = checkrowexists($table,$where);
-      return $ch;        
+      return $ch;
     }
-        
-    
+
+
 function input_length($x,$l)
     {
       $x=rtrim($x);
-      if((strlen($x)<$l))  
+      if((strlen($x)<$l))
          {
          return 0;
          }
@@ -171,15 +171,15 @@ function errormes($x)
      }
 function sucmes($x)
      {
-     return "<div class=\"alert alert-success\">$x</div>";   
+     return "<div class=\"alert alert-success\">$x</div>";
      }
 function success($x)
      {
-     return "<div class=\"alert successbox\">$x</div>";   
+     return "<div class=\"alert successbox\">$x</div>";
      }
 function notice($x)
      {
-    return "<div class=\"alert alert-info\">$x</div>";    
+    return "<div class=\"alert alert-info\">$x</div>";
      }
 
 function error($x)
@@ -187,62 +187,62 @@ function error($x)
      return "<span class=\"errorbox\">$x</span>";
      }
 
-function fetchrow($table, $where, $name)            
+function fetchrow($table, $where, $name)
       { ///#############Fetch only one row
   global $con;
-  $query="SELECT $name FROM $table WHERE ($where)";  
-  $result=mysqli_query($con,$query);  
+  $query="SELECT $name FROM $table WHERE ($where)";
+  $result=mysqli_query($con,$query);
   $row=mysqli_fetch_array($result); //var_dump($query);
   $attrequired=$row[$name];
-  
+
   return $attrequired;
-      
+
       }
-function fetchonerow($table, $where,$fds='*')            
+function fetchonerow($table, $where,$fds='*')
       {                ////############Fetch only one row
   global $con;
   $query="SELECT $fds FROM $table WHERE ($where)";  //var_dump($query);
-  $result=mysqli_query($con, $query);  
+  $result=mysqli_query($con, $query);
   $roww=mysqli_fetch_array($result);
-  
+
   return $roww;
-        
+
       }
 
 function deletedata($tb,$did)
       {
-  global $con;   
+  global $con;
   $insertd="DELETE FROM $tb WHERE uid=$did";//var_dump($insertd);
   if(!mysqli_query($con, $insertd))
         {
         return 0;
         }
-   else 
+   else
         {
        return 1;
         }
-   
+
       }
  function delete2($tb,$where)
       {
-  global $con;   
+  global $con;
   $insertd="DELETE FROM $tb $where";
   if(!mysqli_query($con, $insertd))
         {
         return 0;
         }
-   else 
+   else
         {
        return 1;
         }
-   
-      }     
+
+      }
 
 function encurl($id)
    {
    $secureId=$id*1321;
    return $secureId;
-   }   
+   }
 function decurl($id)
    {
    $originalId=$id/1321;
@@ -253,16 +253,16 @@ function updatedb($tb, $fds, $where)
     {
    global $con;
   $insertq="UPDATE $tb SET $fds WHERE $where"; //var_dump($insertq);
-  
+
   if(!mysqli_query($con, $insertq))
         {
         return mysqli_error($con);
         }
-   else 
+   else
         {
         return 1;
         }
-   
+
     }
 function addtodb($tb, $fds, $vals)
       {
@@ -270,60 +270,67 @@ function addtodb($tb, $fds, $vals)
         ////example              // $ffields=array('user_id','module_id','vie','ad','edi','del');
                                  // $vvals=array("$selectedval","$uuid","0","0","0","0");
                                  // $iinsertnew=addtodbsilent('user_permissions',$ffields,$vvals);
-                                 
-      /////////________Secure input 
-     // $vals = array_map('stripslashes', $vals);                           
+
+      /////////________Secure input
+     // $vals = array_map('stripslashes', $vals);
    $fields=implode(',',$fds);
    $values=implode("','",$vals);
    $values="'$values'";
-   
+
   $insertq="INSERT into $tb ($fields) VALUES ($values)";  //echo $insertq;
-  
+
   if(!mysqli_query($con,$insertq))
         {
-       return mysqli_error($con); // var_dump($e);    
+       return mysqli_error($con); // var_dump($e);
         }
-   else 
+   else
         {
        return 1;
         }
-   
+
       }
-      
+
 function fetchtable($table, $category,$orderby,$dir,$limit,$fds='*')      ////####################################Fetch whole table
       {
   global $con;
   $query="SELECT $fds FROM ".$table." WHERE ".$category." ORDER BY ".$orderby.' '.$dir." LIMIT ".$limit;  //var_dump($query);
-  $result=mysqli_query($con, $query);  
-  
-  return $result;
-      
-      }
+  $result=mysqli_query($con, $query);
 
+  return $result;
+
+      }
+function countotal($table, $where, $fds = '*')
+{
+  global $con;
+  $query = "SELECT $fds FROM $table WHERE $where"; //var_dump($query);
+  $result = mysqli_query($con, $query);
+  $totalrows = mysqli_num_rows($result);
+  return $totalrows;
+}
 
 function admin_status($state)
    {
-     
-      
+
+
     if($state == 0)
       {
-       $status = "<span class=\"label label-default\">Inactive</span>"; 
+       $status = "<span class=\"label label-default\">Inactive</span>";
       }
    elseif($state == 1)
       {
-       $status = "<span class=\"label label-success\">Active</span>"; 
+       $status = "<span class=\"label label-success\">Active</span>";
       }
    elseif($state == 2)
       {
-        $status = "<span class=\"label label-success\">Blocked</span>"; 
+        $status = "<span class=\"label label-success\">Blocked</span>";
       }
    elseif($state == 3)
       {
-        $status = "<span class=\"label label-success\">Former</span>"; 
+        $status = "<span class=\"label label-success\">Former</span>";
       }
-    
+
       return $status;
-    
+
    }
 
 function dateadd($date, $ys, $mts, $dys)
@@ -331,7 +338,7 @@ function dateadd($date, $ys, $mts, $dys)
     $newtime = strtotime($date." + $ys years + $mts months   + $dys days");
     return date("Y-m-d", $newtime);
   }
-  
+
 function datesub($date, $ys, $mts, $dys)
   {
     $newtime = strtotime($date." - $ys years - $mts months   - $dys days");
@@ -373,7 +380,7 @@ function timeago($startdate, $enddate)
 
    $date_ = date("d M -y", strtotime($startdate));
    $time_ = date("g:i A", strtotime($startdate));
-   
+
   if($days == 0 AND $hours == 0)
   {
   return "$minutes mins remaining";
@@ -384,17 +391,17 @@ function timeago($startdate, $enddate)
   }
   elseif($days == 1)
   {
-  return "Yesterday $time_";  
+  return "Yesterday $time_";
   }
   elseif($days > 1)
   {
     return "$days days remaining";
   }
   else
-  { 
+  {
     return 'Expired';
   }
-    
+
    }
 
 function datecompare($date1, $date2)
@@ -422,40 +429,40 @@ function file_type($filename, $search_array)
     if((!in_array("$ext", $search_array)))
         {
             return 0;
-        }   
+        }
      else
         {
             return 1;
         }
-    }   
+    }
 function file_size($x, $max)
     {
     if(($x>0) && ($x>$max))
       {
         return 0;
-      }    
+      }
     else
       {
         return 1;
       }
     }
-    
+
 function upload_file($fname,$tmpName,$upload_dir)
     {
       $ext=pathinfo($fname, PATHINFO_EXTENSION);
       $nfileName=generateRandomString(10).'.'."$ext";
-      
+
             $filePath = $upload_dir.$nfileName;
-            
+
             $result = move_uploaded_file($tmpName, $filePath); //var_dump($result);
-                 if (!$result) 
+                 if (!$result)
                       {
                     return 0;
                       }
                 elseif($result)
                       {
                   return $nfileName;
-                      }    
+                      }
     }
 function fileext_fetch($filename)
     {
@@ -497,11 +504,11 @@ function gender($gender)
     if($gender == 1)
     {
       return 'Male';
-    } 
+    }
     elseif($gender ==2)
     {
       return 'Female';
-    } 
+    }
     else
     {
       return 'Unspecified';
@@ -513,4 +520,3 @@ function title($id)
   $ut =fetchrow('d_title', "uid='$id'", "name");
   return $ut;
 }
-?>
