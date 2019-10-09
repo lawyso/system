@@ -52,10 +52,10 @@ if ($ugroup != 1) {
               <tr style="background-color: rgb( 17, 122, 101);color: #ffff">
                 <th>First Name </th>
                 <th>Last Name</th>
-                <th>Phone No</th>
+                <th>Mobile No</th>
                 <th>Gender</th>
                 <th>Id Number</th>
-                <th>Email</th>
+                <th>Email Address</th>
                 <th>Username</th>
                 <th>Action</th>
 
@@ -69,10 +69,10 @@ if ($ugroup != 1) {
 
                 <th>First Name </th>
                 <th>Last Name</th>
-                <th>Phone No</th>
+                <th>Mobile No</th>
                 <th>Gender</th>
                 <th>Id Number</th>
-                <th>Email</th>
+                <th>Email Address</th>
                 <th>Username</th>
                 <th>Action</th>
               </tr>

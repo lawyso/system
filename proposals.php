@@ -7,7 +7,7 @@ include_once 'session.php';
 
 <head>
   <meta charset="UTF-8" />
-  <title>DMS Home || Dashboard</title>
+  <title>DMS Student Proposals</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 
@@ -79,11 +79,12 @@ include_once 'session.php';
                   $hourdiff = round((strtotime($fulldate) - strtotime($added_date)) / 3600, 1);
                   if ($hourdiff > 2) {
                     $disabled = "disabled";
+                    $display = "none";
                   } else {
                     $disabled = '';
                   }
 
-                  $view = "<p><a href=\"proposal_details?proposal=$epid\"><button class=\"btn btn-sm btn-success\" aria-hidden=\"true\">View</button></a>&nbsp;<button $disabled onclick=\"delete_proposal('$proposal_id')\" class=\"btn btn-sm btn-danger\" aria-hidden=\"true\">Delete</button></p>";
+                  $view = "<p><a href=\"proposal_details?proposal=$epid\"><button class=\"btn btn-md btn-success\" aria-hidden=\"true\">View</button></a>&nbsp;<button $disabled onclick=\"delete_proposal('$proposal_id')\" class=\"btn btn-md btn-danger\" aria-hidden=\"true\" style=\"display:$display\">Delete</button></p>";
                   //$action = "<a href=\"details?loan=$elid\" class=\"fa fa-eye\" aria-hidden=\"true\"></a>";
                   echo "<tr>
                                         <td>$title</td>
@@ -144,7 +145,7 @@ include_once 'session.php';
   ?>
   <!-- Central Modal Large Info-->
   <div class="modal fade" id="centralModalLGInfoDemo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-notify" role="document">
+    <div class="modal-dialog modal-md modal-notify" role="document">
       <!--Content-->
       <div class="modal-content">
         <!--Header-->
@@ -164,7 +165,7 @@ include_once 'session.php';
               <div class="form-group">
                 <div class="form-group">
                   <label for="Title">Title</label><input type="hidden" value="<?php echo $sid; ?>" id="sid" />
-                  <input type="text" class="form-control" value="<?php echo $title; ?>" id="title" />
+                  <textarea class="form-control" id="title"><?php echo $title; ?></textarea>
                 </div>
                 <div class="form-group">
                   <label for="Area of Study">Area of Study</label>

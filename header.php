@@ -8,7 +8,7 @@ $id = session_details($_SESSION['dms_']);
 
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<link rel="shortcut icon" href="images/dms_logo.jpg" alt="DMS System" />
+<link rel="shortcut icon" href="images/dms_logo.jpg" alt="Dissertation Management System" />
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 <!-- Bootstrap core CSS -->
@@ -98,7 +98,7 @@ $id = session_details($_SESSION['dms_']);
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
           <!-- Left -->
-          <ul class="navbar-nav mr-auto">
+          <ul class="navbar-nav mr-auto" style="font-weight:400">
             <?php
 
             $uri = $_SERVER['REQUEST_URI'];
@@ -146,14 +146,26 @@ $id = session_details($_SESSION['dms_']);
                 <a class="nav-link waves-effect" href="update_bio">UPDATE BIODATA</a>
               </li>
               <li class="nav-item <?php echo $home_reg; ?>">
-                <a class="nav-link waves-effect" href="register">REGISTRATION</a>
+                <a class="nav-link waves-effect" href="register">COURSE REGISTRATION</a>
               </li>
-              <li class="nav-item <?php echo $home_pro; ?>">
-                <a class="nav-link waves-effect" href="proposals">PROPOSALS</a>
-              </li>
-              <li class="nav-item <?php echo $home_def; ?>">
-                <a class="nav-link waves-effect" href="defense">DEFENSE</a>
-              </li>
+              <?php
+                $registrationOk = checkrowexists('d_users_courses', "user='$myid' AND status='1'");
+                if ($registrationOk == 1) {
+                  ?>
+                <li class="nav-item <?php echo $home_pro; ?>">
+                  <a class="nav-link waves-effect" href="proposals">PROPOSALS</a>
+                </li>
+              <?php
+                }
+                $proposalOk = checkrowexists('d_proposals', "user='$myid' AND status='2'");
+                if ($proposalOk == 1) {
+                  ?>
+                <li class="nav-item <?php echo $home_def; ?>">
+                  <a class="nav-link waves-effect" href="defense">DEFENSE</a>
+                </li>
+              <?php
+                }
+                ?>
               <li class="nav-item <?php echo $home_sup; ?>">
                 <a class="nav-link waves-effect" href="supervisors">SUPERVISORS</a>
               </li>
@@ -252,7 +264,7 @@ $id = session_details($_SESSION['dms_']);
         if ($ugroup == 1) {
           ?>
           <a href="settings" class="list-group-item list-group-item-action waves-effect">
-            <i class="fas fa-sitemap mr-3"></i>User Management</a>
+            <i class="fas fa-sitemap mr-3"></i>Users Management</a>
         <?php
         }
         ?>

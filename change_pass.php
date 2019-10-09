@@ -8,6 +8,8 @@ include_once 'session.php';
 <head>
   <meta charset="UTF-8" />
   <title>DMS Home || Dashboard</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 
 <body class="grey lighten-3">
@@ -43,7 +45,7 @@ include_once 'session.php';
         <div class="col-md-12 mb-4">
 
           <!--Card-->
-          <div class="card">
+          <div class="card  align-center">
 
             <!--Card content-->
             <div class="card-body">
@@ -52,20 +54,34 @@ include_once 'session.php';
 
               <form onsubmit="return false;" method="post">
                 <div class="form-group">
-                  <input type="password" id="old_pass" class="form-control" placeholder="Old Password" />
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <label for="Old Password">Old Password:</label>
+                      <input type="password" id="old_pass" class="form-control" placeholder="Old Password" />
+                    </div>
+                    <div class="col-lg-4">
+                      <label for="New Password">New Password:</label>
+                      <input type="password" id="new_pass" class="form-control" placeholder="New Password" />
+                    </div>
+                    <div class="col-lg-4">
+                      <label for="Confirm New Password">Confirm New Password:</label>
+                      <input type="password" id="new_passConfirm" class="form-control" placeholder="Confirm New Password" /><span id='message'></span>
+                    </div>
+                  </div>
                 </div>
                 <div class="form-group">
-                  <input type="password" id="new_pass" class="form-control" placeholder="New Password" />
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <span id="passfeed"></span>
+                    </div>
+                  </div>
                 </div>
                 <div class="form-group">
-                  <input type="password" id="new_passConfirm" class="form-control" placeholder="Confirm New Password" />
-                </div>
-                <div class="form-group">
-                  <span id="passfeed"></span>
-                </div>
-                <div class="form-group">
-
-                  <button type="submit" onclick="changepass();" class="btn btn-block btn-flat" style="background-color: rgb( 17, 122, 101);color: #ffff">Change Password</button>
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <button type="submit" onclick="changepass();" class="btn btn-flat" style="background-color: rgb( 17, 122, 101);color: #ffff">Change Password</button>
+                    </div>
+                  </div>
                 </div>
                 <div class="form-group">
                   <span><i>
@@ -87,7 +103,13 @@ include_once 'session.php';
 
         </div>
         <!--Grid column-->
-
+        <script>
+          $('#new_passConfirm').on('keyup', function() {
+            if ($(this).val() == $('#new_pass').val()) {
+              $('#message').html('matching').css('color', 'green');
+            } else $('#message').html('not matching').css('color', 'red');
+          });
+        </script>
 
 
       </div>
