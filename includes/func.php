@@ -448,3 +448,28 @@ function title($id)
   $ut = fetchrow('d_title', "uid='$id'", "name");
   return $ut;
 }
+
+function sendmail($from, $to, $subject, $body)
+{
+
+  // To send HTML mail, the Content-type header must be set
+  $headers  = 'MIME-Version: 1.0' . "\r\n";
+  $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+
+  // Create email headers
+  $headers .= 'From: ' . $from . "\r\n" .
+    'Reply-To: ' . $from . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
+
+  // Compose a simple HTML email message
+  $message = '<html><body>';
+  $message .= '<h2 style="color:#f40;">' . $subject . '</h2>';
+  $message .= '<p style="color:#080;font-size:13px;">' . $body . '</p>';
+  $message .= '</body></html>';
+
+  // Sending email
+
+  $sm = mail($to, $subject, $message, $headers);
+
+  return $sm;
+}

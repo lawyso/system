@@ -11,6 +11,9 @@ $id = session_details($_SESSION['dms_']);
 <link rel="shortcut icon" href="images/dms_logo.jpg" alt="Dissertation Management System" />
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- bootstrap wysihtml5 - text editor -->
+<link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+
 <!-- Bootstrap core CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <!-- Material Design Bootstrap -->
@@ -71,6 +74,11 @@ $id = session_details($_SESSION['dms_']);
     position: absolute;
     bottom: 0;
     width: 100%;
+  }
+
+  .btn-dms {
+    background-color: rgb(17, 122, 101);
+    color: #ffff
   }
 </style>
 
@@ -254,22 +262,24 @@ $id = session_details($_SESSION['dms_']);
 
       <div class="list-group list-group-flush">
         <a href="index" class="list-group-item active waves-effect" style="background-color: rgb( 17, 122, 101);color: #ffff">
-          <i class="fas fa-chart-pie mr-3"></i>Dashboard
+          <i class="fas fa-home mr-3"></i>Dashboard
         </a>
-        <a href="profile" class="list-group-item list-group-item-action waves-effect">
+        <a href="profile" class="list-group-item  waves-effect">
           <i class="fas fa-user mr-3"></i>Profile</a>
-        <a href="change_pass" class="list-group-item list-group-item-action waves-effect">
+        <a href="mail_box" class="list-group-item waves-effect">
+          <i class="fas fa-envelope mr-3"></i>Mailbox</a>
+        <a href="change_pass" class="list-group-item waves-effect">
           <i class="fas fa-lock mr-3"></i>Change Password</a>
         <?php
         if ($ugroup == 1) {
           ?>
-          <a href="settings" class="list-group-item list-group-item-action waves-effect">
+          <a href="settings" class="list-group-item waves-effect">
             <i class="fas fa-sitemap mr-3"></i>Users Management</a>
         <?php
         }
         ?>
 
-        <a href="login?logout" class="list-group-item list-group-item-action waves-effect">
+        <a href="login?logout" class="list-group-item waves-effect">
           <i class="fas fa-sign-out-alt mr-3"></i>Signout</a>
       </div>
 
