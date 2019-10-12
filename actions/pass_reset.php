@@ -44,13 +44,13 @@ if ($method == 'POST') {
         $salt = substr($epass, 64, 96);
 
         $updatestring = "pass='$salt',reset_status='1'";
-        $update = updatedb('s_passes', $updatestring, "user='$userid'");
-        $updateh = updatedb('s_staff', "pass='$hash'", "uid='$userid'");
+        $update = updatedb('d_passes', $updatestring, "user='$userid'");
+        $updateh = updatedb('d_users_primary', "pass='$hash'", "uid='$userid'");
 
         if ($update == 1 && $updateh == 1) {
             // Password reset successfull.
             $refresh = 1;
-            echo sucmes('Password Reset Successfully.Continue to the login page to login.');
+            echo sucmes('Password Reset Successfully.Redirecting to login page in 3 seconds....');
         } else {
             //Password can not be updated at the moment.
             echo errormes('Some problem occurred, please try again Later.');
@@ -58,7 +58,7 @@ if ($method == 'POST') {
     } else {     // Validation failed and Reset script can not be processed
         echo errormes('Some problem occurred,The Request can not be processed at the moment.Please check your details and try again.');
     }
-} else { /// wrong request method 
+} else { /// wrong request method
     echo $method . ' Not supported';
 }
 ?>

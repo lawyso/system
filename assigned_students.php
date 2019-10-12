@@ -43,6 +43,7 @@ include_once 'session.php';
                 <th>Department</th>
                 <th>Primary Phone</th>
                 <th>Primary Email</th>
+                <th>Proposal</th>
                 <th>Action</th>
 
               </tr>
@@ -58,6 +59,7 @@ include_once 'session.php';
                 <th>Department</th>
                 <th>Primary Phone</th>
                 <th>Primary Email</th>
+                <th>Proposal</th>
                 <th>Action</th>
 
               </tr>
@@ -76,10 +78,10 @@ include_once 'session.php';
               "columnDefs": [{
 
                 "render": function(data, type, row) {
-                  let rowID = row[6];
+                  let rowID = row[7];
                   return `<a href="student_details?student=${ rowID }"><i class="fa fa-eye"></i></a>`
                 },
-                "targets": 6
+                "targets": 7
 
               }]
             });

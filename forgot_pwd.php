@@ -17,12 +17,11 @@ if (isset($_GET['logout'])) {
   <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
   <!-- Bootstrap 3.3.2 -->
   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <!-- Font Awesome Icons -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" 
-    rel="stylesheet" type="text/css" />
-    <!-- Theme style -->
-    <link href="styles/layout.css" rel="stylesheet" type="text/css" />       
-    <link rel="stylesheet" href="styles/main.css" />
+  <!-- Font Awesome Icons -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <!-- Theme style -->
+  <link href="styles/layout.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="styles/main.css" />
 
 </head>
 
@@ -31,8 +30,8 @@ if (isset($_GET['logout'])) {
     <div class="col-md-2">
     </div>
     <div class="col-sm-8">
-      <img src="images/pass_reset.jpg" style="width:180px;height:150px;margin-top:100px; float:inline-start;margin-left:30px" class="img-responsive">
-    
+      <img src="images/pass_reset.jpg" style="width:180px;height:150px;margin-top:100px; float:inline-start;margin-left:250px" class="img-responsive">
+
       <div class="login-box">
         <div class="login-logo">
           <a href="index2.html">Reset Password</a>

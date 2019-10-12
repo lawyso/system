@@ -18,10 +18,9 @@ if (isset($_GET['logout'])) {
     <!-- Bootstrap 3.3.2 -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- Font Awesome Icons -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" 
-    rel="stylesheet" type="text/css" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
-    <link href="styles/layout.css" rel="stylesheet" type="text/css" />       
+    <link href="styles/layout.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="styles/main.css" />
 
 </head>
@@ -33,10 +32,10 @@ if (isset($_GET['logout'])) {
         $reset_token = $_GET['fp_code'];
         $reset_email = $_GET['fp_email'];
 
-        $em = fetchonerow('s_staff',"primary_email='$reset_email'","uid");
-        $userid= $em['uid'];
+        $em = fetchonerow('d_users_primary', "primary_email='$reset_email'", "uid");
+        $userid = $em['uid'];
 
-        $unusedToken_exist = checkrowexists('s_passes', "pass_reset_token='$reset_token' AND reset_status='0' AND user='$userid'");
+        $unusedToken_exist = checkrowexists('d_passes', "pass_reset_token='$reset_token' AND reset_status='0' AND user='$userid'");
 
         if ($unusedToken_exist == 1) {
             ?>
@@ -44,11 +43,12 @@ if (isset($_GET['logout'])) {
                 <!-- /.login-logo -->
                 <div class="login-box-body">
                     <p class="login-box-msg">
-                        <h3>Reset Your Account Password</h3>
+                        Reset Your Account Password
                     </p>
+                    <br>
                     <form onsubmit="return false;" method="post">
                         <div class="form-group has-feedback">
-                            <input type="hidden" id="userid" class="form-control" value="<?php echo $userid ?>"/>
+                            <input type="hidden" id="userid" class="form-control" value="<?php echo $userid ?>" />
                             <input type="password" id="u_pass" class="form-control" placeholder="New Password" />
                             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                         </div>
@@ -88,27 +88,26 @@ if (isset($_GET['logout'])) {
                     });
                 });
             </script>
-        <?php
-    } else {
-        die('<span>
+    <?php
+        } else {
+            die('<span>
             <div class="alert alert-danger">
                 <h4><i class="icon fa fa-ban"></i> Attention!</h4>
                 Invalid/Expired Link.
             </div>
         </span>');
-        exit('');
-        
-    }
-} else {
-    die('<span>
+            exit('');
+        }
+    } else {
+        die('<span>
             <div class="alert alert-danger">
                 <h4><i class="icon fa fa-ban"></i> Attention!</h4>
                 You don\'t have permission to view this page directly. Please use the link sent to you via your registered email.
             </div>
         </span>');
-    exit('');
-}
-?>
+        exit('');
+    }
+    ?>
 
 </body>
 

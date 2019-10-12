@@ -9,53 +9,53 @@ include_once 'session.php';
   <meta charset="UTF-8" />
   <title>Dms || proposal</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-                <script>
-                $(document).ready(function(e) {
-                  // Submit form data via Ajax
-                  $("#fupForm").on('submit', function(e) {
-                    e.preventDefault();
-                    $.ajax({
-                      type: 'POST',
-                      url: 'actions/prop_upload.php',
-                      data: new FormData(this),
-                      dataType: 'json',
-                      contentType: false,
-                      cache: false,
-                      processData: false,
-                      beforeSend: function() {
-                        $('.submitBtn').attr("disabled", "disabled");
-                        $('#fupForm').css("opacity", ".5");
-                      },
-                      success: function(response) { //console.log(response);
-                        $('.statusMsg').html('');
-                        if (response.status == 1) {
-                          $('#fupForm')[0].reset();
-                          $('.statusMsg').html('<p class="alert alert-success">' + response.message + '</p>');
-                          setTimeout(function() {
-                            reload();
-                          }, 3000);
+  <script>
+    $(document).ready(function(e) {
+      // Submit form data via Ajax
+      $("#fupForm").on('submit', function(e) {
+        e.preventDefault();
+        $.ajax({
+          type: 'POST',
+          url: 'actions/prop_upload.php',
+          data: new FormData(this),
+          dataType: 'json',
+          contentType: false,
+          cache: false,
+          processData: false,
+          beforeSend: function() {
+            $('.submitBtn').attr("disabled", "disabled");
+            $('#fupForm').css("opacity", ".5");
+          },
+          success: function(response) { //console.log(response);
+            $('.statusMsg').html('');
+            if (response.status == 1) {
+              $('#fupForm')[0].reset();
+              $('.statusMsg').html('<p class="alert alert-success">' + response.message + '</p>');
+              setTimeout(function() {
+                reload();
+              }, 3000);
 
-                        } else {
-                          $('.statusMsg').html('<p class="alert alert-danger">' + response.message + '</p>');
-                        }
-                        $('#fupForm').css("opacity", "");
-                        $(".submitBtn").removeAttr("disabled");
-                      }
-                    });
-                  });
-                  // File type validation
-                  $("#proposal_").change(function() {
-                    var file = this.files[0];
-                    var fileType = file.type;
-                    var match = ['application/pdf', 'application/msword', 'application/vnd.ms-office'];
-                    if (!((fileType == match[0]) || (fileType == match[1]) || (fileType == match[2]))) {
-                      alert('Sorry, only PDF and DOC files are allowed to upload.');
-                      $("#proposal_").val('');
-                      return false;
-                    }
-                  });
-                });
-              </script>
+            } else {
+              $('.statusMsg').html('<p class="alert alert-danger">' + response.message + '</p>');
+            }
+            $('#fupForm').css("opacity", "");
+            $(".submitBtn").removeAttr("disabled");
+          }
+        });
+      });
+      // File type validation
+      $("#proposal_").change(function() {
+        var file = this.files[0];
+        var fileType = file.type;
+        var match = ['application/pdf', 'application/msword', 'application/vnd.ms-office'];
+        if (!((fileType == match[0]) || (fileType == match[1]) || (fileType == match[2]))) {
+          alert('Sorry, only PDF and DOC files are allowed to upload.');
+          $("#proposal_").val('');
+          return false;
+        }
+      });
+    });
+  </script>
 </head>
 
 <body class="grey lighten-3">
@@ -114,7 +114,7 @@ include_once 'session.php';
 
                 $status = $p['status'];
                 $status_name = fetchrow('d_proposal_statuses', "uid='$status'", "name");
-
+                $comments = fetchrow('d_proposals', "uid='$sid'", "comments");
                 if ($proposal_upload == null) {
                   $action = "No Proposal Document Uploaded yet<button class=\"btn btn-sm btn-success\" aria-hidden=\"true\" data-toggle=\"modal\" data-target=\"#centralModalLGInfoDemo\" style=\"background-color: rgb( 17, 122, 101);color: #ffff\">Upload Proposal Document</button>";
                 } else {
@@ -157,6 +157,10 @@ include_once 'session.php';
                   <tr>
                     <td><b>Date Last Modified:</b></td>
                     <td><?php echo $date_modified; ?></td>
+                  </tr>
+                  <tr>
+                    <td><b>Comments:</b></td>
+                    <td><?php echo "$comments"; ?></td>
                   </tr>
                   <tr>
                     <td><b>Status</b></td>
@@ -213,8 +217,8 @@ include_once 'session.php';
 
               <!--Footer-->
               <div class="modal-footer">
-                <input type="submit" name="submit" class="btn submitBtn"style="background-color: rgb( 17, 122, 101);color: #ffff" value="Upload" />
-               <i class="far fa-gem ml-1"></i>
+                <input type="submit" name="submit" class="btn submitBtn" style="background-color: rgb( 17, 122, 101);color: #ffff" value="Upload" />
+                <i class="far fa-gem ml-1"></i>
 
                 <a role="button" class="btn waves-effect" data-dismiss="modal" style="color: rgb( 17, 122, 101)">No,
                   thanks</a>
@@ -234,4 +238,5 @@ include_once 'session.php';
   <script src="js/main.js" type="text/javascript"></script>
   <?php include_once 'footer.php'; ?>
 </body>
+
 </html>

@@ -36,9 +36,10 @@ include_once 'session.php';
             } else {
               $disabled = "";
             }
-
+            $department = fetchrow('d_users_primary', "uid='$myid'", "department");
+            $department_name = fetchrow('d_departments', "uid='$department'", "department_name");
             ?>
-            <p>Institution Supervisors&emsp;<button class="btn btn-sm" data-toggle="modal" data-target="#centralModalLGInfoDemo" style="background-color: rgb( 17, 122, 101);color: #ffff" <?php echo $disabled; ?>>Supervisors</button>
+            <p><button class="btn btn-sm" data-toggle="modal" data-target="#centralModalLGInfoDemo" style="background-color: rgb( 17, 122, 101);color: #ffff" <?php echo $disabled; ?>>Supervisors In Your Department:</button> Department of <?php echo $department_name ?></p>
           </div>
         </div>
 

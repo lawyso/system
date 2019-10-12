@@ -13,7 +13,7 @@ include_once 'session.php';
             include_once 'header.php';
             include_once 'includes/conn.inc';
             include_once 'includes/func.php';
-       
+
         ?>
   <!--Main layout-->
   <main class="pt-5 mx-lg-5">
@@ -31,7 +31,7 @@ include_once 'session.php';
             <span>Details</span>
           </h4>
 
-          
+
         </div>
 
       </div>
@@ -59,7 +59,7 @@ include_once 'session.php';
       $primary_phone = $sd['primary_phone'];
       $national_id = $sd['national_id'];
       $user_name = $sd['user_name'];
-     
+
       $department = $sd['department'];  $department_name = fetchrow('d_departments',"uid='$department'","department_name");
       $school = $sd['faculty'];  $school_name = fetchrow('d_schools',"uid='$school'","school_name");
       $title = $sd['title'];  $title_name = fetchrow('d_title',"uid='$title'","name");
@@ -79,7 +79,7 @@ include_once 'session.php';
       $prop_id = fetchrow('d_proposals',"user='$sid' AND status !=3","uid");
 
       $proposal_download ="<a target=\"_BLANK\" href=\"props/$proposal_upload\"> <button class=\"btn btn-sm btn-default\">View and Download</button></a>";
-      
+
       $approved_area_study = fetchrow('d_proposals',"user='$sid' AND status !=3","area_study");
 
       if ($proposal_upload ==null) {
@@ -97,9 +97,9 @@ include_once 'session.php';
        elseif($proposal_upload !=null && $proposal_status==4) {
           $status_name ="<button class=\"btn btn-sm btn-info\">Closed</button> Proposal Closed for defense";
       }
-      
+
      }
-      ?>       
+      ?>
          <table class="table table-user-information table-responsive">
                     <tbody>
                       <tr>
@@ -109,7 +109,7 @@ include_once 'session.php';
                       </tr>
                       <tr>
                         <td><b>Gender:</b></td>
-                        <td><?php echo $gender_name; ?></td>                           
+                        <td><?php echo $gender_name; ?></td>
                       </tr>
                       <tr>
                         <td><b>Email:</b></td>
@@ -135,48 +135,47 @@ include_once 'session.php';
                         <td><b>Course:</b></td>
                         <td><?php echo $course_name; ?>
                         </td>
-                           
+
                       </tr>
                        <tr>
                         <td><b>Course Duration:</b></td>
                         <td><?php echo $course_duration; ?> year<small>(s)</small>
                         </td>
-                           
+
                        </tr>
                         <tr>
                         <td><b>Proposal Title:</b></td>
                         <td><?php echo $approved_proposal; ?>
                         </td>
-                           
                        </tr>
                        <tr>
                         <td><b>Area of Study:</b></td>
                         <td><?php echo $approved_area_study; ?>
                         </td>
-                           
+
                        </tr>
                        <tr>
                         <td><b>Proposal Document:</b></td>
                         <td><?php echo $proposal_download; ?>
                         </td>
-                           
+
                        </tr>
                       <tr>
                         <td><b>Status:</b></td>
-                        <td><?php echo "$status_name"; ?></td>                           
+                        <td><?php echo "$status_name"; ?></td>
                       </tr>
                       <tr>
                         <td><b>Comments:</b></td>
-                        <td><?php echo "$comments"; ?></td>                           
+                        <td><?php echo "$comments"; ?></td>
                       </tr>
                       <tr>
                         <td></td>
-                        <td id="prop_feedback"></td>                           
+                        <td id="prop_feedback"></td>
                       </tr>
                       <tr>
                         <td></td>
                         <td><?php
-                 
+
                           if($proposal_status== 1)
                             {
                               ?>
@@ -187,11 +186,11 @@ include_once 'session.php';
                               <?php
                             }
                             ?>
-                        </td>                           
+                        </td>
                       </tr>
                     </tbody>
                   </table>
-                  
+
             </div>
 
           </div>
@@ -200,14 +199,14 @@ include_once 'session.php';
         </div>
         <!--Grid column-->
 
-       
+
 
       </div>
       <!--Grid row-->
     </div>
   </main>
   <!--Main layout-->
-<script src="js/main.js" type="text/javascript"></script> 
+<script src="js/main.js" type="text/javascript"></script>
   <?php include_once 'footer.php'; ?>
 </body>
 

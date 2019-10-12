@@ -44,57 +44,36 @@ if ($method == 'POST') {
 
     $toid = $email;
     $fromid = 'admin@dms.com';
-    $subject = 'Account Password Recovery';
+    $subject = 'ACCOUNT PASSWORD RECOVERY';
 
-    // To send HTML mail, the Content-type header must be set
-    $headers  = 'MIME-Version: 1.0' . "\r\n";
-    $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+    $resetPassLink = "localhost/system/resetPassword.php?fp_email=$email&fp_code=$uniqidStr";
 
-    $resetPassLink ="localhost/dms/resetPassword.php?fp_email=$email&fp_code=$uniqidStr";
-
-    // Create email headers
-    $headers .= 'From: ' . $fromid . "\r\n" .
-      'no-Reply-To: ' . $fromid . "\r\n" .
-
-      // Compose a simple HTML email message
-    $message .= "<html><body>";
-    $message = "<h3>Hi $fname $lname,</h3><br/>
-            A request has been submitted to reset a password for your account.<br> 
+    $message = "Hi $fname $lname,<br/><br/>A request has been submitted to reset a password for your account.<br/><br/>
             If this was a mistake, just ignore this email and nothing will happen.<br><br>
-            To reset your password, visit the following link:<br><br> 
+            To reset your password, visit the following link:<br><br>
             <a href=$resetPassLink . '>$resetPassLink</a>
              <br><br><br>
             Regards,<br>
-            <b>Exodus Account Management</b>";
-    $message .= "</body></html>";
+            <b>DMS Account Management Team</b>";
 
-    
-      $mail_sent = mail($toid, $subject, $message, $headers);
 
-          if ($mail_sent == 1) 
-          {
-            
-            $update = updatedb('s_passes',"pass_reset_token='$uniqidStr',reset_status='0'","user='$uid'");
-            $refresh = 1;
-            // mail sent successfully notify the user to check the email
-            echo sucmes('Please check your e-mail, we have sent a password reset link to your registered email.Follow the link to complete setting the new password.');
-          } 
-          else 
-          {
-            //mail could not be sent try later
-            echo errormes('Some problem occurred, please try again.');
-          }
-   
-   
-  }
-  else 
-  {
+    $mail_sent = sendmail($fromid, $toid, $subject, $message);
+
+    if ($mail_sent == 1) {
+
+      $update = updatedb('d_passes', "pass_reset_token='$uniqidStr',reset_status='0'", "user='$uid'");
+      $refresh = 1;
+      // mail sent successfully notify the user to check the email
+      echo sucmes('Please check your e-mail, we have sent a password reset link to your registered email.Follow the link to complete setting the new password.');
+    } else {
+      //mail could not be sent try later
+      echo errormes('Some problem occurred, please try again.');
+    }
+  } else {
     // validation errors
     echo errormes('You are not authorized to reset new password of this account, contact system administrator.');
   }
-} 
-else 
-{ /// wrong request method 
+} else { /// wrong request method
   echo $method . ' Not supported';
 }
 

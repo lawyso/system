@@ -463,8 +463,8 @@ function sendmail($from, $to, $subject, $body)
 
   // Compose a simple HTML email message
   $message = '<html><body>';
-  $message .= '<h2 style="color:#f40;">' . $subject . '</h2>';
-  $message .= '<p style="color:#080;font-size:13px;">' . $body . '</p>';
+  $message .= '<h3 style="color:#080;text-decoration:underline">' . $subject . '</h3>';
+  $message .= '<p style="font-size:15px;">' . $body . '</p>';
   $message .= '</body></html>';
 
   // Sending email
@@ -472,4 +472,13 @@ function sendmail($from, $to, $subject, $body)
   $sm = mail($to, $subject, $message, $headers);
 
   return $sm;
+}
+
+function proposal($id)
+{
+  $prop_id = fetchrow('d_proposals', "user='$id'", "uid");
+
+  $proposal_state = fetchrow('d_proposal_statuses', "uid='$prop_id'", "name");
+
+  return $proposal_state;
 }
