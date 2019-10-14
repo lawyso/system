@@ -225,6 +225,9 @@ $user_email = user_mail($_SESSION['dms_']);
             <?php
             }
             ?>
+            <li class="nav-item">
+              <a class="nav-link waves-effect" href="login?logout" target="_blank">LOGOUT</a>
+            </li>
             <!--
             <li class="nav-item">
               <a class="nav-link waves-effect" href="#" target="_blank">SUPERVISORS</a>

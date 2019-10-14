@@ -335,13 +335,6 @@ if ($ugroup != 1) {
 
     </div>
 
-
-    </div>
-    <!--Grid column-->
-
-
-    </div>
-    </div>
   </main>
   <!--Main layout-->
 

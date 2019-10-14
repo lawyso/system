@@ -43,7 +43,7 @@ if ($method == 'POST') {
     // defining mail parameters to be sent
 
     $toid = $email;
-    $fromid = 'admin@dms.com';
+    $fromid = 'admin@dms.co.ke';
     $subject = 'ACCOUNT PASSWORD RECOVERY';
 
     $resetPassLink = "localhost/system/resetPassword.php?fp_email=$email&fp_code=$uniqidStr";

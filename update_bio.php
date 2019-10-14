@@ -32,10 +32,7 @@ include_once 'session.php';
             <span>/</span>
             <span>Update</span>
           </h4>
-
-
         </div>
-
       </div>
       <!-- Heading -->
 
@@ -53,9 +50,6 @@ include_once 'session.php';
 
               <?php
 
-
-
-
               $sid = $myid;
               $sd = fetchonerow('d_users_primary', "uid='$sid'");
               $first_name = $sd['first_name'];
@@ -72,12 +66,7 @@ include_once 'session.php';
               $school_name = fetchrow('d_schools', "uid='$school'", "school_name");
               $title = $sd['title'];
               $title_name = fetchrow('d_title', "uid='$title'", "name");
-              if ($user_group == 2) {
-                $visibility = "none";
-              }
-
               ?>
-
               <form role="form" method="POST" onsubmit="return false;">
                 <table class="table table-bordered table-striped table-responsive">
                   <tr>
@@ -165,7 +154,7 @@ include_once 'session.php';
                       </select>
                     </td>
                   </tr>
-                  <tr style="display:<?php echo $visibility ?>;">
+                  <tr>
                     <td>School/Faculty</td>
                     <td>
                       <select class="form-control" id="school" <?php echo $disabled; ?>>
@@ -188,7 +177,6 @@ include_once 'session.php';
                   </tr>
                   <tr>
                     <td colspan="2" id="bio_feedback">
-
                     </td>
                   </tr>
                   <tr>
@@ -196,19 +184,13 @@ include_once 'session.php';
                       <button type="submit" class="btn" onclick="update_bio()" style="background-color: rgb( 17, 122, 101);color: #ffff">Update Profile</button>
                     </td>
                   </tr>
-
                 </table>
               </form>
             </div>
-
           </div>
           <!--/.Card-->
-
         </div>
         <!--Grid column-->
-
-
-
       </div>
       <!--Grid row-->
     </div>
