@@ -485,7 +485,7 @@ function sendmail($from, $to, $subject, $body)
 
 function proposal($id)
 {
-  $prop_id = fetchrow('d_proposals', "user='$id'", "uid");
+  $prop_id = fetchrow('d_proposals', "user='$id'", "status");
 
   $proposal_state = fetchrow('d_proposal_statuses', "uid='$prop_id'", "name");
 

@@ -17,9 +17,9 @@ if ($titleOk == 0) {
     exit();
 }
 
-$area_studyOk = input_length($area_study, 20);
+$area_studyOk = input_length($area_study, 15);
 if ($area_studyOk == 0) {
-    die(errormes('Please specify the area of study/research'));
+    die(errormes('Area of study/research description too short'));
     exit();
 }
 
