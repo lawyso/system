@@ -4,6 +4,9 @@ require_once 'includes/func.php';
 $user = profile($_SESSION['dms_']);
 $ugroup = usergroup($_SESSION['dms_']);
 $id = session_details($_SESSION['dms_']);
+$user = profile($_SESSION['dms_']);
+$user = profile($_SESSION['dms_']);
+$user_email = user_mail($_SESSION['dms_']);
 ?>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -254,7 +257,12 @@ $id = session_details($_SESSION['dms_']);
     <div class="sidebar-fixed position-fixed">
 
       <a class="logo-wrapper waves-effect">
-        <img src="img/avatar5.png" class="user_image" alt="">
+        <?php
+        $gravatar_link = 'http://www.gravatar.com/avatar/' . md5($user_email) . '?s=32';
+        echo '<img src="' . $gravatar_link . '"class="user_image" />';
+        echo "<script>alert($gravatar_link)</script>";
+        ?>
+
       </a>
       <span>
         <center style="color:#4a235a ;font-weight:bold;font-size:18px"><?php echo 'Hi ' . $user; ?></center>

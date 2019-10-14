@@ -52,6 +52,15 @@ function profile($sid)
   return $fname . ' ' . $lname;
 }
 
+function user_mail($sid)
+{
+  $rid = decurl($sid);
+  $d = fetchonerow('d_users_primary', "uid='$rid'");
+  $email = $d['primary_email'];
+
+  return $email;
+}
+
 function usergroup($sid)
 {
   $rid = decurl($sid);
