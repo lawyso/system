@@ -29,7 +29,7 @@ include_once 'session.php';
 
           <div class="card-header">
 
-            <p>Student List&emsp;<button class="btn btn-sm" data-toggle="modal" data-target="#centralModalLGInfoDemo" style="background-color: rgb( 17, 122, 101);color: #ffff" disabled>Portfolio</button>
+            <p>Assigned Students&emsp;<button class="btn btn-sm" data-toggle="modal" data-target="#centralModalLGInfoDemo" style="background-color: rgb( 17, 122, 101);color: #ffff" disabled>My Portfolio</button>
           </div>
         </div>
 
@@ -37,12 +37,11 @@ include_once 'session.php';
           <table id="st_table" class="table table-bordered table-striped table-responsive display" width="100%">
             <thead>
               <tr style="background-color: rgb( 17, 122, 101);color: #ffff">
-                <th>First Name</th>
-                <th>Last Name</th>
+                <th>FirstName</th>
+                <th>LastName</th>
                 <th>Course of Study</th>
-                <th>Department</th>
-                <th>Primary Phone</th>
-                <th>Primary Email</th>
+                <th>Phone No</th>
+                <th>Email</th>
                 <th>Proposal</th>
                 <th>Action</th>
 
@@ -53,12 +52,11 @@ include_once 'session.php';
             </tbody>
             <tfoot style="background-color: #F0F0F0">
               <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
+                <th>FirstName</th>
+                <th>LastName</th>
                 <th>Course of Study</th>
-                <th>Department</th>
-                <th>Primary Phone</th>
-                <th>Primary Email</th>
+                <th>Phone No</th>
+                <th>Email</th>
                 <th>Proposal</th>
                 <th>Action</th>
 
@@ -78,10 +76,10 @@ include_once 'session.php';
               "columnDefs": [{
 
                 "render": function(data, type, row) {
-                  let rowID = row[7];
+                  let rowID = row[6];
                   return `<a href="student_details?student=${ rowID }"><i class="fa fa-eye"></i></a>`
                 },
-                "targets": 7
+                "targets": 6
 
               }]
             });

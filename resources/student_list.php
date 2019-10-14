@@ -23,11 +23,10 @@ $columns = array(
   0 => 'first_name',
   1 => 'last_name',
   2 => 'uid',
-  3 => 'department',
-  4 => 'primary_phone',
-  5 => 'primary_email',
-  6 => 'uid',
-  7 => 'uid'
+  3 => 'primary_phone',
+  4 => 'primary_email',
+  5 => 'uid',
+  6 => 'uid'
 );
 
 
@@ -65,7 +64,6 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array
   $nestedData[] = $row["first_name"];
   $nestedData[] = $row["last_name"];
   $nestedData[] = course_name($row["uid"]);
-  $nestedData[] = department($row['department']);
   $nestedData[] = $row["primary_phone"];
   $nestedData[] = $row["primary_email"];
   $nestedData[] = proposal($row["uid"]);
