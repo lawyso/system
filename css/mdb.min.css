@@ -11804,7 +11804,7 @@ table.table-hover tbody tr:hover {
   -webkit-transition: .5s;
   -o-transition: .5s;
   transition: .5s;
-  background-color: rgba(0, 0, 0, .075)
+  background-color: rgba(248, 244, 244, 0.726)
 }
 
 table .th-lg {
@@ -11835,7 +11835,7 @@ table.table-sm th {
 .table-responsive-sm>.table-bordered,
 .table-responsive-xl>.table-bordered,
 .table-responsive>.table-bordered {
-  border-top: 1px solid #dee2e6
+  border-top: 1px solid #0b0c0c
 }
 
 ul.stepper {
