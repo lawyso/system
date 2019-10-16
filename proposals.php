@@ -9,6 +9,8 @@ include_once 'session.php';
   <meta charset="UTF-8" />
   <title>DMS Student Proposals</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css">
 </head>
 
 <body class="grey lighten-3">
@@ -171,7 +173,13 @@ include_once 'session.php';
                   <label for="Area of Study">Area of Study</label>
                   <textarea class="form-control" id="area_study"><?php echo $area_study; ?></textarea>
                 </div>
-
+                <select id="supervisor" name="supervisor[]" multiple="multiple" class="form-control">
+                  <option value="1">January</option>
+                  <option value="2">February</option>
+                  <option value="3">March</option>
+                  <option value="4">April</option>
+                  <option value="5">May</option>
+                </select>
                 <div class="form-group">
                   <label>Supervisor 1</label>
                   <select id="supervisor_1" class="form-control">
@@ -266,7 +274,16 @@ include_once 'session.php';
       }
     });
   </script>
-
+  <script>
+    $('document').ready(function() {
+      ('#supervisor').multipleSelect({
+        nonSelectedText: 'Select Supervisor',
+        enableFiltering: true,
+        enableCaseInsensitiveFiltering: true,
+        buttonWidth: '400px'
+      })
+    });
+  </script>
   </div>
 
 
@@ -281,6 +298,19 @@ include_once 'session.php';
 
   <?php include_once 'footer.php'; ?>
   <script src="js/main.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.min.js.map"></script>
+
+  <script>
+    $(function() {
+      $('#select').multipleSelect({
+        selectAll: false,
+        placeholder: '~Select~',
+        maximumCountSelected: 3
+      })
+    })
+  </script>
 </body>
 
 </html>

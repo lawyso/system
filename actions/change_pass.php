@@ -3,9 +3,9 @@ session_start();
 include_once '../includes/conn.inc';
 include_once '../includes/func.php';
 
-$newpass = $_POST['new_pass'];
-$old_pass = $_POST['old_pass'];
-$new_passConfirm = $_POST['new_passConfirm'];
+$newpass = mysqli_real_escape_string($con, $_POST['new_pass']);
+$old_pass = mysqli_real_escape_string($con, $_POST['old_pass']);
+$new_passConfirm = mysqli_real_escape_string($con, $_POST['new_passConfirm']);
 $user = $myid;
 
 $oldpassavailable = input_available($old_pass);

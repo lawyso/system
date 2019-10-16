@@ -485,25 +485,24 @@ function sendmail($from, $to, $subject, $body)
 
 function proposal($id)
 {
-  $prop_id = fetchmaxid('d_proposals', "user='$id'", "status");
-
-  $latest_prop_id = $prop_id['status'];
-
-  $proposal_state = fetchrow('d_proposal_statuses', "uid='$latest_prop_id'", "name");
-  if ($latest_prop_id == 1) {
-    $state_name = "<span class=\"btn btn-sm bg-teal\">$proposal_state</span>";
+  $proposal_state = fetchrow('d_proposal_statuses', "uid='$id'", "name");
+  if ($id == 1) {
+    $state_name = "<span class=\"label label-primary\">$proposal_state</span>";
   }
-  if ($latest_prop_id == 2) {
-    $state_name = "<span class=\"btn btn-sm bg-success\">$proposal_state</span>";
+  if ($id == 2) {
+    $state_name = "<span class=\"label label-success\">$proposal_state</span>";
   }
-  if ($latest_prop_id == 3) {
-    $state_name = "<span class=\"btn btn-sm bg-red\">$proposal_state</span>";
+  if ($id == 3) {
+    $state_name = "<span class=\"label label-warning\">$proposal_state</span>";
   }
-  if ($latest_prop_id == 4) {
-    $state_name = "<span class=\"btn btn-sm bg-orange\">$proposal_state</span>";
+  if ($id == 4) {
+    $state_name = "<span class=\"label label-default\">$proposal_state</span>";
   }
-  if ($latest_prop_id == 5) {
-    $state_name = "<span class=\"btn btn-sm bg-navy\">$proposal_state</span>";
+  if ($id == 5) {
+    $state_name = "<span class=\"label label-danger\">$proposal_state</span>";
+  }
+  if ($id == 0) {
+    $state_name = "<span class=\"label label-info\"> Pending Submission </span>";
   }
   return $state_name;
 }

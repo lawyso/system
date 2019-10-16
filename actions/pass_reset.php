@@ -6,8 +6,8 @@ include_once '../includes/func.php';
 $method = $_SERVER['REQUEST_METHOD'];
 
 if ($method == 'POST') {
-    $password = $_POST['u_pass'];
-    $password1 = $_POST['u_passConfirm'];
+    $password = mysqli_real_escape_string($con, $_POST['u_pass']);
+    $password1 = mysqli_real_escape_string($con, $_POST['u_passConfirm']);
     $userid = $_POST['userid'];
 
     //////////////________________hard validation

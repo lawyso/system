@@ -7,7 +7,7 @@ include_once 'session.php';
 
 <head>
   <meta charset="UTF-8" />
-  <title>DMS Supervisor || Assigned Students</title>
+  <title>DMS Dormant || Students</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 
@@ -29,7 +29,8 @@ include_once 'session.php';
 
           <div class="card-header">
 
-            <button class="btn btn-dms btn-sm" data-toggle="modal" data-target="#centralModalLGInfoDemo">Assigned Students My Portfolio</button>
+            <button class="btn btn-dms btn-sm" data-toggle="modal" data-target="#centralModalLGInfoDemo">Dormant Students In My Portfolio</button>
+            <p style="color:darkmagenta">(<i>These are students with no proposals,rejected proposal and deleted proposals</i>)</p>
           </div>
         </div>
 
@@ -69,7 +70,7 @@ include_once 'session.php';
               "bprocessing": true,
               "serverSide": true,
               "ajax": {
-                url: "resources/student_list.php",
+                url: "resources/dormant_list.php",
                 type: "post"
               },
               "columnDefs": [{

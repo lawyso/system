@@ -4,19 +4,19 @@ include_once '../includes/conn.inc';
 include_once '../includes/func.php';
 
 $sid = $_POST['sid'];
-$first_name = $_POST['first_name'];
-$last_name = $_POST['last_name'];
-$national_id = $_POST['national_id'];
-$primary_email = $_POST['primary_email'];
-$primary_phone = $_POST['primary_phone'];
-$user_name = $_POST['user_name'];
-$user_group = $_POST['user_group'];
-$gender = $_POST['gender'];
+$first_name = mysqli_real_escape_string($con, $_POST['first_name']);
+$last_name = mysqli_real_escape_string($con, $_POST['last_name']);
+$national_id = mysqli_real_escape_string($con, $_POST['national_id']);
+$primary_email = mysqli_real_escape_string($con, $_POST['primary_email']);
+$primary_phone = mysqli_real_escape_string($con, $_POST['primary_phone']);
+$user_name = mysqli_real_escape_string($con, $_POST['user_name']);
+$user_group = mysqli_real_escape_string($con, $_POST['user_group']);
+$gender = mysqli_real_escape_string($con, $_POST['gender']);
 $password = $user_name;
-$status = $_POST['status'];
-$department = $_POST['department'];
-$faculty = $_POST['school'];
-$title = $_POST['title'];
+$status = mysqli_real_escape_string($con, $_POST['status']);
+$department = mysqli_real_escape_string($con, $_POST['department']);
+$faculty = mysqli_real_escape_string($con, $_POST['school']);
+$title = mysqli_real_escape_string($con, $_POST['title']);
 
 
 

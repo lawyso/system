@@ -3,9 +3,9 @@ session_start();
 include_once '../includes/conn.inc';
 include_once '../includes/func.php';
 
-$sid = $_POST['sid'];
-$title = $_POST['title'];
-$area_study = $_POST['area_study'];
+$sid = mysqli_real_escape_string($con, $_POST['sid']);
+$title = mysqli_real_escape_string($con, $_POST['title']);
+$area_study = mysqli_real_escape_string($con, $_POST['area_study']);
 $supervisor_1 = $_POST['supervisor_1'];
 $supervisor_2 = $_POST['supervisor_2'];
 $supervisor_3 = $_POST['supervisor_3'];

@@ -110,10 +110,16 @@ include_once 'session.php';
                   <td>Group</td>
                   <td><input type="text" disabled class="form-control" value="<?php echo $group_name; ?>" /></td>
                 </tr>
-                <tr>
-                  <td>Course</td>
-                  <td><input type="text" disabled class="form-control" value="" /></td>
-                </tr>
+                <?php
+                if ($user_group == 2) {
+                  ?>
+                  <tr>
+                    <td>Course</td>
+                    <td><input type="text" disabled class="form-control" value="" /></td>
+                  </tr>
+                <?php
+                }
+                ?>
                 <tr>
                   <td>Department</td>
                   <td><input type="text" disabled class="form-control" value="<?php echo $department_name; ?>" /></td>

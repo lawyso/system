@@ -7,7 +7,7 @@ include_once 'session.php';
 
 <head>
   <meta charset="UTF-8" />
-  <title>DMS Home || Dashboard</title>
+  <title>DMS Bio-Data || Details</title>
 </head>
 
 <body class="grey lighten-3">
@@ -60,15 +60,11 @@ include_once 'session.php';
               $user_name = $sd['user_name'];
               $user_group = $sd['user_group'];
               $group_name = fetchrow('d_user_groups', "uid='$user_group'", "group_name");
-              $department = $sd['department'];
-              $department_name = fetchrow('d_departments', "uid='$department'", "department_name");
-              $school = $sd['faculty'];
-              $school_name = fetchrow('d_schools', "uid='$school'", "school_name");
               $title = $sd['title'];
               $title_name = fetchrow('d_title', "uid='$title'", "name");
               ?>
               <form role="form" method="POST" onsubmit="return false;">
-                <table class="table table-bordered table-striped table-responsive">
+                <table class="table table-bordered table-striped">
                   <tr>
                     <td>Title</td>
                     <td>
@@ -112,7 +108,7 @@ include_once 'session.php';
                   <tr>
                     <td>Primary Phone</td>
                     <td>
-                      <input type="text" disabled class="form-control" value="<?php echo $primary_phone; ?>" />
+                      <input type="text" id="phone_no" class="form-control" value="<?php echo $primary_phone; ?>" />
                     </td>
                   </tr>
                   <tr>
@@ -131,48 +127,6 @@ include_once 'session.php';
                     <td>Group</td>
                     <td>
                       <input type="text" disabled class="form-control" value="<?php echo $group_name; ?>" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Department</td>
-                    <td>
-                      <select class="form-control" id="department" <?php echo $disabled; ?>>
-                        <option value="0">~Select~</option>
-                        <?php
-                        $deps = fetchtable('d_departments', "department_status=1", "department_name", "asc", "10000");
-                        while ($d = mysqli_fetch_array($deps)) {
-                          $uid = $d['uid'];
-                          $department_name = $d['department_name'];
-                          if ($uid == $department) {
-                            $dselected = 'SELECTED';
-                          } else {
-                            $dselected = '';
-                          }
-                          echo "<option $dselected value=\"$uid\">$department_name</option>";
-                        }
-                        ?>
-                      </select>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>School/Faculty</td>
-                    <td>
-                      <select class="form-control" id="school" <?php echo $disabled; ?>>
-                        <option value="0">~Select~</option>
-                        <?php
-                        $sch = fetchtable('d_schools', "school_status=1", "school_name", "asc", "10000");
-                        while ($sc = mysqli_fetch_array($sch)) {
-                          $uid = $sc['uid'];
-                          $school_name = $sc['school_name'];
-                          if ($uid == $school) {
-                            $scselected = 'SELECTED';
-                          } else {
-                            $scselected = '';
-                          }
-                          echo "<option $scselected value=\"$uid\">$school_name</option>";
-                        }
-                        ?>
-                      </select>
                     </td>
                   </tr>
                   <tr>

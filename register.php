@@ -108,12 +108,12 @@ include_once 'session.php';
                 $course = $sd['course'];
                 $department = $sd['department'];
                 $school = $sd['school'];
-                $admission_date = date('Y-m-d',strtotime($sd['admission_date']));
+                $admission_date = date('Y-m-d', strtotime($sd['admission_date']));
                 $course_duration = $sd['course_duration'];
                 $action = "Edit Course";
                 $edi = 1;
               } else {
-                $sid = 0;
+                $esid = 0;
                 $action = "Register Course";
               }
 
@@ -123,7 +123,7 @@ include_once 'session.php';
             <!-- modal-------------------------------------------start of modal window -->
             <!-- Central Modal Large Info-->
             <div class="modal fade" id="centralModalLGInfoDemo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-lg modal-notify" role="document">
+              <div class="modal-dialog modal-md modal-notify" role="document">
                 <!--Content-->
                 <div class="modal-content">
                   <!--Header-->
@@ -141,13 +141,13 @@ include_once 'session.php';
                     <form role="form" method="POST" onsubmit="return false;">
                       <div class="box-body">
                         <div class="form-group">
-                          <input type="hidden" value="<?php echo $sid; ?>" id="sid" />
+                          <input type="hidden" value="<?php echo $esid; ?>" id="sid" />
                           <div class="form-group">
                             <label>Course</label>
-                            <select class="form-control" id="course" <?php echo $disabled; ?>>
+                            <select class="form-control" onchange="course_prod()" id="course" <?php echo $disabled; ?>>
                               <option value="0">~Select~</option>
                               <?php
-                              $cs = fetchtable('d_courses', "course_status=1", "course_name", "asc", "10000");
+                              $cs = fetchtable('d_courses', "status=1", "course_name", "asc", "10000");
                               while ($c = mysqli_fetch_array($cs)) {
                                 $uid = $c['uid'];
                                 $course_name = $c['course_name'];
@@ -161,44 +161,10 @@ include_once 'session.php';
                               ?>
                             </select>
                           </div>
-                          <div class="form-group">
-                            <label for="user_group">Department</label>
-                            <select class="form-control" id="department" <?php echo $disabled; ?>>
-                              <option value="0">~Select~</option>
-                              <?php
-                              $deps = fetchtable('d_departments', "department_status=1", "department_name", "asc", "10000");
-                              while ($d = mysqli_fetch_array($deps)) {
-                                $uid = $d['uid'];
-                                $department_name = $d['department_name'];
-                                if ($uid == $department) {
-                                  $dselected = 'SELECTED';
-                                } else {
-                                  $dselected = '';
-                                }
-                                echo "<option $dselected value=\"$uid\">$department_name</option>";
-                              }
-                              ?>
-                            </select>
+                          <div id="course_product">
+
                           </div>
-                          <div class="form-group">
-                            <label for="user_group">School/Faculty</label>
-                            <select class="form-control" id="school" <?php echo $disabled; ?>>
-                              <option value="0">~Select~</option>
-                              <?php
-                              $sch = fetchtable('d_schools', "school_status=1", "school_name", "asc", "10000");
-                              while ($sc = mysqli_fetch_array($sch)) {
-                                $uid = $sc['uid'];
-                                $school_name = $sc['school_name'];
-                                if ($uid == $school) {
-                                  $scselected = 'SELECTED';
-                                } else {
-                                  $scselected = '';
-                                }
-                                echo "<option $scselected value=\"$uid\">$school_name</option>";
-                              }
-                              ?>
-                            </select>
-                          </div>
+
                           <div class="form-group">
                             <label for="primary_email">Date of Admission</label>
                             <input type="date" value="<?php echo $admission_date; ?>" class="form-control" id="admission_date" <?php echo $disabled; ?> />
@@ -242,7 +208,11 @@ include_once 'session.php';
       }
     });
   </script>
-
+  <script>
+    $('document').ready(function() {
+      course_prod();
+    });
+  </script>
   <!--Main layout-->
   <script src="js/main.js" type="text/javascript"></script>
   <?php include_once 'footer.php'; ?>

@@ -16,75 +16,13 @@ $user_email = user_mail($_SESSION['dms_']);
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 <!-- bootstrap wysihtml5 - text editor -->
 <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <!-- Bootstrap core CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <!-- Material Design Bootstrap -->
 <link href="css/mdb.min.css" rel="stylesheet">
 <!-- Your custom styles (optional) -->
 <link href="css/style.min.css" rel="stylesheet">
-<style>
-  .map-container {
-    overflow: hidden;
-    padding-bottom: 56.25%;
-    position: relative;
-    height: 0;
-  }
-
-  .map-container iframe {
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-  }
-
-  .user_image {
-    border-radius: 50%;
-    min-height: 120px;
-    width: 120px;
-    padding-top: 2px;
-  }
-
-  .navbar {
-    font-size: 15px;
-  }
-
-  html {
-    height: 100%;
-  }
-
-  body {
-    min-height: 100%;
-    padding: 0;
-    margin: 0;
-    position: relative;
-  }
-
-  /* Trick: */
-  body {
-    position: relative;
-  }
-
-  body::after {
-    content: '';
-    display: block;
-    height: 50px;
-    /* Set same as footer's height */
-  }
-
-  footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-  }
-
-  .btn-dms {
-    background-color: rgb(17, 122, 101);
-    color: #ffff
-  }
-</style>
-
 
 <body class="grey lighten-3">
 
@@ -144,8 +82,8 @@ $user_email = user_mail($_SESSION['dms_']);
               $home_gac = 'active';
             } elseif (strpos($page, 'home') !== false) {
               $home_hom = 'active';
-            } elseif (strpos($page, 'departmental-proposals') !== false) {
-              $home_dp = 'active';
+            } elseif (strpos($page, 'dormant_students') !== false) {
+              $home_ds = 'active';
             } else { }
 
             if ($ugroup == 2) {
@@ -192,8 +130,8 @@ $user_email = user_mail($_SESSION['dms_']);
               <li class="nav-item <?php echo $home_asgn; ?>">
                 <a class="nav-link waves-effect" href="assigned_students">STUDENTS/PROPOSALS</a>
               </li>
-              <li class="nav-item <?php echo $home_reg; ?>">
-                <a class="nav-link waves-effect" href="update_bio">DORMANT STUDENTS</a>
+              <li class="nav-item <?php echo $home_ds; ?>">
+                <a class="nav-link waves-effect" href="dormant_students">DORMANT STUDENTS</a>
               </li>
               <li class="nav-item <?php echo $home_reg; ?>">
                 <a class="nav-link waves-effect" href="update_bio">NOTIFICATIONS</a>
@@ -263,7 +201,7 @@ $user_email = user_mail($_SESSION['dms_']);
         <?php
         $gravatar_link = 'http://www.gravatar.com/avatar/' . md5($user_email) . '?s=32';
         echo '<img src="' . $gravatar_link . '"class="user_image" />';
-        echo "<script>alert($gravatar_link)</script>";
+
         ?>
 
       </a>

@@ -25,14 +25,14 @@ $columns = array(
   2 => 'uid',
   3 => 'primary_phone',
   4 => 'primary_email',
-  5 => 'uid',
+  5 => 'proposal_status',
   6 => 'uid'
 );
 
 
-$sql = "SELECT first_name,last_name,department,primary_phone,primary_email,uid";
-$sql .= " FROM d_users_primary WHERE user_group =2 AND proposal_status in (1,2) AND supervisor_1='$myid' OR  supervisor_2='$myid' OR supervisor_3='$myid'";
-$query = mysqli_query($conn, $sql) or die("student_list.php: get defense400");
+$sql = "SELECT first_name,last_name,primary_phone,primary_email,uid,proposal_status";
+$sql .= " FROM d_users_primary WHERE user_group ='2' AND proposal_status in (0,1,2,3,4,5) AND (supervisor_1='$myid' OR  supervisor_2='$myid' OR supervisor_3='$myid')";
+$query = mysqli_query($conn, $sql) or die("student_list.php: get proposal400");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
@@ -41,8 +41,6 @@ if (!empty($requestData['search']['value'])) {
   $sql .= " AND ( first_name LIKE '" . $requestData['search']['value'] . "%' ";
 
   $sql .= " OR last_name LIKE '" . $requestData['search']['value'] . "%' ";
-
-  $sql .= " OR department LIKE '" . $requestData['search']['value'] . "%' ";
 
   $sql .= " OR primary_email LIKE '" . $requestData['search']['value'] . "%' ";
 
@@ -66,7 +64,7 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array
   $nestedData[] = course_name($row["uid"]);
   $nestedData[] = $row["primary_phone"];
   $nestedData[] = $row["primary_email"];
-  $nestedData[] = proposal($row["uid"]);
+  $nestedData[] = proposal($row["proposal_status"]);
   $nestedData[] = encurl($row["uid"]);
   $data[] = $nestedData;
 }

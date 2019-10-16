@@ -6,7 +6,7 @@ include_once '../includes/func.php';
 $method = $_SERVER['REQUEST_METHOD'];
 
 if ($method == 'POST') {
-  $email = $_POST['u_name'];
+  $email = mysqli_real_escape_string($con, $_POST['u_name']);
   //////////////________________validation
   $emailAvailable = input_available($email);
 
