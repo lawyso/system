@@ -17,44 +17,28 @@ include_once 'session.php';
   include_once 'includes/func.php';
 
   ?>
-  <!--Main layout-->
   <main class="pt-5 mx-lg-5">
     <div class="container-fluid mt-5">
 
-      <!-- Heading -->
-      <div class="card mb-4 wow fadeIn">
-
-        <!--Card content-->
-        <div class="card-body d-sm-flex justify-content-between">
-
-          <h4 class="mb-2 mb-sm-0 pt-1">
-            <a href="#" target="_blank">Profile</a>
-            <span>/</span>
-            <span>My details</span>
-          </h4>
-
-
-        </div>
-
-      </div>
-      <!-- Heading -->
-
       <!--Grid row-->
-      <div class="row wow fadeIn">
+      <div class="row wow">
 
         <!--Grid column-->
         <div class="col-md-12 mb-4">
-
-          <!--Card-->
           <div class="card">
+            <div class="card-header">
+
+              <h4 class="mb-2 mb-sm-0 pt-1">
+                <a href="#" target="_blank">Profile</a>
+                <span>/</span>
+                <span>My details</span>
+              </h4>
+            </div>
 
             <!--Card content-->
             <div class="card-body">
 
               <?php
-
-
-
 
               $sid = $myid;
               $sd = fetchonerow('d_users_primary', "uid='$sid'");
@@ -72,10 +56,7 @@ include_once 'session.php';
               $school_name = fetchrow('d_schools', "uid='$school'", "school_name");
               $title = $sd['title'];
               $title_name = fetchrow('d_title', "uid='$title'", "name");
-
-
               ?>
-
 
               <table class="table table-bordered table-striped">
                 <tr>
@@ -143,9 +124,6 @@ include_once 'session.php';
 
         </div>
         <!--Grid column-->
-
-
-
       </div>
       <!--Grid row-->
     </div>

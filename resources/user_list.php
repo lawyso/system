@@ -23,14 +23,13 @@ $columns = array(
   0 => 'first_name',
   1 => 'last_name',
   2 => 'primary_phone',
-  3 => 'gender',
-  4 => 'national_id',
-  5 => 'primary_email',
-  6 => 'user_name',
-  7 => 'uid'
+  3 => 'national_id',
+  4 => 'primary_email',
+  5 => 'user_name',
+  6 => 'uid'
 );
 
-$sql = "SELECT uid,first_name,last_name,primary_phone,gender,national_id,primary_email,user_name,user_group";
+$sql = "SELECT uid,first_name,last_name,primary_phone,national_id,primary_email,user_name,user_group";
 $sql .= " FROM d_users_primary WHERE status =1 ";
 
 $query = mysqli_query($conn, $sql) or die("User_list.php: get Users");
@@ -45,8 +44,6 @@ if (!empty($requestData['search']['value'])) {
   $sql .= " OR last_name LIKE '" . $requestData['search']['value'] . "%' ";
 
   $sql .= " OR national_id LIKE '" . $requestData['search']['value'] . "%' ";
-
-  $sql .= " OR gender LIKE '" . $requestData['search']['value'] . "%' ";
 
   $sql .= " OR primary_phone LIKE '" . $requestData['search']['value'] . "%' ";
 
@@ -70,7 +67,6 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array
   $nestedData[] = $row["first_name"];
   $nestedData[] = $row["last_name"];
   $nestedData[] = $row["primary_phone"];
-  $nestedData[] = gender($row["gender"]);
   $nestedData[] = $row["national_id"];
   $nestedData[] = $row["primary_email"];
   $nestedData[] = $row["user_name"];

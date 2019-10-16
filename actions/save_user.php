@@ -99,7 +99,6 @@ if ($validation == 10) {
     } else {
         ///create
 
-
         $epass = passencrypt($password);
         $hash = substr($epass, 0, 64);
         $salt = substr($epass, 64, 96);

@@ -2,7 +2,7 @@
 <footer class="page-footer text-center font-small darken-2 mt-4 wow fadeIn" style="background-color: rgb( 17, 122, 101);color: #ffff">
 
   <!--Copyright-->
-  <div class="footer-copyright py-6">
+  <div class="footer-copyright py-3">
     <p class="copyright"><strong>&copy; <script>
           var currentYear = new Date().getFullYear();
           document.write(currentYear);

@@ -22,77 +22,76 @@ include_once 'session.php';
     <div class="container-fluid mt-5">
 
       <!--Grid row-->
-      <div class="row wow fadeIn">
+      <div class="row wow">
 
         <!--Grid column-->
-        <div class="col-md-12">
+        <div class="col-md-12 mb-4">
+          <div class="card">
+            <div class="card-header">
+              <?php
+              // check if you have any approved active proposal
+              $proposalExists = checkrowexists('d_proposals', "user='$myid' AND status='2'");
+              if ($proposalExists == 0) {
+                $disabled = 'disabled';
+              } else {
+                $disabled = "";
+              }
+              $department = fetchrow('d_users_primary', "uid='$myid'", "department");
+              $department_name = fetchrow('d_departments', "uid='$department'", "department_name");
+              ?>
+              <p><button class="btn btn-sm" data-toggle="modal" data-target="#centralModalLGInfoDemo" style="background-color: rgb( 17, 122, 101);color: #ffff">Supervisors In Your Department:</button> Department of <?php echo $department_name ?></p>
+            </div>
+            <div class="card-body">
+              <div class="col-lg-12">
+                <table id="sp_table" class="table table-bordered table-striped display table-responsive" width='100%'>
+                  <thead>
+                    <tr style="background-color: rgb( 17, 122, 101);color: #ffff">
+                      <th>Supervisor Title</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Faculty</th>
+                      <th>Department</th>
+                      <th>Primary Phone</th>
+                      <th>Email</th>
+                    </tr>
+                  </thead>
+                  <tbody>
 
-          <div class="card-header">
-            <?php
-            // check if you have any approved active proposal
-            $proposalExists = checkrowexists('d_proposals', "user='$myid' AND status='2'");
-            if ($proposalExists == 0) {
-              $disabled = 'disabled';
-            } else {
-              $disabled = "";
-            }
-            $department = fetchrow('d_users_primary', "uid='$myid'", "department");
-            $department_name = fetchrow('d_departments', "uid='$department'", "department_name");
-            ?>
-            <p><button class="btn btn-sm" data-toggle="modal" data-target="#centralModalLGInfoDemo" style="background-color: rgb( 17, 122, 101);color: #ffff" <?php echo $disabled; ?>>Supervisors In Your Department:</button> Department of <?php echo $department_name ?></p>
+                  </tbody>
+                  <tfoot style="background-color: #F0F0F0">
+                    <tr>
+                      <th>Supervisor Title</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Faculty</th>
+                      <th>Department</th>
+                      <th>Primary Phone</th>
+                      <th>Email</th>
+
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <script>
+                $(document).ready(function() {
+                  var dataTable = $('#sp_table').DataTable({
+                    "bprocessing": true,
+                    "serverSide": true,
+                    "ajax": {
+                      url: "resources/supervisor_list.php",
+                      type: "post"
+                    }
+
+                  });
+                });
+              </script>
+
+            </div>
           </div>
         </div>
-
-        <div class="col-sm-12 col-md-12 col-xs-12">
-          <table id="sp_table" class="table table-bordered table-striped display table-responsive" width='100%'>
-            <thead>
-              <tr style="background-color: rgb( 17, 122, 101);color: #ffff">
-                <th>Supervisor Title</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Faculty</th>
-                <th>Department</th>
-                <th>Primary Phone</th>
-                <th>Email</th>
-              </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-            <tfoot style="background-color: #F0F0F0">
-              <tr>
-                <th>Supervisor Title</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Faculty</th>
-                <th>Department</th>
-                <th>Primary Phone</th>
-                <th>Email</th>
-
-              </tr>
-            </tfoot>
-          </table>
-        </div>
-        <script>
-          $(document).ready(function() {
-            var dataTable = $('#sp_table').DataTable({
-              "bprocessing": true,
-              "serverSide": true,
-              "ajax": {
-                url: "resources/supervisor_list.php",
-                type: "post"
-              }
-
-            });
-          });
-        </script>
+        <!--Grid column-->
 
       </div>
-    </div>
-    </div>
-    <!--Grid column-->
-
-    </div>
     </div>
   </main>
   <!--Main layout-->

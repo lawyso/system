@@ -29,15 +29,16 @@
   }
 
   body {
-    height: 100%;
+    min-height: 100%;
     padding: 0;
     margin: 0;
     position: relative;
   }
 
   /* Trick: */
-  body {
+  body ::before {
     position: relative;
+    height: 100%;
   }
 
   body::after {
@@ -51,7 +52,7 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    margin-top: 10px;
+
   }
 
   .btn-dms {

@@ -297,12 +297,10 @@ function save_proposal() {
    var sid = $('#sid').val();
    var title = $('#title').val();
    var area_study = $('#area_study').val();
-   var supervisor_1 = $('#supervisor_1').val();
-   var supervisor_2 = $('#supervisor_2').val();
-   var supervisor_3 = $('#supervisor_3').val();
+   var supervisors = $('#supervisors').val();
 
 
-   var params = "sid=" + sid + "&title=" + title + "&area_study=" + area_study + "&supervisor_1=" + supervisor_1 + "&supervisor_2=" + supervisor_2 + "&supervisor_3=" + supervisor_3;
+   var params = "sid=" + sid + "&title=" + title + "&area_study=" + area_study + "&supervisors=" + supervisors;
 
 
    dbaction('actions/save_proposal.php', params, '#proposal_feedback');
