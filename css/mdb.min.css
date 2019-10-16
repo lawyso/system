@@ -9588,7 +9588,7 @@ a.btn:not([href]):not([tabindex]):hover {
 
 .navbar.navbar-light .breadcrumb .nav-item.active>.nav-link,
 .navbar.navbar-light .navbar-nav .nav-item.active>.nav-link {
-  background-color: rgba(0, 0, 0, .1)
+  background-color: thistle
 }
 
 .navbar.navbar-light form .md-form input {
@@ -9639,7 +9639,7 @@ a.btn:not([href]):not([tabindex]):hover {
 
 .navbar.navbar-dark .breadcrumb .nav-item.active>.nav-link,
 .navbar.navbar-dark .navbar-nav .nav-item.active>.nav-link {
-  background-color: rgba(255, 255, 255, .1)
+  background-color: thistle
 }
 
 .navbar.navbar-dark .breadcrumb .nav-item.active>.nav-link:hover,

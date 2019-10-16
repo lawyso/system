@@ -23,6 +23,62 @@ $user_email = user_mail($_SESSION['dms_']);
 <link href="css/mdb.min.css" rel="stylesheet">
 <!-- Your custom styles (optional) -->
 <link href="css/style.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<style>
+  .dropdown {
+    float: left;
+    overflow: ;
+  }
+
+  .dropdown .dropbtn {
+    font-size: 14px;
+    border: none;
+    outline: none;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+    min-width: 180px;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+
+  .dropdown-content a {
+    float: none;
+    color: black;
+    padding: 5px 5px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+
+  .dropdown-content a {
+    float: none;
+    color: black;
+    padding: 5px 8px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .navbar a:hover {
+    background-color: thistle
+  }
+</style>
 
 <body class="grey lighten-3">
 
@@ -84,6 +140,8 @@ $user_email = user_mail($_SESSION['dms_']);
               $home_hom = 'active';
             } elseif (strpos($page, 'dormant_students') !== false) {
               $home_ds = 'active';
+            } elseif (strpos($page, 'settings') !== false) {
+              $home_users = 'active';
             } else { }
 
             if ($ugroup == 2) {
@@ -161,10 +219,27 @@ $user_email = user_mail($_SESSION['dms_']);
                 <a class="nav-link waves-effect" href="update_bio">UPDATE BIODATA</a>
               </li>
             <?php
+            } elseif ($ugroup == 1) {
+              ?>
+              <li class="nav-item <?php echo $home_bio; ?>">
+                <a class="nav-link waves-effect" href="update_bio">UPDATE BIODATA</a>
+              </li>
+              <li class="nav-item <?php echo $home_users; ?>">
+                <a class="nav-link waves-effect" href="settings">MANAGE USERS</a>
+              </li>
+            <?php
             }
             ?>
-            <li class="nav-item">
-              <a class="nav-link waves-effect" href="login?logout" target="_blank">LOGOUT</a>
+
+            <li class="dropdown nav-item">
+              <button class="dropbtn nav-link">ACCOUNT SETTINGS
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content">
+                <a href="profile" class="list-group-item  waves-effect"><i class="fas fa-user mr-3"></i> My Profile </a>
+                <a href="change_pass" class="list-group-item  waves-effect"><i class="fas fa-lock mr-3"></i> Change-Password </a>
+                <a href="login?logout" class="list-group-item  waves-effect"><i class="fas fa-sign-out-alt mr-3"></i> Signout </a>
+              </div>
             </li>
             <!--
             <li class="nav-item">
@@ -195,7 +270,7 @@ $user_email = user_mail($_SESSION['dms_']);
     <!-- Navbar -->
 
     <!-- Sidebar -->
-    <div class="sidebar-fixed position-fixed">
+    <div class="sidebar-fixed position-fixed ">
 
       <a class="logo-wrapper waves-effect">
         <?php
