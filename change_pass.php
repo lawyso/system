@@ -42,16 +42,16 @@ include_once 'session.php';
                 <div class="form-group">
                   <div class="row">
                     <div class="col-lg-4">
-                      <label for="Old Password">Old Password:</label>
-                      <input type="password" id="old_pass" class="form-control" placeholder="Old Password" />
+                      <label for="Old Password">Current Password:</label>
+                      <input type="password" id="old_pass" class="form-control" placeholder="Old Password" required />
                     </div>
                     <div class="col-lg-4">
                       <label for="New Password">New Password:</label>
-                      <input type="password" id="new_pass" class="form-control" placeholder="New Password" />
+                      <input type="password" id="new_pass" class="form-control" placeholder="New Password" required />
                     </div>
                     <div class="col-lg-4">
                       <label for="Confirm New Password">Confirm New Password:</label>
-                      <input type="password" id="new_passConfirm" class="form-control" placeholder="Confirm New Password" /><span id='message'></span>
+                      <input type="password" id="new_passConfirm" class="form-control" placeholder="Confirm New Password" required /><span id='message'></span>
                     </div>
                   </div>
                 </div>

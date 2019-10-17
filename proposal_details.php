@@ -196,7 +196,6 @@ include_once 'session.php';
                   <span aria-hidden="true" class="white-text">&times;</span>
                 </button>
               </div>
-
               <!--Body-->
               <div class="modal-body">
                 <!-- form start -->

@@ -144,6 +144,12 @@ $groupName = usergroup_name($_SESSION['dms_']);
               $home_ds = 'active';
             } elseif (strpos($page, 'settings') !== false) {
               $home_users = 'active';
+            } elseif (strpos($page, 'profile') !== false) {
+              $home_profile = 'active';
+            } elseif (strpos($page, 'mail_box') !== false) {
+              $home_mail = 'active';
+            } elseif (strpos($page, 'change_pass') !== false) {
+              $home_pass = 'active';
             } else { }
 
             if ($ugroup == 2) {
@@ -295,16 +301,16 @@ $groupName = usergroup_name($_SESSION['dms_']);
         <a href="index" class="list-group-item active waves-effect" style="background-color: rgb( 17, 122, 101);color: #ffff">
           <i class="fas fa-home mr-3"></i>Dashboard
         </a>
-        <a href="profile" class="list-group-item  waves-effect" style="color:black;">
+        <a href="profile" class="list-group-item  waves-effect <?php echo $home_profile; ?>" style="color:black;">
           <i class="fas fa-user mr-3"></i>Profile</a>
-        <a href="mail_box" class="list-group-item waves-effect" style="color:black;">
+        <a href="mail_box" class="list-group-item waves-effect <?php echo $home_mail; ?>" style="color:black;">
           <i class="fas fa-envelope mr-3"></i>Mailbox</a>
-        <a href="change_pass" class="list-group-item waves-effect" style="color:black;">
+        <a href="change_pass" class="list-group-item waves-effect <?php echo $home_pass; ?>" style="color:black;">
           <i class="fas fa-lock mr-3"></i>Change Password</a>
         <?php
         if ($ugroup == 1) {
           ?>
-          <a href="settings" class="list-group-item waves-effect" style="color:black;">
+          <a href="settings" class="list-group-item waves-effect <?php echo $home_users; ?>" style="color:black;">
             <i class="fas fa-sitemap mr-3"></i>Users Management</a>
         <?php
         }

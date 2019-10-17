@@ -11,23 +11,22 @@ if ($method == 'POST') {
   $emailAvailable = input_available($email);
 
   if ($emailAvailable == 0) {
-    die(errormes('Email Address is required'));
+    die(errormes('<i class="fa fa-exclamation-triangle"></i> Email Address is required'));
     exit();
   }
   $emailOk = emailOk($email);
   if ($emailOk == 0) {
-    die(errormes('Email invalid/ Please input the correct Email'));
+    die(errormes('<i class="fa fa-exclamation-triangle"></i> Email invalid/ Please input the correct Email'));
     exit();
   }
 
   $emailExists = checkrowexists('d_users_primary', "primary_email='$email' AND status='1'");
   if ($emailExists == 0) {
-    die(errormes('The Email supplied does not match our records'));
+    die(errormes('<i class="fa fa-exclamation-triangle"></i> The Email supplied does not match our records'));
     exit();
   } else {
     $emailMatch = 1;
   }
-
 
   $validation = $emailOk + $emailMatch + $emailAvailable;
   if ($validation == 3) {
@@ -67,11 +66,11 @@ if ($method == 'POST') {
       echo sucmes('Please check your e-mail, we have sent a password reset link to your registered email.Follow the link to complete setting the new password.');
     } else {
       //mail could not be sent try later
-      echo errormes('Some problem occurred, please try again.');
+      echo errormes('<i class="fa fa-exclamation-triangle"></i> Some problem occurred, please try again.');
     }
   } else {
     // validation errors
-    echo errormes('You are not authorized to reset new password of this account, contact system administrator.');
+    echo errormes('<i class="fa fa-exclamation-triangle"></i> You are not authorized to reset new password of this account, contact system administrator.');
   }
 } else { /// wrong request method
   echo $method . ' Not supported';

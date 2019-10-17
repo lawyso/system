@@ -30,14 +30,16 @@ if (isset($_GET['logout'])) {
     <div class="col-md-2">
     </div>
     <div class="col-sm-8">
-      <img src="images/pass_reset.jpg" style="width:180px;height:150px;margin-top:100px; float:inline-start;margin-left:250px" class="img-responsive">
 
       <div class="login-box">
         <div class="login-logo">
           <a href="index2.html">Reset Password</a>
         </div><!-- /.login-logo -->
         <div class="login-box-body">
-          <p class="login-box-msg">Enter Your Registered Email to Reset Your Password</p>
+          <p class="login-box-msg">Reset Password</p>
+          <p>Please enter your account username below to reset your password.
+            If you do not wish to proceed, please <a href="index">click here</a> to return to login
+          </p>
           <br>
           <form onsubmit="return false;" method="post">
             <div class="form-group has-feedback">
@@ -53,9 +55,9 @@ if (isset($_GET['logout'])) {
 
               <div class="col-xs-4">
                 <button type="submit" onclick="forgot_pwd();" class="btn btn-primary btn-block btn-flat" style="background-color: rgb( 17, 122, 101);color: #F7F7F7">Submit</button>
-
               </div><!-- /.col -->
             </div>
+            <br />
             <span id="forgot_pswd_feedback"></span>
           </form>
 

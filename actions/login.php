@@ -11,19 +11,18 @@ if ($method == 'POST') {
   //////////////________________validation
   $emailOk = input_available($email);
   if ($emailOk == 0) {
-    echo error('Email/Username invalid');
+    echo error('<i class="fa fa-exclamation-triangle"></i> Email/Username invalid');
   }
 
   $passwordOk = input_available($password);
   if ($passwordOk == 0) {
-    echo error('Password needed');
+    echo error('<i class="fa fa-exclamation-triangle"></i> Password is required');
   }
 
   $validation = $emailOk + $passwordOk;
 
   if ($validation == 2) {
     $username = $email;
-
 
     //// Check account
     ///~~~~~~~~Fetch user id
@@ -42,7 +41,6 @@ if ($method == 'POST') {
       ////fetch user pass from db
       $databasepass = fetchrow('d_users_primary', "uid='$userid'", 'pass');
 
-
       if ($encpass == $databasepass) {
         $encuserid = encurl($userid);
         $_SESSION['dms_'] = $encuserid;
@@ -52,19 +50,18 @@ if ($method == 'POST') {
           ////////////________
           echo sucmes('Successfully loggedin. Please wait...');
         } else {
-          echo errormes('*Incorrect username and password combination');
+          echo errormes('<i class=\"fa fa-exclamation-triangle\"></i> Incorrect username and password combination');
         }
       } else {
-        echo errormes("Incorrect password");
+        echo errormes("<i class=\"fa fa-exclamation-triangle\"></i> Incorrect password");
       }
     } else {
-      echo errormes("Email not found in our records");
+      echo errormes("<i class=\"fa fa-exclamation-triangle\"></i> Email/Username not found");
     }
   }
 } else {
   echo $method . ' Not supported';
 }
-
 
 ?>
 <script>

@@ -106,7 +106,7 @@ include_once 'session.php';
 
     /* Create an active/current tablink class */
     .tab span.active {
-      background-color: #95a5a6;
+      background-color: thistle;
       color: rgb(13, 27, 112);
     }
 

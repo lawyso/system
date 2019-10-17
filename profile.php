@@ -100,15 +100,19 @@ include_once 'session.php';
                   </tr>
                 <?php
                 }
+                if ($user_group != 1) {
+                  ?>
+                  <tr>
+                    <td>Department</td>
+                    <td><input type="text" disabled class="form-control" value="<?php echo $department_name; ?>" /></td>
+                  </tr>
+                  <tr>
+                    <td>School/Faculty</td>
+                    <td><input type="text" disabled class="form-control" value="<?php echo $school_name; ?>" /></td>
+                  </tr>
+                <?php
+                }
                 ?>
-                <tr>
-                  <td>Department</td>
-                  <td><input type="text" disabled class="form-control" value="<?php echo $department_name; ?>" /></td>
-                </tr>
-                <tr>
-                  <td>School/Faculty</td>
-                  <td><input type="text" disabled class="form-control" value="<?php echo $school_name; ?>" /></td>
-                </tr>
                 <tr>
                   <td colspan="2"><button class="btn disabled" onclick="update_profile()" style="background-color: rgb( 17, 122, 101);color: #ffff;display:none">Update Profile</button></td>
                 </tr>

@@ -46,7 +46,6 @@ if ($encpass != $databasepass) {
     die(errormes('The old password is incorrect'));
     exit();
 }
-
 $passwordOk = input_length($newpass, 8);
 if ($passwordOk == 0) {
     echo errormes('Password not strong enough. Make it at least 8 characters');

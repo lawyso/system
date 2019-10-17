@@ -8,7 +8,6 @@ $response = array(
   'status' => 0,
   'message' => 'Form submission failed, please try again.'
 );
-
 // If form is submitted
 if (isset($_POST['sid']) || isset($_POST['proposal_'])) {
   // Get the submitted form data
