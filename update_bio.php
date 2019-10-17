@@ -8,6 +8,54 @@ include_once 'session.php';
 <head>
   <meta charset="UTF-8" />
   <title>DMS Bio-Data || Details</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(e) {
+      // Submit form data via Ajax
+      $("#bioForm").on('submit', function(e) {
+        e.preventDefault();
+        $.ajax({
+          type: 'POST',
+          url: 'actions/update_bio.php',
+          data: new FormData(this),
+          dataType: 'json',
+          contentType: false,
+          cache: false,
+          processData: false,
+          beforeSend: function() {
+            $('.submitBtn').attr("disabled", "disabled");
+            $('#bioForm').css("opacity", ".5");
+          },
+          success: function(response) { //console.log(response);
+            $('.statusMsg').html('');
+            if (response.status == 1) {
+              $('#bioForm')[0].reset();
+              $('.statusMsg').html('<p class="alert alert-success">' + response.message + '</p>');
+              setTimeout(function() {
+                reload();
+              }, 5000);
+
+            } else {
+              $('.statusMsg').html('<p class="alert alert-danger">' + response.message + '</p>');
+            }
+            $('#bioForm').css("opacity", "");
+            $(".submitBtn").removeAttr("disabled");
+          }
+        });
+      });
+      // File type validation
+      $("#profile_").change(function() {
+        var file = this.files[0];
+        var fileType = file.type;
+        var match = ['image/jpg', 'image/png', 'image/jpeg'];
+        if (!((fileType == match[0]) || (fileType == match[1]) || (fileType == match[2]))) {
+          alert('Sorry, only JPG, JPEG, & PNG files are allowed to upload.');
+          $("#profile_").val('');
+          return false;
+        }
+      });
+    });
+  </script>
 </head>
 
 <body class="grey lighten-3">
@@ -52,12 +100,12 @@ include_once 'session.php';
               $title = $sd['title'];
               $title_name = fetchrow('d_title', "uid='$title'", "name");
               ?>
-              <form role="form" method="POST" onsubmit="return false;">
+              <form role="form" method="POST" enctype="multipart/form-data" id="bioForm">
                 <table class="table table-bordered table-striped">
                   <tr>
                     <td>Title</td>
                     <td>
-                      <select class="form-control" id="title" <?php echo $disabled; ?>>
+                      <select class="form-control" name="title" <?php echo $disabled; ?> required>
                         <option value="0">~Select~</option>
                         <?php
                         $tl = fetchtable('d_title', "status=1", "name", "asc", "100");
@@ -78,26 +126,26 @@ include_once 'session.php';
                   <tr>
                     <td>First Name</td>
                     <td>
-                      <input type="text" class="form-control" value="<?php echo $first_name; ?>" id="first_name" />
+                      <input type="text" class="form-control" value="<?php echo $first_name; ?>" name="first_name" required />
                     </td>
                   </tr>
                   <tr>
                     <td>Last Name</td>
                     <td>
-                      <input type="text" class="form-control" value="<?php echo $last_name; ?>" id="last_name" />
+                      <input type="text" class="form-control" value="<?php echo $last_name; ?>" name="last_name" required />
                     </td>
                   </tr>
                   <tr>
                     <td>Primary Email</td>
                     <td>
-                      <input type="hidden" value="<?php echo $sid; ?>" id="sid" />
+                      <input type="hidden" value="<?php echo $sid; ?>" name="sid" />
                       <input type="text" disabled class="form-control" value="<?php echo $primary_email; ?>" />
                     </td>
                   </tr>
                   <tr>
                     <td>Primary Phone</td>
                     <td>
-                      <input type="text" id="phone_no" class="form-control" value="<?php echo $primary_phone; ?>" />
+                      <input type="text" name="phone_no" class="form-control" value="<?php echo $primary_phone; ?>" required />
                     </td>
                   </tr>
                   <tr>
@@ -119,12 +167,18 @@ include_once 'session.php';
                     </td>
                   </tr>
                   <tr>
-                    <td colspan="2" id="bio_feedback">
+                    <td>Profile Image</td>
+                    <td>
+                      <input type="file" name="profile_" class="form-control" id="profile_">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" class="statusMsg">
                     </td>
                   </tr>
                   <tr>
                     <td colspan="2">
-                      <button type="submit" class="btn" onclick="update_bio()" style="background-color: rgb( 17, 122, 101);color: #ffff">Update Profile</button>
+                      <input type="submit" name="submit" class="btn btn-sm btn-dms submitBtn" value="Update Profile" />
                     </td>
                   </tr>
                 </table>
@@ -140,6 +194,7 @@ include_once 'session.php';
   </main>
   <!--Main layout-->
   <script src="js/main.js" type="text/javascript"></script>
+
   <?php include_once 'footer.php'; ?>
 </body>
 

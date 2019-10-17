@@ -7,6 +7,7 @@ $id = session_details($_SESSION['dms_']);
 $user = profile($_SESSION['dms_']);
 $user = profile($_SESSION['dms_']);
 $user_email = user_mail($_SESSION['dms_']);
+
 ?>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -150,10 +151,10 @@ $user_email = user_mail($_SESSION['dms_']);
                 <a class="nav-link waves-effect" href="index">HOME</a>
               </li>
               <li class="nav-item <?php echo $home_bio; ?>">
-                <a class="nav-link waves-effect" href="update_bio">UPDATE BIODATA</a>
+                <a class="nav-link waves-effect" href="update_bio">BIODATA</a>
               </li>
               <li class="nav-item <?php echo $home_reg; ?>">
-                <a class="nav-link waves-effect" href="register">COURSE REGISTRATION</a>
+                <a class="nav-link waves-effect" href="register">COURSE-REGISTRATION</a>
               </li>
               <?php
                 $registrationOk = checkrowexists('d_users_courses', "user='$myid' AND status='1'");
@@ -183,7 +184,7 @@ $user_email = user_mail($_SESSION['dms_']);
             } elseif ($ugroup == 3) {
               ?>
               <li class="nav-item <?php echo $home_bio; ?>">
-                <a class="nav-link waves-effect" href="update_bio">UPDATE BIODATA</a>
+                <a class="nav-link waves-effect" href="update_bio">BIODATA</a>
               </li>
               <li class="nav-item <?php echo $home_asgn; ?>">
                 <a class="nav-link waves-effect" href="assigned_students">STUDENTS/PROPOSALS</a>
@@ -198,7 +199,7 @@ $user_email = user_mail($_SESSION['dms_']);
             } elseif ($ugroup == 4) {
               ?>
               <li class="nav-item <?php echo $home_bio; ?>">
-                <a class="nav-link waves-effect" href="update_bio">UPDATE BIODATA</a>
+                <a class="nav-link waves-effect" href="update_bio">BIODATA</a>
               </li>
               <li class="nav-item <?php echo $home_dp; ?>">
                 <a class="nav-link waves-effect" href="departmental-proposals">PROPOSALS</a>
@@ -210,19 +211,19 @@ $user_email = user_mail($_SESSION['dms_']);
             } elseif ($ugroup == 5) {
               ?>
               <li class="nav-item <?php echo $home_bio; ?>">
-                <a class="nav-link waves-effect" href="update_bio">UPDATE BIODATA</a>
+                <a class="nav-link waves-effect" href="update_bio">BIODATA</a>
               </li>
             <?php
             } elseif ($ugroup == 6) {
               ?>
               <li class="nav-item <?php echo $home_bio; ?>">
-                <a class="nav-link waves-effect" href="update_bio">UPDATE BIODATA</a>
+                <a class="nav-link waves-effect" href="update_bio">BIODATA</a>
               </li>
             <?php
             } elseif ($ugroup == 1) {
               ?>
               <li class="nav-item <?php echo $home_bio; ?>">
-                <a class="nav-link waves-effect" href="update_bio">UPDATE BIODATA</a>
+                <a class="nav-link waves-effect" href="update_bio">BIODATA</a>
               </li>
               <li class="nav-item <?php echo $home_users; ?>">
                 <a class="nav-link waves-effect" href="settings">MANAGE USERS</a>
@@ -274,8 +275,13 @@ $user_email = user_mail($_SESSION['dms_']);
 
       <a class="logo-wrapper waves-effect">
         <?php
-        $gravatar_link = 'http://www.gravatar.com/avatar/' . md5($user_email) . '?s=32';
-        echo '<img src="' . $gravatar_link . '"class="user_image" />';
+        $passport = fetchrow('d_users_primary', "uid='$myid'", "profile_upload");
+        if ($passport == null) {
+          $passport_image = "img/avatar5.png";
+        } else {
+          $passport_image = "faces/$passport";
+        }
+        echo '<img src="' . $passport_image . '" class="user_image" title="My Profile Photo"/>';
 
         ?>
 
@@ -288,22 +294,22 @@ $user_email = user_mail($_SESSION['dms_']);
         <a href="index" class="list-group-item active waves-effect" style="background-color: rgb( 17, 122, 101);color: #ffff">
           <i class="fas fa-home mr-3"></i>Dashboard
         </a>
-        <a href="profile" class="list-group-item  waves-effect">
+        <a href="profile" class="list-group-item  waves-effect" style="color:black;">
           <i class="fas fa-user mr-3"></i>Profile</a>
-        <a href="mail_box" class="list-group-item waves-effect">
+        <a href="mail_box" class="list-group-item waves-effect" style="color:black;">
           <i class="fas fa-envelope mr-3"></i>Mailbox</a>
-        <a href="change_pass" class="list-group-item waves-effect">
+        <a href="change_pass" class="list-group-item waves-effect" style="color:black;">
           <i class="fas fa-lock mr-3"></i>Change Password</a>
         <?php
         if ($ugroup == 1) {
           ?>
-          <a href="settings" class="list-group-item waves-effect">
+          <a href="settings" class="list-group-item waves-effect" style="color:black;">
             <i class="fas fa-sitemap mr-3"></i>Users Management</a>
         <?php
         }
         ?>
 
-        <a href="login?logout" class="list-group-item waves-effect">
+        <a href="login?logout" class="list-group-item waves-effect" style="color:black;">
           <i class="fas fa-sign-out-alt mr-3"></i>Signout</a>
       </div>
 

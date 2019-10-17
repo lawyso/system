@@ -217,10 +217,10 @@ include_once 'session.php';
 
               <!--Footer-->
               <div class="modal-footer">
-                <input type="submit" name="submit" class="btn submitBtn" style="background-color: rgb( 17, 122, 101);color: #ffff" value="Upload" />
+                <input type="submit" name="submit" class="btn btn-sm btn-dms submitBtn" value="Upload" />
                 <i class="far fa-gem ml-1"></i>
 
-                <a role="button" class="btn waves-effect" data-dismiss="modal" style="color: rgb( 17, 122, 101)">No,
+                <a role="button" class="btn btn-sm waves-effect" data-dismiss="modal" style="color: rgb( 17, 122, 101)">No,
                   thanks</a>
               </div>
             </div>
