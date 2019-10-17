@@ -70,6 +70,15 @@ function usergroup($sid)
   return $u_group;
 }
 
+function usergroup_name($sid)
+{
+  $rid = usergroup($sid);
+  $d = fetchonerow('d_user_groups', "uid='$rid'");
+  $u_group_name = $d['group_name'];
+
+  return $u_group_name;
+}
+
 function emailOk($emaill)
 {
   if (filter_var($emaill, FILTER_VALIDATE_EMAIL)) {

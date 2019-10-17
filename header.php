@@ -7,6 +7,7 @@ $id = session_details($_SESSION['dms_']);
 $user = profile($_SESSION['dms_']);
 $user = profile($_SESSION['dms_']);
 $user_email = user_mail($_SESSION['dms_']);
+$groupName = usergroup_name($_SESSION['dms_']);
 
 ?>
 
@@ -281,7 +282,7 @@ $user_email = user_mail($_SESSION['dms_']);
         } else {
           $passport_image = "faces/$passport";
         }
-        echo '<img src="' . $passport_image . '" class="user_image" title="My Profile Photo"/>';
+        echo '<img src="' . $passport_image . '" class="user_image" title="' . $groupName . '"/>';
 
         ?>
 
