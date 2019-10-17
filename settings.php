@@ -313,10 +313,10 @@ if ($ugroup != 1) {
                   <!--Footer-->
                   <div class="modal-footer">
 
-                    <button type="submit" onclick="saveuser();" class="btn " style="background-color: rgb( 17, 122, 101);color: #ffff">Save</button>
+                    <button type="submit" onclick="saveuser();" class="btn btn-sm" style="background-color: rgb( 17, 122, 101);color: #ffff">Save</button>
                     <i class="far fa-gem ml-1"></i>
 
-                    <a role="button" class="btn waves-effect" data-dismiss="modal" style="color: rgb( 17, 122, 101)">No,
+                    <a role="button" class="btn btn-sm waves-effect" data-dismiss="modal" style="color: rgb( 17, 122, 101)">No,
                       thanks</a>
                   </div>
                 </div>

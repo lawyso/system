@@ -34,7 +34,6 @@ include_once 'session.php';
               if (!isset($_GET['user'])) {
 
                 ?>
-
                 <p>My Proposals&emsp;<button class="btn btn-sm" data-toggle="modal" data-target="#centralModalLGInfoDemo" style="background-color: rgb( 17, 122, 101);color: #ffff">Submit concept paper/proposal</button>
             </div>
             <div class="card-body">
@@ -88,7 +87,7 @@ include_once 'session.php';
                           $disabled = '';
                         }
 
-                        $view = "<p><a href=\"proposal_details?proposal=$epid\"><button class=\"btn btn-md btn-success\" aria-hidden=\"true\">View</button></a>&nbsp;<button $disabled onclick=\"delete_proposal('$proposal_id')\" class=\"btn btn-md btn-danger\" aria-hidden=\"true\" style=\"display:$display\">Delete</button></p>";
+                        $view = "<p><a href=\"proposal_details?proposal=$epid\"><button class=\"btn btn-sm btn-success\" aria-hidden=\"true\">View</button></a>&nbsp;<button $disabled onclick=\"delete_proposal('$proposal_id')\" class=\"btn btn-sm btn-danger\" aria-hidden=\"true\" style=\"display:$display\">Delete</button></p>";
                         //$action = "<a href=\"details?loan=$elid\" class=\"fa fa-eye\" aria-hidden=\"true\"></a>";
                         echo "<tr>
                                         <td>$title</td>
@@ -175,7 +174,7 @@ include_once 'session.php';
                         <textarea class="form-control" id="area_study" <?php echo $disabled; ?>><?php echo $area_study; ?></textarea>
                       </div>
                       <div class="form-group">
-                        <select id="supervisors" name="supervisors[]" multiple class="form-control" style="color:indigo">
+                        <select id="supervisors" name="supervisors[]" multiple class="form-control" <?php echo $disabled; ?>>
                           <?php
                           $super = fetchtable('d_users_primary', "status=1 AND user_group=3 AND department=$my_department AND faculty=$my_faculty", "uid", "asc", "100000");
                           while ($g = mysqli_fetch_array($super)) {
@@ -203,10 +202,10 @@ include_once 'session.php';
               <!--Footer-->
               <div class="modal-footer">
 
-                <button type="submit" onclick="save_proposal();" class="btn " style="background-color: rgb( 17, 122, 101);color: #ffff">Save</button>
-                <i class="far fa-gem ml-1"></i>
+                <button type="submit" onclick="save_proposal();" class="btn btn-sm btn-dms" style="display:<?php echo $display ?>">Save</button>
+                <i class="far fa-gem ml-1" style="display:<?php echo $display ?>"></i>
 
-                <a role="button" class="btn waves-effect" data-dismiss="modal" style="color: rgb( 17, 122, 101)">No,
+                <a role="button" class="btn btn-sm waves-effect" data-dismiss="modal" style="color: rgb( 17, 122, 101);display:<?php echo $display ?>">No,
                   thanks</a>
               </div>
             </div>

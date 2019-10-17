@@ -155,11 +155,11 @@ include_once 'session.php';
         <div class="col-md-12 mb-4">
           <div class="card">
             <div class="card-header">
-              <h4 class="mb-2 mb-sm-0 pt-1">
+              <h5 class="mb-2 mb-sm-0 pt-1">
                 <a href="#">Mailbox</a>
                 <span>/</span>
                 <span>Inbox</span>
-              </h4>
+              </h5>
             </div>
             <!-- Heading -->
             <!--Card content-->

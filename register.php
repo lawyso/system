@@ -175,10 +175,10 @@ include_once 'session.php';
                     <!--Footer-->
                     <div class="modal-footer">
 
-                      <button type="submit" onclick="savecourse();" class="btn " style="background-color: rgb( 17, 122, 101);color: #ffff;display:<?php echo $display; ?>" <?php echo $disabled; ?>>Save</button>
+                      <button type="submit" onclick="savecourse();" class="btn btn-sm btn-dms" style="display:<?php echo $display; ?>" <?php echo $disabled; ?>>Save</button>
                       <i class="far fa-gem ml-1" style="display:<?php echo $display; ?>"></i>
 
-                      <a role="button" class="btn waves-effect" data-dismiss="modal" style="color: rgb( 17, 122, 101);display:<?php echo $display; ?>">No,
+                      <a role="button" class="btn btn-sm waves-effect" data-dismiss="modal" style="color: rgb( 17, 122, 101);display:<?php echo $display; ?>">No,
                         thanks</a>
                     </div>
                   </div>

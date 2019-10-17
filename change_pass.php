@@ -27,16 +27,16 @@ include_once 'session.php';
         <div class="col-md-12 mb-4">
           <div class="card">
             <div class="card-header">
-              <h4 class="mb-2 mb-sm-0 pt-1">
+              <h5 class="mb-2 mb-sm-0 pt-1">
                 <a href="#" target="_blank">Profile</a>
                 <span>/</span>
                 <span>Change Password</span>
-              </h4>
+              </h5>
             </div>
             <!--Card content-->
             <div class="card-body align-center">
 
-              <h3>Change Your Account Password</h3>
+              <h5>Change Your Account Password</h5>
 
               <form onsubmit="return false;" method="post">
                 <div class="form-group">
@@ -65,7 +65,7 @@ include_once 'session.php';
                 <div class="form-group">
                   <div class="row">
                     <div class="col-lg-4">
-                      <button type="submit" onclick="changepass();" class="btn btn-flat" style="background-color: rgb( 17, 122, 101);color: #ffff">Change Password</button>
+                      <button type="submit" onclick="changepass();" class="btn btn-sm btn-flat" style="background-color: rgb( 17, 122, 101);color: #ffff">Change Password</button>
                     </div>
                   </div>
                 </div>

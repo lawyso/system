@@ -28,11 +28,11 @@ include_once 'session.php';
           <div class="card">
             <div class="card-header">
 
-              <h4 class="mb-2 mb-sm-0 pt-1">
+              <h5 class="mb-2 mb-sm-0 pt-1">
                 <a href="#" target="_blank">Profile</a>
                 <span>/</span>
                 <span>My details</span>
-              </h4>
+              </h5>
             </div>
 
             <!--Card content-->
