@@ -31,7 +31,7 @@ $columns = array(
 
 
 $sql = "SELECT first_name,last_name,primary_phone,primary_email,uid,proposal_status";
-$sql .= " FROM d_users_primary WHERE user_group ='2' AND proposal_status in (0,1,2,3,4,5) AND '$myid' in supervisor_1";
+$sql .= " FROM d_users_primary WHERE user_group ='2' AND proposal_status in (0,1,2,3,4,5) AND FIND_IN_SET('$myid',supervisor) > 0";
 $query = mysqli_query($conn, $sql) or die("student_list.php: get proposal400");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
