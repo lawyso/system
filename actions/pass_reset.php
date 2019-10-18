@@ -15,20 +15,20 @@ if ($method == 'POST') {
     $confirmpassavailable = input_available($password1);
 
     if ($passavailable == 0) {
-        die(errormes('New password is required'));
+        die(errormes('<i class="fa fa-exclamation-triangle"></i> New password is required'));
         exit();
     }
     if ($confirmpassavailable  == 0) {
-        die(errormes('Confirm password is required'));
+        die(errormes('<i class="fa fa-exclamation-triangle"></i> Confirm password is required'));
         exit();
     }
     $passwordOk = input_between(8, 16, $password);
     if ($passwordOk == 0) {
-        die(errormes('The Password must be composed of 8 to 16 characters'));
+        die(errormes('<i class="fa fa-exclamation-triangle"></i> The Password must be composed of 8 to 16 characters'));
         exit();
     }
     if ($password != $password1) {
-        die(errormes('The New Password and Confirm Password Does not Match'));
+        die(errormes('<i class="fa fa-exclamation-triangle"></i> Password do not match, both password should be same.'));
         exit();
     } else {
         $passMatch = 1;
@@ -50,13 +50,13 @@ if ($method == 'POST') {
         if ($update == 1 && $updateh == 1) {
             // Password reset successfull.
             $refresh = 1;
-            echo sucmes('Password Reset Successfully.Redirecting to login page in 3 seconds....');
+            echo sucmes('Congratulations! Your password has been updated successfully.Redirecting to login page in 3 seconds....');
         } else {
             //Password can not be updated at the moment.
-            echo errormes('Some problem occurred, please try again Later.');
+            echo errormes('<i class="fa fa-exclamation-triangle"></i> Some problem occurred, please try again Later.');
         }
     } else {     // Validation failed and Reset script can not be processed
-        echo errormes('Some problem occurred,The Request can not be processed at the moment.Please check your details and try again.');
+        echo errormes('<i class="fa fa-exclamation-triangle"></i> Some problem occurred,The Request can not be processed at the moment.Please check your details and try again.');
     }
 } else { /// wrong request method
     echo $method . ' Not supported';

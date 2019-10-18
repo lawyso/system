@@ -13,7 +13,7 @@ if (isset($_GET['logout'])) {
 
 <head>
     <meta charset="UTF-8">
-    <title>Exodus| Account Recover</title>
+    <title>DMS| Account Password Recovery</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.2 -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -22,15 +22,26 @@ if (isset($_GET['logout'])) {
     <!-- Theme style -->
     <link href="styles/layout.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="styles/main.css" />
-
+    <style>
+        .error p {
+            color: #FF0000;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 50px;
+            text-align: center
+        }
+    </style>
 </head>
 
 <body class="login-page">
 
     <?php
-    if ((isset($_GET['fp_code'])) && (isset($_GET['fp_email']))) {
+    if ((isset($_GET['fp_code'])) && (isset($_GET['fp_email'])) && (isset($_GET["action"]))
+        && ($_GET["action"] == "reset") && (!isset($_POST["action"]))
+    ) {
         $reset_token = $_GET['fp_code'];
         $reset_email = $_GET['fp_email'];
+        $curDate = date("Y-m-d H:i:s");
 
         $em = fetchonerow('d_users_primary', "primary_email='$reset_email'", "uid");
         $userid = $em['uid'];
@@ -38,74 +49,70 @@ if (isset($_GET['logout'])) {
         $unusedToken_exist = checkrowexists('d_passes', "pass_reset_token='$reset_token' AND reset_status='0' AND user='$userid'");
 
         if ($unusedToken_exist == 1) {
-            ?>
-            <div class="login-box">
-                <!-- /.login-logo -->
-                <div class="login-box-body">
-                    <p class="login-box-msg">
-                        Reset Your Account Password
-                    </p>
-                    <br>
-                    <form onsubmit="return false;" method="post">
-                        <div class="form-group has-feedback">
-                            <input type="hidden" id="userid" class="form-control" value="<?php echo $userid ?>" />
-                            <input type="password" id="u_pass" class="form-control" placeholder="New Password" />
-                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                        </div>
-                        <div class="form-group has-feedback">
-                            <input type="password" id="u_passConfirm" class="form-control" placeholder="Confirm Password" />
-                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-8">
+            $expDate = fetchrow('d_passes', "pass_reset_token='$reset_token' AND reset_status='0' AND user='$userid'", "expDate");
+            if ($expDate >= $curDate) {
+                ?>
+                <div class="login-box">
+                    <!-- /.login-logo -->
+                    <div class="login-box-body">
+                        <p class="login-box-msg">
+                            Reset Your Account Password
+                        </p>
+                        <br>
+                        <form onsubmit="return false;" method="post">
+                            <div class="form-group has-feedback">
+                                <input type="hidden" id="userid" class="form-control" value="<?php echo $userid ?>" />
+                                <input type="password" id="u_pass" class="form-control" placeholder="New Password" />
+                                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <input type="password" id="u_passConfirm" class="form-control" placeholder="Confirm Password" />
+                                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-8">
 
-                            </div><!-- /.col -->
-                            <div class="col-xs-4">
-                                <button type="submit" onclick="reset_pass();" class="btn btn-primary btn-block btn-flat" style="background-color: rgb(13, 27, 112);color: #f4c016">Reset Password</button>
+                                </div><!-- /.col -->
+                                <div class="col-xs-4">
+                                    <button type="submit" onclick="reset_pass();" class="btn btn-primary btn-block btn-flat" style="background-color: rgb( 17, 122, 101);color: #ffff">Reset Password</button>
 
-                            </div><!-- /.col -->
-                        </div>
-                        <span id="resetPass_feedback"></span>
-                    </form>
+                                </div><!-- /.col -->
+                            </div>
+                            <br />
+                            <span id="resetPass_feedback"></span>
+                        </form>
 
-                </div><!-- /.login-box-body -->
+                    </div><!-- /.login-box-body -->
 
-            </div><!-- /.login-box -->
+                </div><!-- /.login-box -->
 
-            <!-- jQuery 2.1.3 -->
-            <script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
-            <!-- Bootstrap 3.3.2 JS -->
-            <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-            <!-- iCheck -->
-            <script src="plugins/iCheck/icheck.min.js" type="text/javascript"></script>
-            <script src="js/main.js" type="text/javascript"></script>
-            <script>
-                $(function() {
-                    $('input').iCheck({
-                        checkboxClass: 'icheckbox_square-blue',
-                        radioClass: 'iradio_square-blue',
-                        increaseArea: '20%' // optional
-                    });
-                });
-            </script>
+                <!-- jQuery 2.1.3 -->
+                <script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
+                <!-- Bootstrap 3.3.2 JS -->
+                <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+                <!-- iCheck -->
+                <script src="plugins/iCheck/icheck.min.js" type="text/javascript"></script>
+                <script src="js/main.js" type="text/javascript"></script>
+
     <?php
+            } else {
+                $error .= "<h2><i class='fa fa-exclamation-triangle'></i> Link Expired</h2>
+            <p>The link is expired. You are trying to use the expired link which was valid for only 24 hours (1 days after request).<br /><br /></p>";
+            }
         } else {
-            die('<span>
-            <div class="alert alert-danger">
-                <h4><i class="icon fa fa-ban"></i> Attention!</h4>
-                Invalid/Expired Link.
-            </div>
-        </span>');
-            exit('');
+            $error .= '<h2><i class="fa fa-exclamation-triangle text-red"></i> Invalid Link</h2>
+            <p>The link is invalid/expired. Either you did not copy the correct link
+            from the email, or you have already used the key in which case it is
+            deactivated.</p>
+            <p><a href="index.php"> Click here</a> to reset password.</p>';
         }
-    } else {
-        die('<span>
-            <div class="alert alert-danger">
-                <h4><i class="icon fa fa-ban"></i> Attention!</h4>
-                You don\'t have permission to view this page directly. Please use the link sent to you via your registered email.
-            </div>
-        </span>');
-        exit('');
+        if ($error != "") {
+            echo "<div class='login-box'>
+                    <div class='login-box-body'>
+                        <div class='error'>" . $error . "</div>
+                    </div>
+            <div/>";
+        }
     }
     ?>
 

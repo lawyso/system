@@ -30,9 +30,9 @@ if (isset($_GET['logout'])) {
       <img src="images/dms_logo.jpg" class="image-responsive" style="width: 200px;height: 200px;">
     </div><!-- /.login-logo -->
     <div class="login-box-body">
-      <p class="login-box-msg">DMS LOGIN</p>
+      <p class="login-box-msg">DMS PORTAL LOGIN</p>
       <br>
-      <form onsubmit="return false;" method="post">
+      <h5 onsubmit="return false;" method="post">
         <div class="form-group has-feedback">
           <input type="text" id="u_name" class="form-control" placeholder="Email/Username" />
           <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -43,8 +43,7 @@ if (isset($_GET['logout'])) {
         </div>
         <div class="row">
           <div class="col-xs-8">
-            <div class="checkbox icheck">
-            </div>
+            <h4><a href="forgot_pwd">Forgot your Password ?</a></h4>
           </div><!-- /.col -->
           <div class="col-xs-4">
             <button type="submit" onclick="login();" class="btn btn-primary btn-block btn-flat" style="background-color: rgb( 17, 122, 101);color: #ffff">Sign In</button>
@@ -52,8 +51,7 @@ if (isset($_GET['logout'])) {
         </div>
         <br>
         <span id="login_feedback"></span>
-      </form>
-      <p><a href="forgot_pwd">Forgot your Password???</a></p>
+
     </div><!-- /.login-box-body -->
     <br>
     <div style="text-align: center;">
