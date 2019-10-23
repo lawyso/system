@@ -18,7 +18,7 @@ if ($ugroup != 1) {
 
 <head>
   <meta charset="UTF-8" />
-  <title>DMS Home || Dashboard</title>
+  <title>DMS Users || Dashboard</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 
@@ -46,12 +46,12 @@ if ($ugroup != 1) {
               </div>
               <div class="card-body">
                 <div class="col-lg-12">
-                  <table id="user_table" class="table table-bordered table-striped display table-responsive" width=100%>
+                  <table id="user_table" class="table table-bordered table-striped display table-responsive">
                     <thead>
                       <tr style="background-color: rgb( 17, 122, 101);color: #ffff">
                         <th>First Name </th>
                         <th>Last Name</th>
-                        <th>Mobile No</th>
+                        <th>Mobile Number</th>
                         <th>Id Number</th>
                         <th>Email Address</th>
                         <th>Username</th>
@@ -64,10 +64,9 @@ if ($ugroup != 1) {
                     </tbody>
                     <tfoot style="background-color: #F0F0F0">
                       <tr>
-
                         <th>First Name </th>
                         <th>Last Name</th>
-                        <th>Mobile No</th>
+                        <th>Mobile Number</th>
                         <th>Id No</th>
                         <th>Email Address</th>
                         <th>Username</th>

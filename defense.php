@@ -17,191 +17,188 @@ include_once 'session.php';
   include_once 'includes/conn.inc';
   include_once 'includes/func.php';
   ?>
-  <!--Main layout-->
   <main class="pt-5 mx-lg-5">
     <div class="container-fluid mt-5">
 
-
       <!--Grid row-->
-      <div class="row wow fadeIn">
+      <div class="row wow">
 
         <!--Grid column-->
-        <div class="col-md-12">
+        <div class="col-md-12 mb-4">
+          <div class="card">
+            <div class="card-header">
+              <?php
+              // check if you have any approved active proposal
+              $proposalExists = checkrowexists('d_proposals', "user='$myid' AND status='2'");
+              if ($proposalExists == 0) {
+                $disabled = 'disabled';
+              } else {
+                $disabled = "";
+              }
 
-          <div class="card-header">
-            <?php
-            // check if you have any approved active proposal
-            $proposalExists = checkrowexists('d_proposals', "user='$myid' AND status='2'");
-            if ($proposalExists == 0) {
-              $disabled = 'disabled';
-            } else {
-              $disabled = "";
-            }
+              ?>
+              <p>Scheduled Defense&emsp;<button class="btn btn-sm" data-toggle="modal" data-target="#centralModalLGInfoDemo" style="background-color: rgb( 17, 122, 101);color: #ffff" <?php echo $disabled; ?>>Apply for Defense</button>
+            </div>
+            <div class="card-body">
+              <div class="col-lg-12">
+                <table id="d_table" class="table table-bordered table-striped display table-responsive">
+                  <thead>
+                    <tr style="background-color: rgb( 17, 122, 101);color: #ffff">
+                      <th>Project Title </th>
+                      <th>Department</th>
+                      <th>Faculty</th>
+                      <th>Defense By</th>
+                      <th>Defense Date</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
 
-            ?>
-            <p>Scheduled Defense&emsp;<button class="btn btn-sm" data-toggle="modal" data-target="#centralModalLGInfoDemo" style="background-color: rgb( 17, 122, 101);color: #ffff" <?php echo $disabled; ?>>Apply for Defense</button>
-          </div>
-        </div>
+                  </tbody>
+                  <tfoot style="background-color: #F0F0F0">
+                    <tr>
+                      <th>Project Title </th>
+                      <th>Department</th>
+                      <th>Faculty</th>
+                      <th>Defense By</th>
+                      <th>Defense Date</th>
+                      <th>Action</th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <script>
+                $(document).ready(function() {
+                  var dataTable = $('#d_table').DataTable({
+                    "bprocessing": true,
+                    "serverSide": true,
+                    "ajax": {
+                      url: "resources/defense_list.php",
+                      type: "post"
+                    },
+                    "columnDefs": [{
 
-        <div class="col-sm-12 col-md-12 col-xs-12">
-          <table id="d_table" class="table table-bordered table-striped display table-responsive" width='100%'>
-            <thead>
-              <tr style="background-color: rgb( 17, 122, 101);color: #ffff">
-                <th>Project Title </th>
-                <th>Department</th>
-                <th>Faculty</th>
-                <th>Defense By</th>
-                <th>Defense Date</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
+                        "render": function(data, type, row) {
+                          let rowID = row[5];
+                          return `<a href="#?defense=${ rowID }"><i class="fa fa-eye"></i></a>`
+                        },
+                        "targets": 5
 
-            </tbody>
-            <tfoot style="background-color: #F0F0F0">
-              <tr>
-                <th>Project Title </th>
-                <th>Department</th>
-                <th>Faculty</th>
-                <th>Defense By</th>
-                <th>Defense Date</th>
-                <th>Action</th>
-              </tr>
-            </tfoot>
-          </table>
-        </div>
-        <script>
-          $(document).ready(function() {
-            var dataTable = $('#d_table').DataTable({
-              "bprocessing": true,
-              "serverSide": true,
-              "ajax": {
-                url: "resources/defense_list.php",
-                type: "post"
-              },
-              "columnDefs": [{
+                      }
 
-                  "render": function(data, type, row) {
-                    let rowID = row[5];
-                    return `<a href="#?defense=${ rowID }"><i class="fa fa-eye"></i></a>`
-                  },
-                  "targets": 5
+                    ]
 
-                }
-
-              ]
-
-            });
-          });
-        </script>
-      </div>
-      <!-----------------------------------------------------Modal window ----------------!>
+                  });
+                });
+              </script>
+            </div>
+            <!-----------------------------------------------------Modal window ----------------!>
 
                 <!-- Central Modal Large Info-->
-      <div class="modal fade" id="centralModalLGInfoDemo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-notify" role="document">
-          <!--Content-->
-          <div class="modal-content">
-            <!--Header-->
-            <div class="modal-header" style="background-color: rgb( 17, 122, 101);color: #ffff">
-              <p class="heading lead">Apply for Defense</p>
+            <div class="modal fade" id="centralModalLGInfoDemo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg modal-notify" role="document">
+                <!--Content-->
+                <div class="modal-content">
+                  <!--Header-->
+                  <div class="modal-header" style="background-color: rgb( 17, 122, 101);color: #ffff">
+                    <p class="heading lead">Apply for Defense</p>
 
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true" class="white-text">&times;</span>
-              </button>
-            </div>
-
-            <!--Body-->
-            <div class="modal-body">
-              <!-- form start -->
-              <form role="form" method="POST" onsubmit="return false;">
-                <div class="box-body">
-                  <div class="form-group">
-                    <div class="form-group">
-                      <label for="Title">Project Title</label><input type="hidden" value="<?php echo $sid; ?>" id="sid" />
-                      <input type="text" class="form-control" value="<?php echo $project_title; ?>" id="project_title" />
-                    </div>
-
-                    <div class="form-group">
-                      <label>Department</label>
-                      <select id="department" class="form-control">
-                        <option value="0">~Select~</option>
-                        <?php
-                        $dep = fetchtable('d_departments', "department_status=1", "department_name", "asc", "10000");
-                        while ($d = mysqli_fetch_array($dep)) {
-                          $uid = $d['uid'];
-                          $department_name = $d['department_name'];
-                          if ($uid == $department) {
-                            $dselected = 'SELECTED';
-                          } else {
-                            $dselected = '';
-                          }
-                          echo "<option $gselected value=\"$uid\">$department_name</option>";
-                        }
-                        ?>
-                      </select>
-                    </div>
-
-                    <label>Faculty/school</label>
-                    <select id="school" class="form-control">
-                      <option value="0">~Select~</option>
-                      <?php
-                      $sc = fetchtable('d_schools', "school_status=1", "school_name", "asc", "10000");
-                      while ($s = mysqli_fetch_array($sc)) {
-                        $uid = $s['uid'];
-                        $school_name = $s['school_name'];
-                        if ($uid == $school) {
-                          $sselected = 'SELECTED';
-                        } else {
-                          $sselected = '';
-                        }
-                        echo "<option $sselected value=\"$uid\">$school_name</option>";
-                      }
-                      ?>
-                    </select>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true" class="white-text">&times;</span>
+                    </button>
                   </div>
 
-                  <div class="form-group">
-                    <label for="date">Defense Date</label>
-                    <input type="date" class="form-control" value="<?php echo $defense_date; ?>" id="defense_date" />
+                  <!--Body-->
+                  <div class="modal-body">
+                    <!-- form start -->
+                    <form role="form" method="POST" onsubmit="return false;">
+                      <div class="box-body">
+                        <div class="form-group">
+                          <div class="form-group">
+                            <label for="Title">Project Title</label><input type="hidden" value="<?php echo $sid; ?>" id="sid" />
+                            <input type="text" class="form-control" value="<?php echo $project_title; ?>" id="project_title" />
+                          </div>
+
+                          <div class="form-group">
+                            <label>Department</label>
+                            <select id="department" class="form-control">
+                              <option value="0">~Select~</option>
+                              <?php
+                              $dep = fetchtable('d_departments', "department_status=1", "department_name", "asc", "10000");
+                              while ($d = mysqli_fetch_array($dep)) {
+                                $uid = $d['uid'];
+                                $department_name = $d['department_name'];
+                                if ($uid == $department) {
+                                  $dselected = 'SELECTED';
+                                } else {
+                                  $dselected = '';
+                                }
+                                echo "<option $gselected value=\"$uid\">$department_name</option>";
+                              }
+                              ?>
+                            </select>
+                          </div>
+
+                          <label>Faculty/school</label>
+                          <select id="school" class="form-control">
+                            <option value="0">~Select~</option>
+                            <?php
+                            $sc = fetchtable('d_schools', "school_status=1", "school_name", "asc", "10000");
+                            while ($s = mysqli_fetch_array($sc)) {
+                              $uid = $s['uid'];
+                              $school_name = $s['school_name'];
+                              if ($uid == $school) {
+                                $sselected = 'SELECTED';
+                              } else {
+                                $sselected = '';
+                              }
+                              echo "<option $sselected value=\"$uid\">$school_name</option>";
+                            }
+                            ?>
+                          </select>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="date">Defense Date</label>
+                          <input type="date" class="form-control" value="<?php echo $defense_date; ?>" id="defense_date" />
+                        </div>
+
+                        <div id="defense_feedback"></div>
+
+                    </form>
                   </div>
 
-                  <div id="defense_feedback"></div>
+                  <!--Footer-->
+                  <div class="modal-footer">
 
-              </form>
+                    <button type="submit" onclick="save_defense();" class="btn " style="background-color: rgb( 17, 122, 101);color: #ffff">Save</button>
+                    <i class="far fa-gem ml-1"></i>
+
+                    <a role="button" class="btn waves-effect" data-dismiss="modal" style="color: rgb( 17, 122, 101)">No,
+                      thanks</a>
+                  </div>
+                </div>
+                <!--/.Content-->
+              </div>
             </div>
+            <!-- Central Modal Large Info-->
+            <script>
+              $('document').ready(function() {
+                var edit = '<?php echo $edi; ?>';
+                if (edit == '1') {
+                  $('#centralModalLGInfoDemo').modal('toggle');
+                }
+              });
+            </script>
 
-            <!--Footer-->
-            <div class="modal-footer">
-
-              <button type="submit" onclick="save_defense();" class="btn " style="background-color: rgb( 17, 122, 101);color: #ffff">Save</button>
-              <i class="far fa-gem ml-1"></i>
-
-              <a role="button" class="btn waves-effect" data-dismiss="modal" style="color: rgb( 17, 122, 101)">No,
-                thanks</a>
-            </div>
           </div>
-          <!--/.Content-->
+
+
         </div>
+        <!--Grid column-->
+
+
       </div>
-      <!-- Central Modal Large Info-->
-      <script>
-        $('document').ready(function() {
-          var edit = '<?php echo $edi; ?>';
-          if (edit == '1') {
-            $('#centralModalLGInfoDemo').modal('toggle');
-          }
-        });
-      </script>
-
-    </div>
-
-
-    </div>
-    <!--Grid column-->
-
-
-    </div>
     </div>
   </main>
   <!--Main layout-->

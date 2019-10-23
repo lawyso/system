@@ -43,7 +43,7 @@ include_once 'session.php';
             </div>
             <div class="card-body">
               <div class="col-lg-12">
-                <table id="sp_table" class="table table-bordered table-striped display table-responsive" width='100%'>
+                <table id="sp_table" class="table table-bordered table-striped display table-responsive">
                   <thead>
                     <tr style="background-color: rgb( 17, 122, 101);color: #ffff">
                       <th>Supervisor Title</th>
@@ -67,7 +67,6 @@ include_once 'session.php';
                       <th>Department</th>
                       <th>Primary Phone</th>
                       <th>Email</th>
-
                     </tr>
                   </tfoot>
                 </table>

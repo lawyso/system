@@ -43,12 +43,12 @@ include_once 'session.php';
               <div class="col-md-3"></div>
 
               <div class="col-lg-12">
-                <table id="user_table" class="table table-bordered table-striped display table-responsive" width="100%">
+                <table id="prop_tb" class="table table-bordered table-striped display table-responsive">
                   <thead>
                     <tr style="background-color: rgb( 17, 122, 101);color: #ffff">
-                      <th>Proposal Title </th>
-                      <th>Area of research </th>
-                      <th>Status</th>
+                      <th>Proposal / Concept Paper Title </th>
+                      <th>Area / scope of study / research </th>
+                      <th>Proposal Status</th>
                       <th>Action</th>
 
                     </tr>
@@ -95,23 +95,25 @@ include_once 'session.php';
                                         <td>$state</td>
                                         <td>$view</td></tr> ";
                       }
-                      if ($total == 0) {
-                        echo "<tr><td colspan=\"20\" color=\"blue-purple\"><em><b>No Concept paper/Proposal Found.<b></em></td>
-                                                            </tr> ";
-                      }
+
                       ?>
                   </tbody>
                   <tfoot style="background-color: #F0F0F0">
                     <tr>
-
-                      <th>Proposal Title </th>
-                      <th>Area of research </th>
-                      <th>Status</th>
+                      <th>Proposal / Concept Paper Title </th>
+                      <th>Area / scope of study / research </th>
+                      <th>Proposal Status</th>
                       <th>Action</th>
                     </tr>
                   </tfoot>
                 </table>
+                <script>
+                  $('document').ready(function() {
+                    $('#prop_tb').DataTable({
 
+                    });
+                  });
+                </script>
               </div>
             </div>
           </div>
@@ -282,7 +284,15 @@ include_once 'session.php';
   <?php include_once 'footer.php'; ?>
   <script src="js/main.js" type="text/javascript"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
-
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
 </body>
 
 </html>

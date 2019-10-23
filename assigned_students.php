@@ -32,7 +32,7 @@ include_once 'session.php';
             </div>
             <div class="card-body">
               <div class="col-lg-12">
-                <table id="st_table" class="table table-bordered table-striped table-responsive display" width="100%">
+                <table id="st_table" class="table table-bordered table-striped table-responsive display">
                   <thead>
                     <tr style="background-color: rgb( 17, 122, 101);color: #ffff">
                       <th>FirstName</th>
@@ -40,7 +40,7 @@ include_once 'session.php';
                       <th>Course of Study</th>
                       <th>Phone No</th>
                       <th>Email</th>
-                      <th>Proposal</th>
+                      <th>Proposal Status</th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -54,7 +54,7 @@ include_once 'session.php';
                       <th>Course of Study</th>
                       <th>Phone No</th>
                       <th>Email</th>
-                      <th>Proposal</th>
+                      <th>Proposal Status</th>
                       <th>Action</th>
 
                     </tr>
