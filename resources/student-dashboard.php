@@ -18,7 +18,7 @@ $total_approved_defense = countotal('d_defense', "user='$myid' AND status='3'");
 
       </div>
       <div class="icon">
-        <i class="fa fa-money"></i>
+        <i class="fa fa-check"></i>
       </div>
       <a href="#" class="small-box-footer">view <i class="fa fa-arrow-circle-right"></i></a>
     </div>
@@ -33,7 +33,7 @@ $total_approved_defense = countotal('d_defense', "user='$myid' AND status='3'");
 
       </div>
       <div class="icon">
-        <i class="fa fa-money"></i>
+        <i class="fa fa-ban"></i>
       </div>
       <a href="#" class="small-box-footer">view <i class="fa fa-arrow-circle-right"></i></a>
     </div>
@@ -48,7 +48,7 @@ $total_approved_defense = countotal('d_defense', "user='$myid' AND status='3'");
 
       </div>
       <div class="icon">
-        <i class="fa fa-money"></i>
+        <i class="fa fa-check"></i>
       </div>
       <a href="#" class="small-box-footer">view <i class="fa fa-arrow-circle-right"></i></a>
     </div>
@@ -63,7 +63,7 @@ $total_approved_defense = countotal('d_defense', "user='$myid' AND status='3'");
 
       </div>
       <div class="icon">
-        <i class="fa fa-money"></i>
+        <i class="fa fa-ban"></i>
       </div>
       <a href="#" class="small-box-footer">view <i class="fa fa-arrow-circle-right"></i></a>
     </div>
@@ -81,7 +81,7 @@ $total_approved_defense = countotal('d_defense', "user='$myid' AND status='3'");
 
       </div>
       <div class="icon">
-        <i class="fa fa-money"></i>
+        <i class="fa fa-hourglass-start"></i>
       </div>
       <a href="#" class="small-box-footer">view <i class="fa fa-arrow-circle-right"></i></a>
     </div>
@@ -96,7 +96,7 @@ $total_approved_defense = countotal('d_defense', "user='$myid' AND status='3'");
 
       </div>
       <div class="icon">
-        <i class="fa fa-money"></i>
+        <i class="fas fa-window-close"></i>
       </div>
       <a href="#" class="small-box-footer">view <i class="fa fa-arrow-circle-right"></i></a>
     </div>
@@ -111,7 +111,7 @@ $total_approved_defense = countotal('d_defense', "user='$myid' AND status='3'");
 
       </div>
       <div class="icon">
-        <i class="fa fa-money"></i>
+        <i class="fas fa-delete"></i>
       </div>
       <a href="#" class="small-box-footer">view <i class="fa fa-arrow-circle-right"></i></a>
     </div>
@@ -126,7 +126,7 @@ $total_approved_defense = countotal('d_defense', "user='$myid' AND status='3'");
 
       </div>
       <div class="icon">
-        <i class="fa fa-money"></i>
+        <i class="fa fa-mailbox"></i>
       </div>
       <a href="#" class="small-box-footer">view <i class="fa fa-arrow-circle-right"></i></a>
     </div>

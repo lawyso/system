@@ -27,7 +27,7 @@ $total_approved_defense = countotal('d_defense', "user='$myid' AND status='3'");
     <!-- small box -->
     <div class="small-box bg-orange">
       <div class="inner">
-        <p> <?php echo $total_courses; ?></p>
+        <h4> <?php echo $total_courses; ?></h4>
 
         <p style="font-size: 18px">ACTIVE COURSES</p>
 
@@ -42,7 +42,7 @@ $total_approved_defense = countotal('d_defense', "user='$myid' AND status='3'");
     <!-- small box -->
     <div class="small-box bg-olive">
       <div class="inner">
-        <p> <?php echo $total_depatments; ?></p>
+        <h4> <?php echo $total_depatments; ?></h4>
 
         <p style="font-size: 18px">DEPARTMENTS</p>
 
@@ -57,7 +57,7 @@ $total_approved_defense = countotal('d_defense', "user='$myid' AND status='3'");
     <!-- small box -->
     <div class="small-box bg-danger">
       <div class="inner">
-        <p> <?php echo $total_schools; ?></p>
+        <h4> <?php echo $total_schools; ?></h4>
 
         <p style="font-size: 18px">SCHOOLS/FACULTY</p>
 
@@ -125,107 +125,4 @@ $total_approved_defense = countotal('d_defense', "user='$myid' AND status='3'");
     </div>
   </div>
 </div>
-<div class="row">
-  <div class="col-md-6 col-sm-6 col-xs-12">
-    <div class="card">
-      <div class="card-header bg-purple">
-        <p>DEPARTMENTS</p>
-      </div>
-      <div class="card-body">
-        <table id="dep_tbl" class="table table-bordered table-striped display table-responsive">
-          <thead style="background-color: #F0F0F0">
-            <tr>
-              <th>#</th>
-              <th>DEPARTMENT</th>
-              <th>STATUS</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-
-          </tbody>
-          <tfoot>
-
-          </tfoot>
-        </table>
-        <script>
-          $(document).ready(function() {
-            var dataTable = $('#dep_tbl').DataTable({
-              "processing": true,
-              "serverSide": true,
-              "pageLength": 4,
-              "ajax": {
-                url: "resources/department_list.php",
-                type: "post"
-              },
-              "columnDefs": [{
-
-                "render": function(data, type, row) {
-                  let rowID = row[3];
-                  return `<a href="user_details?user=${ rowID }"><i class="fa fa-eye"></i></a>`
-                },
-                "targets": 3
-
-              }],
-              "order": [
-                [0, 'asc']
-              ],
-
-            });
-          });
-        </script>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-6 col-sm-6 col-xs-12">
-    <div class="card">
-      <div class="card-header bg-fuchsia">
-        <p>SCHOOLS /FACULTIES</p>
-      </div>
-      <div class="card-body">
-        <table id="sch_tbl" class="table table-bordered table-striped display table-responsive">
-          <thead style="background-color: #F0F0F0">
-            <tr>
-              <th>#</th>
-              <th>SCHOOL/FACULTY</th>
-              <th>STATUS</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-
-          </tbody>
-          <tfoot>
-
-          </tfoot>
-        </table>
-        <script>
-          $(document).ready(function() {
-            var dataTable = $('#sch_tbl').DataTable({
-              "processing": true,
-              "serverSide": true,
-              "pageLength": 5,
-              "ajax": {
-                url: "resources/school_list.php",
-                type: "post"
-              },
-              "columnDefs": [{
-
-                "render": function(data, type, row) {
-                  let rowID = row[3];
-                  return `<a href="user_details?user=${ rowID }"><i class="fa fa-eye"></i></a>`
-                },
-                "targets": 3
-
-              }],
-              "order": [
-                [0, 'asc']
-              ],
-
-            });
-          });
-        </script>
-      </div>
-    </div>
-  </div>
-</div>
+<br />
