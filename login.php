@@ -24,11 +24,9 @@ if (isset($_GET['logout'])) {
   <link rel="stylesheet" href="styles/main.css" />
 </head>
 
-<body class="login-page">
-  <div class="login-box">
-    <div class="login-logo">
-      <img src="images/dms_logo.jpg" class="image-responsive" style="width: 200px;height: 200px;">
-    </div><!-- /.login-logo -->
+<body class="login-page" style="background:url(images/grads2.jpg);">
+  <div class="login-box" style="opacity:0.85">
+    <br /> <br /> <br />
     <div class="login-box-body">
       <p class="login-box-msg">DMS PORTAL LOGIN</p>
       <br>

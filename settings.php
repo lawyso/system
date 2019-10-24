@@ -39,7 +39,6 @@ if ($ugroup != 1) {
           <div class="card">
             <?php
             if (!isset($_GET['user'])) {
-
               ?>
               <div class="card-header">
                 <p>User List&emsp;<button class="btn btn-sm" data-toggle="modal" data-target="#centralModalLGInfoDemo" style="background-color: rgb( 17, 122, 101);color: #ffff">Add New User</button>

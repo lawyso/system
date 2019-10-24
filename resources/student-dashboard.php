@@ -12,7 +12,7 @@ $total_approved_defense = countotal('d_defense', "user='$myid' AND status='3'");
     <!-- small box -->
     <div class="small-box bg-success">
       <div class="inner">
-        <p> <?php echo $total_approved_proposal; ?></p>
+        <h4> <?php echo $total_approved_proposal; ?></h4>
 
         <p style="font-size: 18px">Approved Proposal</p>
 
@@ -27,7 +27,7 @@ $total_approved_defense = countotal('d_defense', "user='$myid' AND status='3'");
     <!-- small box -->
     <div class="small-box bg-orange">
       <div class="inner">
-        <p> <?php echo $total_rejected_proposal; ?></p>
+        <h4> <?php echo $total_rejected_proposal; ?></h4>
 
         <p style="font-size: 18px">Rejected Proposal</p>
 
@@ -42,7 +42,7 @@ $total_approved_defense = countotal('d_defense', "user='$myid' AND status='3'");
     <!-- small box -->
     <div class="small-box bg-olive">
       <div class="inner">
-        <p> <?php echo 0; ?></p>
+        <h4> <?php echo 0; ?></h4>
 
         <p style="font-size: 18px">Approved Defense</p>
 
@@ -57,7 +57,7 @@ $total_approved_defense = countotal('d_defense', "user='$myid' AND status='3'");
     <!-- small box -->
     <div class="small-box bg-danger">
       <div class="inner">
-        <p> <?php echo 0; ?></p>
+        <h4> <?php echo 0; ?></h4>
 
         <p style="font-size: 18px">Rejected Defense</p>
 
@@ -75,7 +75,7 @@ $total_approved_defense = countotal('d_defense', "user='$myid' AND status='3'");
     <!-- small box -->
     <div class="small-box bg-maroon">
       <div class="inner">
-        <p> <?php echo $total_proposal_pending_approval; ?> Proposal(s)</p>
+        <h4> <?php echo $total_proposal_pending_approval; ?></h4>
 
         <p style="font-size: 18px">Pending Approval </p>
 
@@ -90,7 +90,7 @@ $total_approved_defense = countotal('d_defense', "user='$myid' AND status='3'");
     <!-- small box -->
     <div class="small-box bg-teal">
       <div class="inner">
-        <p> <?php echo $total_closed_proposal; ?></p>
+        <h4> <?php echo $total_closed_proposal; ?></h4>
 
         <p style="font-size: 18px">Closed Proposals</p>
 
@@ -105,13 +105,13 @@ $total_approved_defense = countotal('d_defense', "user='$myid' AND status='3'");
     <!-- small box -->
     <div class="small-box bg-fuchsia">
       <div class="inner">
-        <p> <?php echo $total_deleted_proposal; ?></p>
+        <h4> <?php echo $total_deleted_proposal; ?></h4>
 
         <p style="font-size: 18px">Deleted Proposals</p>
 
       </div>
       <div class="icon">
-        <i class="fas fa-delete"></i>
+        <i class="fas fa-trash"></i>
       </div>
       <a href="#" class="small-box-footer">view <i class="fa fa-arrow-circle-right"></i></a>
     </div>
@@ -120,13 +120,13 @@ $total_approved_defense = countotal('d_defense', "user='$myid' AND status='3'");
     <!-- small box -->
     <div class="small-box bg-gray-active">
       <div class="inner">
-        <p> <?php echo 0; ?></p>
+        <h4> <?php echo 0; ?></h4>
 
         <p style="font-size: 18px">New Messages</p>
 
       </div>
       <div class="icon">
-        <i class="fa fa-mailbox"></i>
+        <i class="fa fa-envelope"></i>
       </div>
       <a href="#" class="small-box-footer">view <i class="fa fa-arrow-circle-right"></i></a>
     </div>

@@ -152,54 +152,39 @@ include_once 'session.php';
   <main class="pt-5 mx-lg-5">
     <div class="container-fluid mt-5">
 
-
       <!--Grid row-->
-      <div class="row wow fadeIn">
+      <div class="row wow">
 
         <!--Grid column-->
-        <div class="col-md-12">
+        <div class="col-md-12 mb-4">
+          <div class="card">
+            <div class="card-header">
+              <?php
+              echo "<p class=\"fa fa-home fa-2x text-left\"> <span class=\"text-success\" style=\"font-size:16px;\"> Hello $user, Welcome to your Dashboard</span></p>";
+              ?>
+            </div>
+            <div class="card-body">
 
-          <div class="card-header">
-            <?php
-            echo "<p class=\"fa fa-home fa-2x text-left\"> <span class=\"text-success\" style=\"font-size:16px;\"> Hello $user, Welcome to your Dashboard</span></p>";
-            ?>
-          </div>
-          <!--Grid row-->
-          <div class="row wow fadeIn">
-
-            <!--Grid column-->
-            <div class="col-md-12 mb-4">
-
-              <!--Card-->
-              <div class="card">
-
-                <!--Card content-->
-                <div class="card-body">
-
-                  <?php
-                  if ($ugroup == 1) {
-                    include_once 'resources/admin-dashboard.php';
-                  } elseif ($ugroup == 2) {
-                    include_once 'resources/student-dashboard.php';
-                  } elseif ($ugroup == 3) {
-                    include_once 'resources/sup-dashboard.php';
-                  } elseif ($ugroup == 4) {
-                    include_once 'resources/hod-dashboard.php';
-                  } elseif ($ugroup == 5) {
-                    include_once 'resources/reg-dashboard.php';
-                  } elseif ($ugroup == 6) {
-                    include_once 'resources/dvc-dashboard.php';
-                  }
-                  ?>
-                </div>
-              </div>
+              <?php
+              if ($ugroup == 1) {
+                include_once 'resources/admin-dashboard.php';
+              } elseif ($ugroup == 2) {
+                include_once 'resources/student-dashboard.php';
+              } elseif ($ugroup == 3) {
+                include_once 'resources/sup-dashboard.php';
+              } elseif ($ugroup == 4) {
+                include_once 'resources/hod-dashboard.php';
+              } elseif ($ugroup == 5) {
+                include_once 'resources/reg-dashboard.php';
+              } elseif ($ugroup == 6) {
+                include_once 'resources/dvc-dashboard.php';
+              }
+              ?>
             </div>
           </div>
         </div>
       </div>
-
     </div>
-
   </main>
   <!--Main layout-->
 

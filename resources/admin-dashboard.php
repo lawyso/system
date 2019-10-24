@@ -70,7 +70,7 @@ $total_approved_defense = countotal('d_defense', "user='$myid' AND status='3'");
   </div>
 </div>
 <div class="row">
-  <div class="col-md-12 col-sm-12 col-xs-12">
+  <div class="col-md-12 mb-4">
     <div class="card">
       <div class="card-header bg-primary">
         <p>User List&emsp;</p>
