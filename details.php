@@ -7,19 +7,17 @@ include_once 'session.php';
 
 <head>
   <meta charset="UTF-8" />
-  <title>DMS Home || Dashboard</title>
+  <title>DMS Details || Dashboard</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
 </head>
 
 <body class="grey lighten-3">
   <?php
   include_once 'header.php';
-  include_once 'includes/func.php';
   include_once 'includes/conn.inc';
+  include_once 'includes/func.php';
 
   ?>
-  <!--Main layout-->
   <main class="pt-5 mx-lg-5">
     <div class="container-fluid mt-5">
 
@@ -28,40 +26,23 @@ include_once 'session.php';
 
         <!--Grid column-->
         <div class="col-md-12 mb-4">
-          <div class="card">
-            <div class="card-header">
-              <?php
-              echo "<p class=\"fa fa-home text-left\"> <span class=\"dark\" style=\"font-size:17px;\"> Hello $user, Welcome to your Dashboard</span></p>";
-              ?>
-            </div>
-            <div class="card-body">
-
-              <?php
-              if ($ugroup == 1) {
-                include_once 'resources/admin-dashboard.php';
-              } elseif ($ugroup == 2) {
-                include_once 'resources/student-dashboard.php';
-              } elseif ($ugroup == 3) {
-                include_once 'resources/sup-dashboard.php';
-              } elseif ($ugroup == 4) {
-                include_once 'resources/hod-dashboard.php';
-              } elseif ($ugroup == 5) {
-                include_once 'resources/reg-dashboard.php';
-              } elseif ($ugroup == 6) {
-                include_once 'resources/dvc-dashboard.php';
-              }
-              ?>
-            </div>
-          </div>
+          <?php
+          if (isset($_GET['courses'])) {
+            include_once 'resources/courses_details.php';
+          } elseif (isset($_GET['departments'])) {
+            include_once 'resources/department_details.php';
+          } elseif (isset($_GET['faculties'])) {
+            include_once 'resources/school_details.php';
+          }
+          ?>
         </div>
+        <!--Grid column-->
       </div>
+      <!--Grid row-->
     </div>
   </main>
   <!--Main layout-->
-
   <?php include_once 'footer.php'; ?>
-  <script src="js/main.js" type="text/javascript"></script>
-  <script src="js/main.js" type="text/javascript"></script>
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
   <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
@@ -71,6 +52,7 @@ include_once 'session.php';
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+  <script src="js/main.js" type="text/javascript"></script>
 
 </body>
 

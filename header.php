@@ -25,62 +25,9 @@ $groupName = usergroup_name($_SESSION['dms_']);
 <link href="css/mdb.min.css" rel="stylesheet">
 <!-- Your custom styles (optional) -->
 <link href="css/style.min.css" rel="stylesheet">
+<link href="css/layout.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<style>
-  .dropdown {
-    float: left;
-    overflow: ;
-  }
 
-  .dropdown .dropbtn {
-    font-size: 14px;
-    border: none;
-    outline: none;
-    background-color: inherit;
-    font-family: inherit;
-    margin: 0;
-    min-width: 180px;
-  }
-
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-  }
-
-  .dropdown-content a {
-    float: none;
-    color: black;
-    padding: 5px 5px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
-
-  .dropdown-content a {
-    float: none;
-    color: black;
-    padding: 5px 8px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
-
-  .dropdown-content a:hover {
-    background-color: #ddd;
-  }
-
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-
-  .navbar a:hover {
-    background-color: thistle
-  }
-</style>
 
 <body class="grey lighten-3">
 
@@ -88,12 +35,12 @@ $groupName = usergroup_name($_SESSION['dms_']);
   <header>
 
     <!-- Navbar -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-dms scrolling-navbar text-white">
       <div class="container-fluid">
 
         <!-- Brand -->
         <a class="navbar-brand waves-effect" href="index">
-          <strong style="color: rgb( 17, 122, 101)">DMS</strong>
+          <strong>DMS</strong>
         </a>
 
         <!-- Collapse -->
@@ -150,12 +97,18 @@ $groupName = usergroup_name($_SESSION['dms_']);
               $home_mail = 'active';
             } elseif (strpos($page, 'change_pass') !== false) {
               $home_pass = 'active';
+            } elseif (strpos($page, 'courses') !== false) {
+              $home_course = 'active';
+            } elseif (strpos($page, 'departments') !== false) {
+              $home_dept = 'active';
+            } elseif (strpos($page, 'schools') !== false) {
+              $home_sch = 'active';
             } else { }
 
             if ($ugroup == 2) {
               ?>
               <li class="nav-item <?php echo $home_current; ?>">
-                <a class="nav-link waves-effect" href="index">HOME</a>
+                <a class="nav-link waves-effect btn" href="index">HOME</a>
               </li>
               <li class="nav-item <?php echo $home_bio; ?>">
                 <a class="nav-link waves-effect" href="update_bio">BIODATA</a>
@@ -235,6 +188,15 @@ $groupName = usergroup_name($_SESSION['dms_']);
               <li class="nav-item <?php echo $home_users; ?>">
                 <a class="nav-link waves-effect" href="settings">MANAGE USERS</a>
               </li>
+              <li class="nav-item <?php echo $home_course; ?>">
+                <a class="nav-link waves-effect" href="details?courses">MANAGE COURSES</a>
+              </li>
+              <li class="nav-item <?php echo $home_dept; ?>">
+                <a class="nav-link waves-effect" href="details?departments">MANAGE DEPARTMENTS</a>
+              </li>
+              <li class="nav-item <?php echo $home_sch; ?>">
+                <a class="nav-link waves-effect" href="details?faculties">MANAGE SCHOOLS</a>
+              </li>
             <?php
             }
             ?>
@@ -278,7 +240,7 @@ $groupName = usergroup_name($_SESSION['dms_']);
     <!-- Navbar -->
 
     <!-- Sidebar -->
-    <div class="sidebar-fixed position-fixed ">
+    <div class="sidebar-fixed position-fixed  bg-white">
 
       <a class="logo-wrapper waves-effect">
         <?php

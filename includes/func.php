@@ -79,6 +79,14 @@ function usergroup_name($sid)
   return $u_group_name;
 }
 
+function userlevel_name($gid)
+{
+  $d = fetchonerow('d_user_groups', "uid='$gid'");
+  $u_group_name = $d['group_name'];
+
+  return $u_group_name;
+}
+
 function emailOk($emaill)
 {
   if (filter_var($emaill, FILTER_VALIDATE_EMAIL)) {
@@ -542,4 +550,15 @@ function fetchminid($table, $where)
   $roww = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
   return $roww;
+}
+
+function item_state($sid)
+{
+  if ($sid == 1) {
+    $statename = "<span class=\"label label-success\">Active</span>";
+  }
+  if ($sid == 0) {
+    $statename = "<span class=\"label label-danger\">Inactive</span>";
+  }
+  return $statename;
 }

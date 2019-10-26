@@ -43,14 +43,14 @@ if ($ugroup != 1) {
               <div class="card-header">
                 <p>User List&emsp;<button class="btn btn-sm" data-toggle="modal" data-target="#centralModalLGInfoDemo" style="background-color: rgb( 17, 122, 101);color: #ffff">Add New User</button>
               </div>
-              <div class="card-body">
+              <div class="card-body box-body">
                 <div class="col-lg-12">
                   <table id="user_table" class="table table-bordered table-striped display table-responsive">
                     <thead>
-                      <tr style="background-color: rgb( 17, 122, 101);color: #ffff">
+                      <tr class="bg-white">
                         <th>First Name </th>
                         <th>Last Name</th>
-                        <th>Mobile Number</th>
+                        <th>User Level</th>
                         <th>Id Number</th>
                         <th>Email Address</th>
                         <th>Username</th>
@@ -62,15 +62,7 @@ if ($ugroup != 1) {
 
                     </tbody>
                     <tfoot style="background-color: #F0F0F0">
-                      <tr>
-                        <th>First Name </th>
-                        <th>Last Name</th>
-                        <th>Mobile Number</th>
-                        <th>Id No</th>
-                        <th>Email Address</th>
-                        <th>Username</th>
-                        <th>Action</th>
-                      </tr>
+
                     </tfoot>
                   </table>
                 </div>

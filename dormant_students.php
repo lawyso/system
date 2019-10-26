@@ -35,7 +35,7 @@ include_once 'session.php';
               <div class="col-lg-12">
                 <table id="st_table" class="table table-bordered table-striped table-responsive display" width="100%">
                   <thead>
-                    <tr style="background-color: rgb( 17, 122, 101);color: #ffff">
+                    <tr class="bg-white">
                       <th>FirstName</th>
                       <th>LastName</th>
                       <th>Course of Study</th>
@@ -49,16 +49,7 @@ include_once 'session.php';
 
                   </tbody>
                   <tfoot style="background-color: #F0F0F0">
-                    <tr>
-                      <th>FirstName</th>
-                      <th>LastName</th>
-                      <th>Course of Study</th>
-                      <th>Phone No</th>
-                      <th>Email</th>
-                      <th>Proposal</th>
-                      <th>Action</th>
 
-                    </tr>
                   </tfoot>
                 </table>
               </div>

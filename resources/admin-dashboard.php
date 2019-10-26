@@ -10,7 +10,7 @@ $total_approved_defense = countotal('d_defense', "user='$myid' AND status='3'");
 <div class="row">
   <div class="col-md-3 col-sm-6 col-xs-12">
     <!-- small box -->
-    <div class="small-box bg-success">
+    <div class="small-box bg-green">
       <div class="inner">
         <h4> <?php echo $total_users; ?></h4>
 
@@ -25,7 +25,7 @@ $total_approved_defense = countotal('d_defense', "user='$myid' AND status='3'");
   </div>
   <div class="col-md-3 col-sm-6 col-xs-12">
     <!-- small box -->
-    <div class="small-box bg-orange">
+    <div class="small-box bg-blue">
       <div class="inner">
         <h4> <?php echo $total_courses; ?></h4>
 
@@ -35,12 +35,12 @@ $total_approved_defense = countotal('d_defense', "user='$myid' AND status='3'");
       <div class="icon">
         <i class="fas fa-user-graduate"></i>
       </div>
-      <a href="#" class="small-box-footer">view <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="details?courses" class="small-box-footer">view <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
   <div class="col-md-3 col-sm-6 col-xs-12">
     <!-- small box -->
-    <div class="small-box bg-olive">
+    <div class="small-box bg-orange">
       <div class="inner">
         <h4> <?php echo $total_depatments; ?></h4>
 
@@ -50,12 +50,12 @@ $total_approved_defense = countotal('d_defense', "user='$myid' AND status='3'");
       <div class="icon">
         <i class="fas fa-book-reader"></i>
       </div>
-      <a href="#" class="small-box-footer">view <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="details?departments" class="small-box-footer">view <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
   <div class="col-md-3 col-sm-6 col-xs-12">
     <!-- small box -->
-    <div class="small-box bg-danger">
+    <div class="small-box bg-maroon">
       <div class="inner">
         <h4> <?php echo $total_schools; ?></h4>
 
@@ -65,23 +65,23 @@ $total_approved_defense = countotal('d_defense', "user='$myid' AND status='3'");
       <div class="icon">
         <i class="fas fa-school"></i>
       </div>
-      <a href="#" class="small-box-footer">view <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="details?faculties" class="small-box-footer">view <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
 </div>
 <div class="row">
   <div class="col-md-12 mb-4">
     <div class="card">
-      <div class="card-header bg-primary">
-        <p>User List&emsp;</p>
+      <div class="card-header bg-navy text-white">
+        <p>System Users&emsp;</p>
       </div>
-      <div class="card-body">
-        <table id="user_table" class="table table-bordered table-striped display table-responsive">
-          <thead style="background-color: #F0F0F0">
+      <div class="card-body box-body">
+        <table id="user_table" class="table table-bordered table-hover display table-responsive">
+          <thead class="bg-white">
             <tr>
-              <th>First Name </th>
-              <th>Last Name</th>
-              <th>Mobile Number</th>
+              <th>FirstName </th>
+              <th>LastName</th>
+              <th>User Level</th>
               <th>Id Number</th>
               <th>Email Address</th>
               <th>Username</th>

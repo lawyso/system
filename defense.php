@@ -39,11 +39,11 @@ include_once 'session.php';
               ?>
               <p>Scheduled Defense&emsp;<button class="btn btn-sm" data-toggle="modal" data-target="#centralModalLGInfoDemo" style="background-color: rgb( 17, 122, 101);color: #ffff" <?php echo $disabled; ?>>Apply for Defense</button>
             </div>
-            <div class="card-body">
+            <div class="card-body box-body">
               <div class="col-lg-12">
                 <table id="d_table" class="table table-bordered table-striped display table-responsive">
                   <thead>
-                    <tr style="background-color: rgb( 17, 122, 101);color: #ffff">
+                    <tr class="bg-white">
                       <th>Project Title </th>
                       <th>Department</th>
                       <th>Faculty</th>
@@ -56,14 +56,7 @@ include_once 'session.php';
 
                   </tbody>
                   <tfoot style="background-color: #F0F0F0">
-                    <tr>
-                      <th>Project Title </th>
-                      <th>Department</th>
-                      <th>Faculty</th>
-                      <th>Defense By</th>
-                      <th>Defense Date</th>
-                      <th>Action</th>
-                    </tr>
+
                   </tfoot>
                 </table>
               </div>

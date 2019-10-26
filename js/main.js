@@ -293,6 +293,23 @@ function savecourse() {
 
 }
 
+function save_course() {
+   var sid = $('#sid').val();
+   var department = $('#department').val();
+   var school = $('#school').val();
+   var course_name = $('#course_name').val();
+   var course_duration = $('#course_duration').val();
+   var course_status = $('#course_status').val();
+
+
+   var params = "sid=" + sid + "&department=" + department + "&school=" + school + "&course_name=" + course_name + "&course_duration=" + course_duration + "&course_status=" + course_status;
+
+
+   dbaction('actions/save_courses.php', params, '#cs_feedback');
+
+
+}
+
 function save_proposal() {
    var sid = $('#sid').val();
    var title = $('#title').val();

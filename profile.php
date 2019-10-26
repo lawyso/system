@@ -59,44 +59,38 @@ include_once 'session.php';
               ?>
 
               <table class="table table-bordered table-striped">
+
                 <tr>
-                  <td>Title</td>
-                  <td><input type="text" disabled class="form-control" value="<?php echo $title_name; ?>" /></td>
+                  <td>Full Names</td>
+                  <td><?php echo $title_name . ' ' . $first_name . ' ' . $last_name; ?></td>
                 </tr>
-                <tr>
-                  <td>First Name</td>
-                  <td><input type="text" disabled class="form-control" value="<?php echo $first_name; ?>" /></td>
-                </tr>
-                <tr>
-                  <td>Last Name</td>
-                  <td><input type="text" disabled class="form-control" value="<?php echo $last_name; ?>" /></td>
-                </tr>
+
                 <tr>
                   <td>Primary Email</td>
-                  <td><input type="text" disabled class="form-control" value="<?php echo $primary_email; ?>" /></td>
+                  <td><?php echo $primary_email; ?></td>
                 </tr>
                 <tr>
                   <td>Primary Phone</td>
-                  <td><input type="text" disabled class="form-control" value="<?php echo $primary_phone; ?>" /></td>
+                  <td><?php echo $primary_phone; ?></td>
                 </tr>
                 <tr>
                   <td>National Id</td>
-                  <td><input type="text" disabled class="form-control" value="<?php echo $national_id; ?>" /></td>
+                  <td><?php echo $national_id; ?></td>
                 </tr>
                 <tr>
                   <td>Username</td>
-                  <td><input type="text" disabled class="form-control" value="<?php echo $user_name; ?>" /></td>
+                  <td><?php echo $user_name; ?></td>
                 </tr>
                 <tr>
                   <td>Group</td>
-                  <td><input type="text" disabled class="form-control" value="<?php echo $group_name; ?>" /></td>
+                  <td><?php echo $group_name; ?></td>
                 </tr>
                 <?php
                 if ($user_group == 2) {
                   ?>
                   <tr>
                     <td>Course</td>
-                    <td><input type="text" disabled class="form-control" value="" /></td>
+                    <td></td>
                   </tr>
                 <?php
                 }
@@ -104,11 +98,11 @@ include_once 'session.php';
                   ?>
                   <tr>
                     <td>Department</td>
-                    <td><input type="text" disabled class="form-control" value="<?php echo $department_name; ?>" /></td>
+                    <td><?php echo $department_name; ?></td>
                   </tr>
                   <tr>
                     <td>School/Faculty</td>
-                    <td><input type="text" disabled class="form-control" value="<?php echo $school_name; ?>" /></td>
+                    <td><?php echo $school_name; ?></td>
                   </tr>
                 <?php
                 }

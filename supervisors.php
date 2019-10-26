@@ -41,17 +41,17 @@ include_once 'session.php';
               ?>
               <p><button class="btn btn-sm" data-toggle="modal" data-target="#centralModalLGInfoDemo" style="background-color: rgb( 17, 122, 101);color: #ffff">Supervisors In Your Department:</button> Department of <?php echo $department_name ?></p>
             </div>
-            <div class="card-body">
+            <div class="card-body box-body">
               <div class="col-lg-12">
                 <table id="sp_table" class="table table-bordered table-striped display table-responsive">
                   <thead>
-                    <tr style="background-color: rgb( 17, 122, 101);color: #ffff">
-                      <th>Supervisor Title</th>
-                      <th>First Name</th>
-                      <th>Last Name</th>
+                    <tr class="bg-white">
+                      <th>Title</th>
+                      <th>FirstName</th>
+                      <th>LastName</th>
                       <th>Faculty</th>
                       <th>Department</th>
-                      <th>Primary Phone</th>
+                      <th>Phone</th>
                       <th>Email</th>
                     </tr>
                   </thead>
@@ -59,15 +59,7 @@ include_once 'session.php';
 
                   </tbody>
                   <tfoot style="background-color: #F0F0F0">
-                    <tr>
-                      <th>Supervisor Title</th>
-                      <th>First Name</th>
-                      <th>Last Name</th>
-                      <th>Faculty</th>
-                      <th>Department</th>
-                      <th>Primary Phone</th>
-                      <th>Email</th>
-                    </tr>
+
                   </tfoot>
                 </table>
               </div>

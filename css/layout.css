@@ -1,0 +1,283 @@
+.dropdown {
+  float: left;
+  overflow: show;
+}
+
+.dropdown .dropbtn {
+  font-size: 14px;
+  border: none;
+  outline: none;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+  min-width: 180px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 5px 5px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 5px 8px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.navbar a:hover {
+  background-color: thistle
+}
+
+.box-body {
+  overflow-x: scroll;
+  margin-bottom: 0;
+  min-width: 50%;
+}
+
+.small-box {
+  border-radius: 2px;
+  position: relative;
+  display: block;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1)
+}
+
+.small-box>.inner {
+  padding: 10px
+}
+
+.small-box>.small-box-footer {
+  position: relative;
+  text-align: center;
+  padding: 3px 0;
+  color: #fff;
+  color: rgba(255, 255, 255, 0.8);
+  display: block;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.1);
+  text-decoration: none
+}
+
+.small-box>.small-box-footer:hover {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.15)
+}
+
+.small-box h3 {
+  font-size: 38px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  white-space: nowrap;
+  padding: 0
+}
+
+.small-box p {
+  font-size: 15px
+}
+
+.small-box p>small {
+  display: block;
+  color: #f9f9f9;
+  font-size: 13px;
+  margin-top: 5px
+}
+
+.small-box h3,
+.small-box p {
+  z-index: 5
+}
+
+.small-box .icon {
+  -webkit-transition: all .3s linear;
+  -o-transition: all .3s linear;
+  transition: all .3s linear;
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  z-index: 0;
+  font-size: 90px;
+  color: rgba(0, 0, 0, 0.15)
+}
+
+.small-box:hover {
+  text-decoration: none;
+  color: #f9f9f9
+}
+
+.small-box:hover .icon {
+  font-size: 95px
+}
+
+@media (max-width:767px) {
+  .small-box {
+    text-align: center
+  }
+
+  .small-box .icon {
+    display: none
+  }
+
+  .small-box p {
+    font-size: 12px
+  }
+}
+
+.bg-purple {
+  background-color: #605ca8 !important
+}
+
+.bg-maroon {
+  background-color: #d81b60 !important
+}
+
+.bg-gray-active {
+  color: #000;
+  background-color: #b5bbc8 !important
+}
+
+.bg-black-active {
+  background-color: #000 !important
+}
+
+.bg-navy {
+  background-color: #001f3f !important
+}
+
+.bg-teal {
+  background-color: #39cccc !important
+}
+
+.bg-olive {
+  background-color: #3d9970 !important
+}
+
+.bg-lime {
+  background-color: #01ff70 !important
+}
+
+.bg-orange {
+  background-color: #ff851b !important
+}
+
+.bg-fuchsia {
+  background-color: #f012be !important
+}
+
+.blue {
+  color: #3498DB
+}
+
+.purple {
+  color: #9B59B6
+}
+
+.green {
+  color: #1ABB9C
+}
+
+.aero {
+  color: #9CC2CB
+}
+
+.red {
+  color: #E74C3C
+}
+
+.dark {
+  color: #34495E
+}
+
+.border-blue {
+  border-color: #3498DB !important
+}
+
+.border-purple {
+  border-color: #9B59B6 !important
+}
+
+.border-green {
+  border-color: #1ABB9C !important
+}
+
+.border-aero {
+  border-color: #9CC2CB !important
+}
+
+.border-red {
+  border-color: #E74C3C !important
+}
+
+.border-dark {
+  border-color: #34495E !important
+}
+
+.bg-white {
+  background: #fff !important;
+  border: 1px solid #fff !important;
+  color: #73879C
+}
+
+.bg-green {
+  background: #1ABB9C !important;
+  border: 1px solid #1ABB9C !important;
+  color: #fff
+}
+
+.bg-red {
+  background: #E74C3C !important;
+  border: 1px solid #E74C3C !important;
+  color: #fff
+}
+
+.bg-blue {
+  background: #3498DB !important;
+  border: 1px solid #3498DB !important;
+  color: #fff
+}
+
+.bg-orange {
+  background: #F39C12 !important;
+  border: 1px solid #F39C12 !important;
+  color: #fff
+}
+
+.bg-purple {
+  background: #9B59B6 !important;
+  border: 1px solid #9B59B6 !important;
+  color: #fff
+}
+
+.bg-blue-sky {
+  background: #50C1CF !important;
+  border: 1px solid #50C1CF !important;
+  color: #fff
+}
+
+.bg-dms {
+  background-color: rgb(17, 122, 101);
+  color: #ffff
+}

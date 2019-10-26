@@ -9558,7 +9558,7 @@ a.btn:not([href]):not([tabindex]):hover {
 
 .navbar.navbar-light .navbar-nav .nav-item .nav-link.disbled,
 .navbar.navbar-light .navbar-nav .nav-item .nav-link.disbled:hover {
-  color: rgba(0, 0, 0, .3)
+  color: #fff
 }
 
 .navbar.navbar-light .navbar-toggler-icon {
@@ -9568,7 +9568,7 @@ a.btn:not([href]):not([tabindex]):hover {
 
 .navbar.navbar-light .breadcrumb .nav-item .nav-link,
 .navbar.navbar-light .navbar-nav .nav-item .nav-link {
-  color: #000;
+  color: #fff;
   -webkit-transition: .35s;
   -o-transition: .35s;
   transition: .35s

@@ -45,10 +45,10 @@ include_once 'session.php';
               <div class="col-lg-12">
                 <table id="prop_tb" class="table table-bordered table-striped display table-responsive">
                   <thead>
-                    <tr style="background-color: rgb( 17, 122, 101);color: #ffff">
+                    <tr class="bg-white">
                       <th>Proposal / Concept Paper Title </th>
                       <th>Area / scope of study / research </th>
-                      <th>Proposal Status</th>
+                      <th>Status</th>
                       <th>Action</th>
 
                     </tr>
@@ -99,12 +99,7 @@ include_once 'session.php';
                       ?>
                   </tbody>
                   <tfoot style="background-color: #F0F0F0">
-                    <tr>
-                      <th>Proposal / Concept Paper Title </th>
-                      <th>Area / scope of study / research </th>
-                      <th>Proposal Status</th>
-                      <th>Action</th>
-                    </tr>
+
                   </tfoot>
                 </table>
                 <script>

@@ -1,5 +1,5 @@
 <!--Footer-->
-<footer class="page-footer text-center font-small darken-2 mt-4 wow fadeIn" style="background-color: rgb( 17, 122, 101);color: #ffff">
+<footer class="page-footer text-center font-small darken-2 mt-4 wow fadeIn bg-dms">
 
   <!--Copyright-->
   <div class="footer-copyright py-3">
