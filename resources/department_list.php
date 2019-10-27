@@ -20,13 +20,13 @@ $columns = array(
 
 
   0 => 'uid',
-  1 => 'school_name',
+  1 => 'department_name',
   2 => 'status',
   3 => 'uid'
 );
 
 $sql = "SELECT uid,department_name,status";
-$sql .= " FROM d_departments";
+$sql .= " FROM d_departments WHERE status in (1,2)";
 
 $query = mysqli_query($conn, $sql) or die("dep_list.php: get Users");
 $totalData = mysqli_num_rows($query);
@@ -35,7 +35,9 @@ $totalFiltered = $totalData;  // when there is no search parameter then total nu
 
 if (!empty($requestData['search']['value'])) {
   // if there is a search parameter, $requestData['search']['value'] contains search parameter
-  $sql .= " AND ( department_name LIKE '" . $requestData['search']['value'] . "%')";
+  $sql .= " AND ( department_name LIKE '%" . $requestData['search']['value'] . "%' ";
+
+  $sql .= " OR status LIKE '" . $requestData['search']['value'] . "%' )";
 }
 $query = mysqli_query($conn, $sql) or die("department_list.php: get Users" . mysqli_connect_error());
 $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result.
@@ -47,9 +49,8 @@ $data = array();
 while ($row = mysqli_fetch_array($query)) {  // preparing an array
   $nestedData = array();
 
-  $nestedData[] = $row["uid"];
   $nestedData[] = $row["department_name"];
-  $nestedData[] = $row["status"];
+  $nestedData[] = item_state($row["status"]);
   $nestedData[] = encurl($row["uid"]);
   $data[] = $nestedData;
 }

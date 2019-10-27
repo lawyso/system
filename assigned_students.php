@@ -32,7 +32,7 @@ include_once 'session.php';
             </div>
             <div class="card-body box-body">
               <div class="col-lg-12">
-                <table id="st_table" class="table table-bordered table-striped table-responsive display">
+                <table id="st_table" class="table table-bordered table-striped table-responsive-lg display">
                   <thead>
                     <tr class="bg-white">
                       <th>FirstName</th>

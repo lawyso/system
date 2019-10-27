@@ -29,7 +29,7 @@ $columns = array(
 );
 
 $sql = "SELECT uid,course_name,department_tag,school_tag,course_duration,status";
-$sql .= " FROM d_courses WHERE status in (0,1)";
+$sql .= " FROM d_courses WHERE status in (1,2)";
 
 $query = mysqli_query($conn, $sql) or die("course_list.php: get Courses");
 $totalData = mysqli_num_rows($query);
@@ -38,7 +38,7 @@ $totalFiltered = $totalData;  // when there is no search parameter then total nu
 
 if (!empty($requestData['search']['value'])) {
   // if there is a search parameter, $requestData['search']['value'] contains search parameter
-  $sql .= " AND ( course_name LIKE '" . $requestData['search']['value'] . "%' ";
+  $sql .= " AND ( course_name LIKE '%" . $requestData['search']['value'] . "%' ";
 
   $sql .= " OR department_tag LIKE '" . $requestData['search']['value'] . "%' ";
 

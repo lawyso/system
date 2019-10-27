@@ -52,7 +52,7 @@ $groupName = usergroup_name($_SESSION['dms_']);
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
           <!-- Left -->
-          <ul class="navbar-nav mr-auto" style="font-weight:400">
+          <ul class="navbar-nav mr-auto" style="font-weight:300">
             <?php
 
             $uri = $_SERVER['REQUEST_URI'];
@@ -101,27 +101,27 @@ $groupName = usergroup_name($_SESSION['dms_']);
               $home_course = 'active';
             } elseif (strpos($page, 'departments') !== false) {
               $home_dept = 'active';
-            } elseif (strpos($page, 'schools') !== false) {
+            } elseif (strpos($page, 'faculties') !== false) {
               $home_sch = 'active';
             } else { }
 
             if ($ugroup == 2) {
               ?>
               <li class="nav-item <?php echo $home_current; ?>">
-                <a class="nav-link waves-effect btn" href="index">HOME</a>
+                <a class="nav-link waves-effect" href="index">Home</a>
               </li>
               <li class="nav-item <?php echo $home_bio; ?>">
-                <a class="nav-link waves-effect" href="update_bio">BIODATA</a>
+                <a class="nav-link waves-effect" href="update_bio">Bio-Data</a>
               </li>
               <li class="nav-item <?php echo $home_reg; ?>">
-                <a class="nav-link waves-effect" href="register">COURSE-REGISTRATION</a>
+                <a class="nav-link waves-effect" href="register">Course-Registration</a>
               </li>
               <?php
                 $registrationOk = checkrowexists('d_users_courses', "user='$myid' AND status='1'");
                 if ($registrationOk == 1) {
                   ?>
                 <li class="nav-item <?php echo $home_pro; ?>">
-                  <a class="nav-link waves-effect" href="proposals">PROPOSALS</a>
+                  <a class="nav-link waves-effect" href="proposals">Proposals</a>
                 </li>
               <?php
                 }
@@ -129,80 +129,95 @@ $groupName = usergroup_name($_SESSION['dms_']);
                 if ($proposalOk == 1) {
                   ?>
                 <li class="nav-item <?php echo $home_def; ?>">
-                  <a class="nav-link waves-effect" href="defense">DEFENSE</a>
+                  <a class="nav-link waves-effect" href="defense">Defense</a>
                 </li>
               <?php
                 }
                 ?>
               <li class="nav-item <?php echo $home_sup; ?>">
-                <a class="nav-link waves-effect" href="supervisors">SUPERVISORS</a>
+                <a class="nav-link waves-effect" href="supervisors">Supervisors</a>
               </li>
               <li class="nav-item <?php echo $home_gac; ?>">
-                <a class="nav-link waves-effect" href="global_academia">GLOBAL ACADEMIA</a>
+                <a class="nav-link waves-effect" href="global_academia">Global Academia</a>
               </li>
             <?php
             } elseif ($ugroup == 3) {
               ?>
+              <li class="nav-item <?php echo $home_current; ?>">
+                <a class="nav-link waves-effect" href="index">Home</a>
+              </li>
               <li class="nav-item <?php echo $home_bio; ?>">
-                <a class="nav-link waves-effect" href="update_bio">BIODATA</a>
+                <a class="nav-link waves-effect" href="update_bio">Bio-Data</a>
               </li>
               <li class="nav-item <?php echo $home_asgn; ?>">
-                <a class="nav-link waves-effect" href="assigned_students">STUDENTS/PROPOSALS</a>
+                <a class="nav-link waves-effect" href="assigned_students">Students/Proposals</a>
               </li>
               <li class="nav-item <?php echo $home_ds; ?>">
-                <a class="nav-link waves-effect" href="dormant_students">DORMANT STUDENTS</a>
+                <a class="nav-link waves-effect" href="dormant_students">Dormant Students</a>
               </li>
               <li class="nav-item <?php echo $home_reg; ?>">
-                <a class="nav-link waves-effect" href="update_bio">NOTIFICATIONS</a>
+                <a class="nav-link waves-effect" href="update_bio">Tasks</a>
               </li>
             <?php
             } elseif ($ugroup == 4) {
               ?>
+              <li class="nav-item <?php echo $home_current; ?>">
+                <a class="nav-link waves-effect" href="index">Home</a>
+              </li>
               <li class="nav-item <?php echo $home_bio; ?>">
-                <a class="nav-link waves-effect" href="update_bio">BIODATA</a>
+                <a class="nav-link waves-effect" href="update_bio">Bio-Data</a>
               </li>
               <li class="nav-item <?php echo $home_dp; ?>">
-                <a class="nav-link waves-effect" href="departmental-proposals">PROPOSALS</a>
+                <a class="nav-link waves-effect" href="departmental-proposals">Proposals</a>
               </li>
               <li class="nav-item ">
-                <a class="nav-link waves-effect" href="departl_defense">DEFENSE</a>
+                <a class="nav-link waves-effect" href="departl_defense">Defense</a>
               </li>
             <?php
             } elseif ($ugroup == 5) {
               ?>
+              <li class="nav-item <?php echo $home_current; ?>">
+                <a class="nav-link waves-effect" href="index">Home</a>
+              </li>
               <li class="nav-item <?php echo $home_bio; ?>">
-                <a class="nav-link waves-effect" href="update_bio">BIODATA</a>
+                <a class="nav-link waves-effect" href="update_bio">Bio-Data</a>
               </li>
             <?php
             } elseif ($ugroup == 6) {
               ?>
+              <li class="nav-item <?php echo $home_current; ?>">
+                <a class="nav-link waves-effect" href="index">Home</a>
+              </li>
               <li class="nav-item <?php echo $home_bio; ?>">
-                <a class="nav-link waves-effect" href="update_bio">BIODATA</a>
+                <a class="nav-link waves-effect" href="update_bio">Bio-Data</a>
               </li>
             <?php
             } elseif ($ugroup == 1) {
               ?>
+              <li class="nav-item <?php echo $home_current; ?>">
+                <a class="nav-link waves-effect" href="index">Home</a>
+              </li>
               <li class="nav-item <?php echo $home_bio; ?>">
-                <a class="nav-link waves-effect" href="update_bio">BIODATA</a>
+                <a class="nav-link waves-effect" href="update_bio">Bio-Data</a>
               </li>
               <li class="nav-item <?php echo $home_users; ?>">
-                <a class="nav-link waves-effect" href="settings">MANAGE USERS</a>
+                <a class="nav-link waves-effect" href="settings">Manage Users</a>
               </li>
               <li class="nav-item <?php echo $home_course; ?>">
-                <a class="nav-link waves-effect" href="details?courses">MANAGE COURSES</a>
+                <a class="nav-link waves-effect" href="details?courses">Manage Courses</a>
               </li>
               <li class="nav-item <?php echo $home_dept; ?>">
-                <a class="nav-link waves-effect" href="details?departments">MANAGE DEPARTMENTS</a>
+                <a class="nav-link waves-effect" href="details?departments">Manage Departments</a>
               </li>
               <li class="nav-item <?php echo $home_sch; ?>">
-                <a class="nav-link waves-effect" href="details?faculties">MANAGE SCHOOLS</a>
+                <a class="nav-link waves-effect" href="details?faculties">Manage Sschools</a>
               </li>
             <?php
             }
             ?>
 
             <li class="dropdown nav-item">
-              <button class="dropbtn nav-link">ACCOUNT SETTINGS
+              <button class="dropbtn nav-link">Account Settings
                 <i class="fa fa-caret-down"></i>
               </button>
               <div class="dropdown-content">

@@ -45,7 +45,7 @@ if ($ugroup != 1) {
               </div>
               <div class="card-body box-body">
                 <div class="col-lg-12">
-                  <table id="user_table" class="table table-bordered table-striped display table-responsive">
+                  <table id="user_table" class="table table-bordered table-striped display table-responsive-lg">
                     <thead>
                       <tr class="bg-white">
                         <th>First Name </th>

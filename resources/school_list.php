@@ -27,7 +27,7 @@ $columns = array(
 );
 
 $sql = "SELECT uid,school_name,status";
-$sql .= " FROM d_schools";
+$sql .= " FROM d_schools WHERE status in (1,2)";
 
 $query = mysqli_query($conn, $sql) or die("school_list.php: get Users");
 $totalData = mysqli_num_rows($query);
@@ -36,19 +36,10 @@ $totalFiltered = $totalData;  // when there is no search parameter then total nu
 
 if (!empty($requestData['search']['value'])) {
   // if there is a search parameter, $requestData['search']['value'] contains search parameter
-  $sql .= " AND ( first_name LIKE '" . $requestData['search']['value'] . "%' ";
+  $sql .= " AND ( school_name LIKE '%" . $requestData['search']['value'] . "%' ";
 
-  $sql .= " OR last_name LIKE '" . $requestData['search']['value'] . "%' ";
 
-  $sql .= " OR national_id LIKE '" . $requestData['search']['value'] . "%' ";
-
-  $sql .= " OR primary_phone LIKE '" . $requestData['search']['value'] . "%' ";
-
-  $sql .= " OR primary_email LIKE '" . $requestData['search']['value'] . "%' ";
-
-  $sql .= " OR user_name LIKE '" . $requestData['search']['value'] . "%' ";
-
-  $sql .= " OR user_group LIKE '" . $requestData['search']['value'] . "%' )";
+  $sql .= " OR status LIKE '" . $requestData['search']['value'] . "%' )";
 }
 
 
@@ -62,9 +53,8 @@ $data = array();
 while ($row = mysqli_fetch_array($query)) {  // preparing an array
   $nestedData = array();
 
-  $nestedData[] = $row["uid"];
   $nestedData[] = $row["school_name"];
-  $nestedData[] = $row["status"];
+  $nestedData[] = item_state($row["status"]);
   $nestedData[] = encurl($row["uid"]);
   $data[] = $nestedData;
 }

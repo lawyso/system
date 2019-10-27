@@ -66,7 +66,6 @@ if ($proposal_id > 0 && $action == 1) {
    if ($upd == 1 && $update == 1) {
       $sendMail = sendmail($user_from_email, $user_to_email, $subject, $message);
       echo sucmes('Operation successful, proposal Approved');
-
       $proceed = 1;
    } else {
       echo errormes('Error: Unable to process request');

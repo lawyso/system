@@ -32,7 +32,7 @@ include_once 'session.php';
           } elseif (isset($_GET['departments'])) {
             include_once 'resources/department_details.php';
           } elseif (isset($_GET['faculties'])) {
-            include_once 'resources/school_details.php';
+            include_once 'resources/faculty_details.php';
           }
           ?>
         </div>

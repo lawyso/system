@@ -1,8 +1,8 @@
 <?php
 $total_students = countotal('d_users_primary', "uid>0 AND FIND_IN_SET('$myid',supervisor) > 0");
-$total_pending_approval = countotal('d_users_primary', "uid>0 AND FIND_IN_SET('$myid',supervisor) > 0 AND status='1'");
-$total_approved = countotal('d_users_primary', "uid>0 AND FIND_IN_SET('$myid',supervisor) > 0 AND status='2'");
-$total_rejected = countotal('d_users_primary', "uid>0 AND FIND_IN_SET('$myid',supervisor) > 0 AND status='3'");
+$total_pending_approval = countotal('d_users_primary', "uid>0 AND FIND_IN_SET('$myid',supervisor) > 0 AND proposal_status='1'");
+$total_approved = countotal('d_users_primary', "uid>0 AND FIND_IN_SET('$myid',supervisor) > 0 AND proposal_status='2'");
+$total_rejected = countotal('d_users_primary', "uid>0 AND FIND_IN_SET('$myid',supervisor) > 0 AND proposal_status='3'");
 
 ?>
 <div class="row">
@@ -18,7 +18,7 @@ $total_rejected = countotal('d_users_primary', "uid>0 AND FIND_IN_SET('$myid',su
       <div class="icon">
         <i class="fa fa-tasks"></i>
       </div>
-      <a href="settings" class="small-box-footer">view <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="assigned_students" class="small-box-footer">view <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
   <div class="col-md-3 col-sm-6 col-xs-12">
@@ -33,7 +33,7 @@ $total_rejected = countotal('d_users_primary', "uid>0 AND FIND_IN_SET('$myid',su
       <div class="icon">
         <i class="fas fa-hourglass-start"></i>
       </div>
-      <a href="#" class="small-box-footer">view <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="assigned_students" class="small-box-footer">view <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
   <div class="col-md-3 col-sm-6 col-xs-12">
@@ -48,7 +48,7 @@ $total_rejected = countotal('d_users_primary', "uid>0 AND FIND_IN_SET('$myid',su
       <div class="icon">
         <i class="fas fa-check"></i>
       </div>
-      <a href="#" class="small-box-footer">view <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="assigned_students" class="small-box-footer">view <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
   <div class="col-md-3 col-sm-6 col-xs-12">
@@ -63,7 +63,7 @@ $total_rejected = countotal('d_users_primary', "uid>0 AND FIND_IN_SET('$myid',su
       <div class="icon">
         <i class="fas fa-ban"></i>
       </div>
-      <a href="#" class="small-box-footer">view <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="dormant_students" class="small-box-footer">view <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
 </div>

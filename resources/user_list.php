@@ -39,13 +39,13 @@ $totalFiltered = $totalData;  // when there is no search parameter then total nu
 
 if (!empty($requestData['search']['value'])) {
   // if there is a search parameter, $requestData['search']['value'] contains search parameter
-  $sql .= " AND ( first_name LIKE '" . $requestData['search']['value'] . "%' ";
+  $sql .= " AND ( first_name LIKE '%" . $requestData['search']['value'] . "%' ";
 
-  $sql .= " OR last_name LIKE '" . $requestData['search']['value'] . "%' ";
+  $sql .= " OR last_name LIKE '%" . $requestData['search']['value'] . "%' ";
 
-  $sql .= " OR national_id LIKE '" . $requestData['search']['value'] . "%' ";
+  $sql .= " OR national_id LIKE '%" . $requestData['search']['value'] . "%' ";
 
-  $sql .= " OR primary_email LIKE '" . $requestData['search']['value'] . "%' ";
+  $sql .= " OR primary_email LIKE '%" . $requestData['search']['value'] . "%' ";
 
   $sql .= " OR user_name LIKE '" . $requestData['search']['value'] . "%' ";
 

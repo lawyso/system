@@ -557,7 +557,7 @@ function item_state($sid)
   if ($sid == 1) {
     $statename = "<span class=\"label label-success\">Active</span>";
   }
-  if ($sid == 0) {
+  if ($sid == 2) {
     $statename = "<span class=\"label label-danger\">Inactive</span>";
   }
   return $statename;

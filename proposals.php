@@ -43,7 +43,7 @@ include_once 'session.php';
               <div class="col-md-3"></div>
 
               <div class="col-lg-12">
-                <table id="prop_tb" class="table table-bordered table-striped display table-responsive">
+                <table id="prop_tb" class="table table-bordered table-striped display table-responsive-lg">
                   <thead>
                     <tr class="bg-white">
                       <th>Proposal / Concept Paper Title </th>

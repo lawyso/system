@@ -33,7 +33,7 @@ include_once 'session.php';
             </div>
             <div class="card-body">
               <div class="col-lg-12">
-                <table id="st_table" class="table table-bordered table-striped table-responsive display" width="100%">
+                <table id="dm_table" class="table table-bordered table-striped table-responsive-lg display" width="100%">
                   <thead>
                     <tr class="bg-white">
                       <th>FirstName</th>
@@ -48,14 +48,14 @@ include_once 'session.php';
                   <tbody>
 
                   </tbody>
-                  <tfoot style="background-color: #F0F0F0">
+                  <tfoot>
 
                   </tfoot>
                 </table>
               </div>
               <script>
                 $(document).ready(function() {
-                  var dataTable = $('#st_table').DataTable({
+                  var dataTable = $('#dm_table').DataTable({
                     "bprocessing": true,
                     "serverSide": true,
                     "ajax": {

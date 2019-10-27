@@ -31,20 +31,20 @@ $columns = array(
 
 
 $sql = "SELECT first_name,last_name,primary_phone,primary_email,uid,proposal_status";
-$sql .= " FROM d_users_primary WHERE user_group =2 AND proposal_status in (0,3,5) AND (supervisor_1='$myid' OR  supervisor_2='$myid' OR supervisor_3='$myid')";
+$sql .= " FROM d_users_primary WHERE user_group ='2' AND proposal_status in (0,3,5) AND FIND_IN_SET('$myid',supervisor) > 0";
 $query = mysqli_query($conn, $sql) or die("student_list.php: get defense400");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
 if (!empty($requestData['search']['value'])) {
   // if there is a search parameter, $requestData['search']['value'] contains search parameter
-  $sql .= " AND ( first_name LIKE '" . $requestData['search']['value'] . "%' ";
+  $sql .= " AND ( first_name LIKE '%" . $requestData['search']['value'] . "%' ";
 
-  $sql .= " OR last_name LIKE '" . $requestData['search']['value'] . "%' ";
+  $sql .= " OR last_name LIKE '%" . $requestData['search']['value'] . "%' ";
 
-  $sql .= " OR primary_email LIKE '" . $requestData['search']['value'] . "%' ";
+  $sql .= " OR primary_email LIKE '%" . $requestData['search']['value'] . "%' ";
 
-  $sql .= " OR primary_phone LIKE '" . $requestData['search']['value'] . "%' )";
+  $sql .= " OR primary_phone LIKE '%" . $requestData['search']['value'] . "%' )";
 }
 
 $query = mysqli_query($conn, $sql) or die("student_list.php.php: get defense401");

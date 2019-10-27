@@ -43,7 +43,7 @@ include_once 'session.php';
             </div>
             <div class="card-body box-body">
               <div class="col-lg-12">
-                <table id="sp_table" class="table table-bordered table-striped display table-responsive">
+                <table id="sp_table" class="table table-bordered table-striped display table-responsive-lg">
                   <thead>
                     <tr class="bg-white">
                       <th>Title</th>

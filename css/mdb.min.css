@@ -9495,7 +9495,7 @@ a.btn:not([href]):not([tabindex]):hover {
 
 .navbar .breadcrumb .breadcrumb-item.active,
 .navbar .breadcrumb .breadcrumb-item:before {
-  color: rgba(255, 255, 255, .65)
+  color: rgba(9, 2, 22, 0.65)
 }
 
 .navbar .navbar-toggler {
@@ -9645,7 +9645,7 @@ a.btn:not([href]):not([tabindex]):hover {
 .navbar.navbar-dark .breadcrumb .nav-item.active>.nav-link:hover,
 .navbar.navbar-dark .navbar-nav .nav-item.active>.nav-link:hover,
 .navbar.navbar-dark .navbar-toggler {
-  color: #fff
+  color: rgb(61, 8, 8)
 }
 
 .navbar.navbar-dark form .md-form input {

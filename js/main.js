@@ -310,6 +310,35 @@ function save_course() {
 
 }
 
+function save_dept() {
+   var sid = $('#sid').val();
+   var department_name = $('#department_name').val();
+   var dept_status = $('#dept_status').val();
+
+
+   var params = "sid=" + sid + "&department_name=" + department_name + "&dept_status=" + dept_status;
+
+
+   dbaction('actions/save_department.php', params, '#dp_feedback');
+
+
+}
+
+function save_faculty() {
+   var sid = $('#sid').val();
+   var school_name = $('#school_name').val();
+   var sch_status = $('#sch_status').val();
+
+
+   var params = "sid=" + sid + "&school_name=" + school_name + "&sch_status=" + sch_status;
+
+
+   dbaction('actions/save_faculties.php', params, '#fac_feedback');
+
+
+}
+
+
 function save_proposal() {
    var sid = $('#sid').val();
    var title = $('#title').val();
@@ -405,6 +434,34 @@ function del_proposal(pid) {
       dbaction('actions/proposal_action.php', params, '#pro_feedback');
    }
 }
+
+function del_course(cid) {
+
+   var result = confirm('Are you sure you want to Delete this Course?');
+   if (result) {
+      var params = "course_id=" + cid + "&action=0";
+      dbaction('actions/course_actions.php', params, '#co_feedback');
+   }
+}
+
+function del_dept(did) {
+
+   var result = confirm('Are you sure you want to Delete this Department?');
+   if (result) {
+      var params = "dept_id=" + did + "&action=0";
+      dbaction('actions/department_actions.php', params, '#dept_feedback');
+   }
+}
+
+function del_fal(fid) {
+
+   var result = confirm('Are you sure you want to Delete this Faculty?');
+   if (result) {
+      var params = "fac_id=" + fid + "&action=0";
+      dbaction('actions/school_actions.php', params, '#fa_feedback');
+   }
+}
+
 
 function save_defense() {
    var project_title = $('#project_title').val();

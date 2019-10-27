@@ -3,13 +3,12 @@ session_start();
 include_once '../includes/conn.inc';
 include_once '../includes/func.php';
 
-$sid = mysqli_real_escape_string($con, decurl($_POST['sid']));
+$sid = mysqli_real_escape_string($con, $_POST['sid']);
 $department = mysqli_real_escape_string($con, $_POST['department']);
 $school = mysqli_real_escape_string($con, $_POST['school']);
 $course_name = mysqli_real_escape_string($con, $_POST['course_name']);
 $course_duration = mysqli_real_escape_string($con, $_POST['course_duration']);
 $course_status = mysqli_real_escape_string($con, $_POST['course_status']);
-
 
 ////////////___________Validation
 $courseOk = input_length($course_name, 6);
@@ -46,7 +45,7 @@ $validation  = $courseOk + $departmentOk + $schoolOk + $course_durationOk + $cou
 if ($validation == 5) {
   if ($sid > 0) {
     ///update
-    $updatestring = "department_tag='$department', course_name='$course_name', school_tag='$school',course_duration='$course_duration',course_status='$course_status'";
+    $updatestring = "department_tag='$department', course_name='$course_name', school_tag='$school',course_duration='$course_duration',status='$course_status'";
     $update = updatedb('d_courses', $updatestring, "uid='$sid'");
     if ($update == 1) {
       echo sucmes('Course Details updated Successfuly');
@@ -63,11 +62,11 @@ if ($validation == 5) {
     $create = addtodb('d_courses', $fds, $vals);
 
     if ($create == 1) {
-      echo sucmes('New Course Registered Successfully');
+      echo sucmes('New Course Added Successfully');
 
       $proceed = 1;
     } else {
-      echo errormes('Unable to Register for The New User');
+      echo errormes('Unable to A Add a New User');
     }
   }
 }
@@ -80,7 +79,7 @@ if ($validation == 5) {
   if (action == '1') {
     {
       setTimeout(function() {
-        window.location.href = 'register.php'; // the redirect goes here
+        window.location.href = 'details?courses'; // the redirect goes here
 
       }, 5000); // 5 seconds
 

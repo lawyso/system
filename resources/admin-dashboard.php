@@ -76,11 +76,11 @@ $total_approved_defense = countotal('d_defense', "user='$myid' AND status='3'");
         <p>System Users&emsp;</p>
       </div>
       <div class="card-body box-body">
-        <table id="user_table" class="table table-bordered table-hover display table-responsive">
+        <table id="user_table" class="table table-bordered table-hover display table-responsive-lg">
           <thead class="bg-white">
             <tr>
-              <th>FirstName </th>
-              <th>LastName</th>
+              <th>First Name </th>
+              <th>Last Name</th>
               <th>User Level</th>
               <th>Id Number</th>
               <th>Email Address</th>

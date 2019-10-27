@@ -41,7 +41,7 @@ include_once 'session.php';
             </div>
             <div class="card-body box-body">
               <div class="col-lg-12">
-                <table id="d_table" class="table table-bordered table-striped display table-responsive">
+                <table id="d_table" class="table table-bordered table-striped display table-responsive-lg">
                   <thead>
                     <tr class="bg-white">
                       <th>Project Title </th>
