@@ -227,14 +227,13 @@ include_once 'session.php';
           </div>
         </div>
         <!-- Central Modal Large Info-->
-
-
       </div>
       <!--Grid row-->
     </div>
   </main>
   <!--Main layout-->
   <script src="js/main.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.3.2/bootbox.min.js"></script>
   <?php include_once 'footer.php'; ?>
 </body>
 

@@ -103,6 +103,8 @@ $groupName = usergroup_name($_SESSION['dms_']);
               $home_dept = 'active';
             } elseif (strpos($page, 'faculties') !== false) {
               $home_sch = 'active';
+            } elseif (strpos($page, 'department_students') !== false) {
+              $home_dp = 'active';
             } else { }
 
             if ($ugroup == 2) {
@@ -168,10 +170,13 @@ $groupName = usergroup_name($_SESSION['dms_']);
                 <a class="nav-link waves-effect" href="update_bio">Bio-Data</a>
               </li>
               <li class="nav-item <?php echo $home_dp; ?>">
-                <a class="nav-link waves-effect" href="departmental-proposals">Proposals</a>
+                <a class="nav-link waves-effect" href="details?department_students">Students</a>
               </li>
               <li class="nav-item ">
-                <a class="nav-link waves-effect" href="departl_defense">Defense</a>
+                <a class="nav-link waves-effect" href="details?department_supervisors">Supervisors</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link waves-effect" href="details?department_courses">Courses</a>
               </li>
             <?php
             } elseif ($ugroup == 5) {

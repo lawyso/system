@@ -27,6 +27,6 @@ if ($fa_id  > 0 && $action == 0) {
   if (proceed == '1') {
     setTimeout(function() {
       reload();
-    }, 10000);
+    }, 3000);
   }
 </script>

@@ -34,7 +34,7 @@ if ($course_duration > 0) {
   die(errormes('Course Duration is required'));
   exit();
 }
-if ($course_status >= 0) {
+if ($course_status > 0) {
   $course_statusOk = 1;
 } else {
   die(errormes('Course Status is required'));
@@ -56,9 +56,8 @@ if ($validation == 5) {
   } else {
     ///create
 
-
     $fds = array('course_name', 'department_tag', 'school_tag', 'course_duration', 'status');
-    $vals = array("$course_name", "$department", "$school", "$course_duration", '$course_status');
+    $vals = array("$course_name", "$department", "$school", "$course_duration", "$course_status");
     $create = addtodb('d_courses', $fds, $vals);
 
     if ($create == 1) {
@@ -66,7 +65,7 @@ if ($validation == 5) {
 
       $proceed = 1;
     } else {
-      echo errormes('Unable to A Add a New User');
+      echo errormes('Unable to Add a New User');
     }
   }
 }
@@ -81,7 +80,7 @@ if ($validation == 5) {
       setTimeout(function() {
         window.location.href = 'details?courses'; // the redirect goes here
 
-      }, 5000); // 5 seconds
+      }, 3000); // 5 seconds
 
     }
 

@@ -24,7 +24,7 @@ if (isset($_GET['logout'])) {
   <link rel="stylesheet" href="styles/main.css" />
 </head>
 
-<body class="login-page" style="background:url(images/grads2.jpg);">
+<body class="login-page" style="background:url(images/grads2.jpg) no-repeat;">
   <div class="login-box" style="opacity:0.85">
     <br /> <br /> <br />
     <div class="login-box-body">

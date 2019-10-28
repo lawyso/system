@@ -15,57 +15,47 @@ $conn = mysqli_connect($servername, $username, $password, $dbname) or die("Conne
 // storing  request (ie, get/post) global array to a variable
 $requestData = $_REQUEST;
 
-
 $columns = array(
   // datatable column index  => database column name
 
 
-  0 => 'project_title',
-  1 => 'department',
-  2 => 'faculty',
-  3 => 'defender',
-  4 => 'defense_date',
-  5 => 'uid'
+
+  0 => 'course_name',
+  1 => 'course_duration',
+  2 => 'status'
+
 );
+$my_dept = fetchrow('d_users_primary', "uid='$myid'", "department");
 
+$sql = "SELECT course_name,course_duration,status";
+$sql .= " FROM d_courses WHERE status in (1,2) AND department_tag='$my_dept'";
 
-$sql = "SELECT uid,project_title, department,faculty,defender,defense_date";
-$sql .= " FROM d_defense WHERE defense_status =0 ";
-
-$query = mysqli_query($conn, $sql) or die("Defense_list.php: get defense400");
+$query = mysqli_query($conn, $sql) or die("course_list.php: get Courses");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
+
 if (!empty($requestData['search']['value'])) {
   // if there is a search parameter, $requestData['search']['value'] contains search parameter
-  $sql .= " AND ( project_title LIKE '%" . $requestData['search']['value'] . "%' ";
+  $sql .= " AND ( course_name LIKE '%" . $requestData['search']['value'] . "%' ";
 
-  $sql .= " OR department LIKE '%" . $requestData['search']['value'] . "%' ";
+  $sql .= " OR course_duration LIKE '" . $requestData['search']['value'] . "%' ";
 
-  $sql .= " OR faculty LIKE '%" . $requestData['search']['value'] . "%' ";
-
-  $sql .= " OR defender LIKE '%" . $requestData['search']['value'] . "%' ";
-
-  $sql .= " OR defense_date LIKE '%" . $requestData['search']['value'] . "%' )";
+  $sql .= " OR status LIKE '" . $requestData['search']['value'] . "%' )";
 }
-
-$query = mysqli_query($conn, $sql) or die("Defense_list.php: get defense401");
+$query = mysqli_query($conn, $sql) or die("Course_list.php: get Courses" . mysqli_connect_error());
 $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result.
 $sql .= " ORDER BY " . $columns[$requestData['order'][0]['column']] . "   " . $requestData['order'][0]['dir'] . "  LIMIT " . $requestData['start'] . " ," . $requestData['length'] . " ";
 /* $requestData['order'][0]['column'] contains colmun index, $requestData['order'][0]['dir'] contains order such as asc/desc  */
-$query = mysqli_query($conn, $sql) or die("Defense_list.php: get defense403");
+$query = mysqli_query($conn, $sql) or die("dep_list.php: get Users401");
 
 $data = array();
-
 while ($row = mysqli_fetch_array($query)) {  // preparing an array
   $nestedData = array();
 
-  $nestedData[] = $row["project_title"];
-  $nestedData[] = department($row['department']);
-  $nestedData[] = school($row["faculty"]);
-  $nestedData[] = profileName($row["defender"]);
-  $nestedData[] = $row["defense_date"];
-  $nestedData[] = encurl($row["uid"]);
+  $nestedData[] = $row["course_name"];
+  $nestedData[] = $row["course_duration"];
+  $nestedData[] = item_state($row["status"]);
   $data[] = $nestedData;
 }
 

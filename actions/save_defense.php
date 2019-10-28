@@ -5,16 +5,11 @@ include_once '../includes/func.php';
 
 
 $project_title = mysqli_real_escape_string($con, $_POST['project_title']);
-$department = mysqli_real_escape_string($con, $_POST['department']);
-$school = mysqli_real_escape_string($con, $_POST['school']);
 $defense_date = mysqli_real_escape_string($con, $_POST['defense_date']);
 $user = $myid;
-$cd = fetchonerow('d_users_primary', "uid='$user'", "first_name,last_name");
-$first_name = $cd['first_name'];
-$last_name = $cd['last_name'];
 
-$defender = "$first_name $last_name";
-
+$department = fetchrow('d_users_primary', "uid='$myid'", "department");
+$school = fetchrow('d_users_primary', "uid='$myid'", "faculty");
 ////////////___________Validation
 $titleOk = input_length($project_title, 12);
 if ($titleOk == 0) {
@@ -25,14 +20,14 @@ if ($titleOk == 0) {
 if ($department > 0) {
     $departmenteOk = 1;
 } else {
-    die(errormes('Please specify the department'));
+    die(errormes('Error in specifying the department'));
     exit();
 }
 
 if ($school > 0) {
     $schoolOk = 1;
 } else {
-    die(errormes('Please specify the school/faculty'));
+    die(errormes('Error in specifying the school/faculty'));
     exit();
 }
 $defense_dateOk = input_length($defense_date, 5);
@@ -48,7 +43,7 @@ if ($validation == 4) {
     ///________________________create new defense
 
     $fds = array('project_title', 'department', 'faculty', 'defender', 'defense_date', 'added_date', 'defense_status');
-    $vals = array("$project_title", "$department", "$school", "$defender", "$defense_date", "$fulldate", "0");
+    $vals = array("$project_title", "$department", "$school", "$user", "$defense_date", "$fulldate", "0");
     $create = addtodb('d_defense', $fds, $vals);
 
     if ($create == 1) {

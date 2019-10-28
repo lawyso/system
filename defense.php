@@ -73,7 +73,7 @@ include_once 'session.php';
 
                         "render": function(data, type, row) {
                           let rowID = row[5];
-                          return `<a href="#?defense=${ rowID }"><i class="fa fa-eye"></i></a>`
+                          return `<a href="defense_details?defense=${ rowID }"><i class="fa fa-eye"></i></a>`
                         },
                         "targets": 5
 
@@ -89,7 +89,7 @@ include_once 'session.php';
 
                 <!-- Central Modal Large Info-->
             <div class="modal fade" id="centralModalLGInfoDemo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-lg modal-notify" role="document">
+              <div class="modal-dialog modal-md modal-notify" role="document">
                 <!--Content-->
                 <div class="modal-content">
                   <!--Header-->
@@ -109,54 +109,14 @@ include_once 'session.php';
                         <div class="form-group">
                           <div class="form-group">
                             <label for="Title">Project Title</label><input type="hidden" value="<?php echo $sid; ?>" id="sid" />
-                            <input type="text" class="form-control" value="<?php echo $project_title; ?>" id="project_title" />
+                            <textarea class="form-control" id="project_title"><?php echo $project_title; ?></textarea>
                           </div>
-
                           <div class="form-group">
-                            <label>Department</label>
-                            <select id="department" class="form-control">
-                              <option value="0">~Select~</option>
-                              <?php
-                              $dep = fetchtable('d_departments', "department_status=1", "department_name", "asc", "10000");
-                              while ($d = mysqli_fetch_array($dep)) {
-                                $uid = $d['uid'];
-                                $department_name = $d['department_name'];
-                                if ($uid == $department) {
-                                  $dselected = 'SELECTED';
-                                } else {
-                                  $dselected = '';
-                                }
-                                echo "<option $gselected value=\"$uid\">$department_name</option>";
-                              }
-                              ?>
-                            </select>
+                            <label for="date">Defense Date</label>
+                            <input type="date" class="form-control" value="<?php echo $defense_date; ?>" id="defense_date" />
                           </div>
 
-                          <label>Faculty/school</label>
-                          <select id="school" class="form-control">
-                            <option value="0">~Select~</option>
-                            <?php
-                            $sc = fetchtable('d_schools', "school_status=1", "school_name", "asc", "10000");
-                            while ($s = mysqli_fetch_array($sc)) {
-                              $uid = $s['uid'];
-                              $school_name = $s['school_name'];
-                              if ($uid == $school) {
-                                $sselected = 'SELECTED';
-                              } else {
-                                $sselected = '';
-                              }
-                              echo "<option $sselected value=\"$uid\">$school_name</option>";
-                            }
-                            ?>
-                          </select>
-                        </div>
-
-                        <div class="form-group">
-                          <label for="date">Defense Date</label>
-                          <input type="date" class="form-control" value="<?php echo $defense_date; ?>" id="defense_date" />
-                        </div>
-
-                        <div id="defense_feedback"></div>
+                          <div id="defense_feedback"></div>
 
                     </form>
                   </div>
@@ -164,10 +124,10 @@ include_once 'session.php';
                   <!--Footer-->
                   <div class="modal-footer">
 
-                    <button type="submit" onclick="save_defense();" class="btn " style="background-color: rgb( 17, 122, 101);color: #ffff">Save</button>
+                    <button type="submit" onclick="save_defense();" class="btn btn-sm" style="background-color: rgb( 17, 122, 101);color: #ffff">Save</button>
                     <i class="far fa-gem ml-1"></i>
 
-                    <a role="button" class="btn waves-effect" data-dismiss="modal" style="color: rgb( 17, 122, 101)">No,
+                    <a role="button" class="btn btn-sm waves-effect" data-dismiss="modal" style="color: rgb( 17, 122, 101)">No,
                       thanks</a>
                   </div>
                 </div>

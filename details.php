@@ -9,6 +9,8 @@ include_once 'session.php';
   <meta charset="UTF-8" />
   <title>DMS Details || Dashboard</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+
 </head>
 
 <body class="grey lighten-3">
@@ -33,6 +35,12 @@ include_once 'session.php';
             include_once 'resources/department_details.php';
           } elseif (isset($_GET['faculties'])) {
             include_once 'resources/faculty_details.php';
+          } elseif (isset($_GET['department_students'])) {
+            include_once 'resources/depStudent_details.php';
+          } elseif (isset($_GET['department_supervisors'])) {
+            include_once 'resources/depSupervisor_details.php';
+          } elseif (isset($_GET['department_courses'])) {
+            include_once 'resources/depcourse_details.php';
           }
           ?>
         </div>
@@ -53,7 +61,7 @@ include_once 'session.php';
   <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
   <script src="js/main.js" type="text/javascript"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.3.2/bootbox.min.js"></script>
 </body>
 
 </html>
