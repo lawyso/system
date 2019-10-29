@@ -2,11 +2,13 @@
 <!-- card -->
 <div class="card">
   <div class="card-header">
-
+    <?php
+    $my_dept = fetchrow('d_users_primary', "uid='$myid'", "department");
+    ?>
     <h5 class="mb-2 mb-sm-0 pt-1">
       <a href="#" target="_blank">Students</a>
       <span>/</span>
-      <span>Details</span>&emsp;<button class="btn btn-sm" style="background-color: rgb( 17, 122, 101);color: #ffff">Student List</button>
+      <span>Details</span>&emsp;<button class="btn btn-sm" style="background-color: rgb( 17, 122, 101);color: #ffff"><?php echo department($my_dept); ?></button>
     </h5>
   </div>
 
@@ -16,7 +18,7 @@
       <thead class="bg-white">
         <tr>
           <th>FirstName</th>
-          <th>Last Name</th>
+          <th>LastName</th>
           <th>Id No</th>
           <th>Gender</th>
           <th>Phone No</th>
@@ -29,7 +31,6 @@
 
       </tbody>
       <tfoot>
-
       </tfoot>
     </table>
     <script>

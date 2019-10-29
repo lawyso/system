@@ -438,8 +438,6 @@ function fileext_fetch($filename)
   return $ext;
 }
 
-
-
 function course_name($id)
 {
   $co = fetchrow('d_users_courses', "user='$id' AND status=1", "course");

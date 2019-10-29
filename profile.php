@@ -90,7 +90,7 @@ include_once 'session.php';
                   ?>
                   <tr>
                     <td>Course</td>
-                    <td></td>
+                    <td><?php echo course_name($sid); ?></td>
                   </tr>
                 <?php
                 }

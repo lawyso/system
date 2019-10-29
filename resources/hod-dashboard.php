@@ -8,11 +8,11 @@ $total_supervisors = countotal('d_users_primary', "department='$my_dept' AND use
 
 $total_courses = countotal('d_courses', "department_tag='$my_dept'");
 
-$pending_defense_apps = countotal('d_defense', "uid>0 AND defense_status='0'");
+$pending_defense_apps = countotal('d_defense', "uid>0 AND defense_status='1'");
 
-$approved_defense_apps = countotal('d_defense', "uid>0 AND defense_status='1'");
+$approved_defense_apps = countotal('d_defense', "uid>0 AND defense_status='2'");
 
-$closed_defense_apps = countotal('d_defense', "uid>0 AND defense_status='2'");
+$closed_defense_apps = countotal('d_defense', "uid>0 AND defense_status='4'");
 // "<script>alert($my_dept)</script>";
 ?>
 <div class="row">
@@ -75,7 +75,7 @@ $closed_defense_apps = countotal('d_defense', "uid>0 AND defense_status='2'");
       <div class=" icon">
         <i class="fas fa-blog"></i>
       </div>
-      <a href="defense_apps" class="small-box-footer">view <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="details?department_pendingDefenses" class="small-box-footer">view <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
   <div class="col-md-4 col-sm-6 col-xs-12">

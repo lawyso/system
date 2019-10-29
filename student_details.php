@@ -180,9 +180,9 @@ include_once 'session.php';
 
                         if ($proposal_status == 1) {
                           ?>
-                        <button onclick="approve_proposal('<?php echo $prop_id;  ?>');" class="btn btn-info">APPROVE PROPOSAL</button>
-                        &nbsp;<button disabled onclick="('<?php echo $prop_id;  ?>');" class="btn btn-success">UPLOAD NEW DOCUMENT</button>
-                        </a>&nbsp;<button onclick="reject_proposal('<?php echo $prop_id;  ?>');" class="btn btn-warning">REJECT PROPOSAL</button>
+                        <button onclick="approve_proposal('<?php echo $prop_id;  ?>');" class="btn btn-sm btn-success">APPROVE PROPOSAL</button>
+                        &nbsp;<button disabled onclick="('<?php echo $prop_id;  ?>');" class="btn btn-sm btn-warning">UPLOAD NEW DOCUMENT</button>
+                        </a>&nbsp;<button onclick="reject_proposal('<?php echo $prop_id;  ?>');" class="btn btn-sm btn-danger">REJECT PROPOSAL</button>
                         </a>
                       <?php
                       }

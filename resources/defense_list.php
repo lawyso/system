@@ -19,18 +19,17 @@ $requestData = $_REQUEST;
 $columns = array(
   // datatable column index  => database column name
 
-
-  0 => 'project_title',
-  1 => 'department',
-  2 => 'faculty',
-  3 => 'defender',
-  4 => 'defense_date',
-  5 => 'uid'
+  0 => 'uid',
+  1 => 'project_title',
+  2 => 'defender',
+  3 => 'defense_date',
+  4 => 'uid'
 );
 
+$my_dept = fetchrow('d_users_primary', "uid='$myid'", "department");
 
-$sql = "SELECT uid,project_title, department,faculty,defender,defense_date";
-$sql .= " FROM d_defense WHERE defense_status =0 ";
+$sql = "SELECT uid,project_title,defender,defense_date";
+$sql .= " FROM d_defense WHERE defense_status =1 AND department ='$my_dept'";
 
 $query = mysqli_query($conn, $sql) or die("Defense_list.php: get defense400");
 $totalData = mysqli_num_rows($query);
@@ -40,9 +39,7 @@ if (!empty($requestData['search']['value'])) {
   // if there is a search parameter, $requestData['search']['value'] contains search parameter
   $sql .= " AND ( project_title LIKE '%" . $requestData['search']['value'] . "%' ";
 
-  $sql .= " OR department LIKE '%" . $requestData['search']['value'] . "%' ";
-
-  $sql .= " OR faculty LIKE '%" . $requestData['search']['value'] . "%' ";
+  $sql .= " OR uid LIKE '%" . $requestData['search']['value'] . "%' ";
 
   $sql .= " OR defender LIKE '%" . $requestData['search']['value'] . "%' ";
 
@@ -60,9 +57,8 @@ $data = array();
 while ($row = mysqli_fetch_array($query)) {  // preparing an array
   $nestedData = array();
 
+  $nestedData[] = $row["uid"];
   $nestedData[] = $row["project_title"];
-  $nestedData[] = department($row['department']);
-  $nestedData[] = school($row["faculty"]);
   $nestedData[] = profileName($row["defender"]);
   $nestedData[] = $row["defense_date"];
   $nestedData[] = encurl($row["uid"]);

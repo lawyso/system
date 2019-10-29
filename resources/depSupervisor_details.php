@@ -2,11 +2,13 @@
 <!-- card -->
 <div class="card">
   <div class="card-header">
-
+    <?php
+    $my_dept = fetchrow('d_users_primary', "uid='$myid'", "department");
+    ?>
     <h5 class="mb-2 mb-sm-0 pt-1">
       <a href="#" target="_blank">Supervisors</a>
       <span>/</span>
-      <span>Details</span>&emsp;<button class="btn btn-sm" style="background-color: rgb( 17, 122, 101);color: #ffff">Supervisors List</button>
+      <span>Details</span>&emsp;<button class="btn btn-sm" style="background-color: rgb( 17, 122, 101);color: #ffff"><?php echo department($my_dept); ?></button>
     </h5>
   </div>
 

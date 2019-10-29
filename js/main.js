@@ -622,6 +622,81 @@ function reject_proposal(pid) {
 
 }
 
+function reject_defense(did) {
+
+   bootbox.confirm({
+      message: "Are you sure you want to Reject this Defense?",
+      swapButtonOrder: true,
+      buttons: {
+         confirm: {
+            label: 'Yes',
+            className: 'btn-success btn-sm'
+         },
+         cancel: {
+            label: 'No',
+            className: 'btn-danger btn-sm'
+         }
+      },
+      callback: function (result) {
+         if (result == 1) {
+            var params = "defense_id=" + did + "&action=3";
+            dbaction('actions/defense_action.php', params, '#defenseAction_feedback');
+         }
+
+      }
+   });
+}
+
+function approve_defense(did) {
+
+   bootbox.confirm({
+      message: "Are you sure you want to Approve this Defense?",
+      swapButtonOrder: true,
+      buttons: {
+         confirm: {
+            label: 'Yes',
+            className: 'btn-success btn-sm'
+         },
+         cancel: {
+            label: 'No',
+            className: 'btn-danger btn-sm'
+         }
+      },
+      callback: function (result) {
+         if (result == 1) {
+            var params = "defense_id=" + did + "&action=2";
+            dbaction('actions/defense_action.php', params, '#defenseAction_feedback');
+         }
+
+      }
+   });
+}
+
+function close_defense(did) {
+
+   bootbox.confirm({
+      message: "Are you sure you want to Close this Defense?",
+      swapButtonOrder: true,
+      buttons: {
+         confirm: {
+            label: 'Yes',
+            className: 'btn-success btn-sm'
+         },
+         cancel: {
+            label: 'No',
+            className: 'btn-danger btn-sm'
+         }
+      },
+      callback: function (result) {
+         if (result == 1) {
+            var params = "defense_id=" + did + "&action=4";
+            dbaction('actions/defense_action.php', params, '#defenseAction_feedback');
+         }
+
+      }
+   });
+}
+
 function course_prod() {
    var course = $('#course').val();
    var sid = $('#sid').val();

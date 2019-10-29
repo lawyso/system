@@ -105,6 +105,14 @@ $groupName = usergroup_name($_SESSION['dms_']);
               $home_sch = 'active';
             } elseif (strpos($page, 'department_students') !== false) {
               $home_dp = 'active';
+            } elseif (strpos($page, 'department_pendingDefenses') !== false) {
+              $home_pd = 'active';
+            } elseif (strpos($page, 'department_supervisors') !== false) {
+              $home_p = 'active';
+            } elseif (strpos($page, 'department_scheduledDefenses') !== false) {
+              $home_dpsd = 'active';
+            } elseif (strpos($page, 'department_courses') !== false) {
+              $home_deptc = 'active';
             } else { }
 
             if ($ugroup == 2) {
@@ -172,11 +180,17 @@ $groupName = usergroup_name($_SESSION['dms_']);
               <li class="nav-item <?php echo $home_dp; ?>">
                 <a class="nav-link waves-effect" href="details?department_students">Students</a>
               </li>
-              <li class="nav-item ">
+              <li class="nav-item <?php echo $home_sup; ?>">
                 <a class="nav-link waves-effect" href="details?department_supervisors">Supervisors</a>
               </li>
-              <li class="nav-item ">
+              <li class="nav-item <?php echo $home_course; ?>">
                 <a class="nav-link waves-effect" href="details?department_courses">Courses</a>
+              </li>
+              <li class="nav-item <?php echo $home_pd; ?>">
+                <a class="nav-link waves-effect" href="details?department_pendingDefenses">Pending Approvals</a>
+              </li>
+              <li class="nav-item <?php echo $home_def; ?>">
+                <a class="nav-link waves-effect" href="scheduled_defenses">Defense Schedule</a>
               </li>
             <?php
             } elseif ($ugroup == 5) {

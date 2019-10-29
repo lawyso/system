@@ -44,9 +44,8 @@ include_once 'session.php';
                 <table id="d_table" class="table table-bordered table-striped display table-responsive-lg">
                   <thead>
                     <tr class="bg-white">
+                      <th>D/No</th>
                       <th>Project Title </th>
-                      <th>Department</th>
-                      <th>Faculty</th>
                       <th>Defense By</th>
                       <th>Defense Date</th>
                       <th>Action</th>
@@ -66,20 +65,23 @@ include_once 'session.php';
                     "bprocessing": true,
                     "serverSide": true,
                     "ajax": {
-                      url: "resources/defense_list.php",
+                      url: "resources/scheduled_defense.php",
                       type: "post"
                     },
                     "columnDefs": [{
 
                         "render": function(data, type, row) {
-                          let rowID = row[5];
-                          return `<a href="defense_details?defense=${ rowID }"><i class="fa fa-eye"></i></a>`
+                          let rowID = row[4];
+                          return `<a href="defense_details?defense=${ rowID }" title="View Details"><i class="fa fa-eye"></i></a>`
                         },
-                        "targets": 5
+                        "targets": 4
 
                       }
 
-                    ]
+                    ],
+                    "order": [
+                      [0, 'asc']
+                    ],
 
                   });
                 });

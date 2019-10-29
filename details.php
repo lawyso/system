@@ -41,6 +41,10 @@ include_once 'session.php';
             include_once 'resources/depSupervisor_details.php';
           } elseif (isset($_GET['department_courses'])) {
             include_once 'resources/depcourse_details.php';
+          } elseif (isset($_GET['department_pendingDefenses'])) {
+            include_once 'resources/pendingDefense_details.php';
+          } elseif (isset($_GET['defense'])) {
+            include_once 'defense_details.php';
           }
           ?>
         </div>

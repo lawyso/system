@@ -32,7 +32,7 @@ if (isset($_GET['logout'])) {
       <br>
       <h5 onsubmit="return false;" method="post">
         <div class="form-group has-feedback">
-          <input type="text" id="u_name" class="form-control" placeholder="Email/Username" />
+          <input type="text" id="u_name" class="form-control" placeholder="Email/Username" auto-complete="off" />
           <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
