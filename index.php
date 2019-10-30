@@ -31,7 +31,7 @@ include_once 'session.php';
           <div class="card">
             <div class="card-header">
               <?php
-              echo "<p class=\"fa fa-home text-left\"> <span class=\"dark\" style=\"font-size:17px;\"> Hello $user, Welcome to your Dashboard</span></p>";
+              echo "<p class=\"fa fa-home text-left\"> <span class=\"dark\" style=\"font-size:16px;\"> Hello $user, Welcome to your Dashboard</span></p>";
               ?>
             </div>
             <div class="card-body">

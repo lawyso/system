@@ -24,15 +24,15 @@ if (isset($_GET['logout'])) {
   <link rel="stylesheet" href="styles/main.css" />
 </head>
 
-<body class="login-page" style="background:url(images/grads2.jpg) no-repeat;">
-  <div class="login-box" style="opacity:0.85">
+<body class="login-page" style="background:url(images/education.jpg); background-repeat: no-repeat;background-size: cover">
+  <div class="login-box" style="opacity:0.8">
     <br /> <br /> <br />
     <div class="login-box-body">
       <p class="login-box-msg">DMS PORTAL LOGIN</p>
       <br>
       <h5 onsubmit="return false;" method="post">
         <div class="form-group has-feedback">
-          <input type="text" id="u_name" class="form-control" placeholder="Email/Username" auto-complete="off" />
+          <input type="text" id="u_name" autofocus="" class="form-control" placeholder="Email/Username" auto-complete="off" />
           <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
@@ -44,7 +44,7 @@ if (isset($_GET['logout'])) {
             <h4><a href="forgot_pwd">Forgot your Password ?</a></h4>
           </div><!-- /.col -->
           <div class="col-xs-4">
-            <button type="submit" onclick="login();" class="btn btn-primary btn-block btn-flat" style="background-color: rgb( 17, 122, 101);color: #ffff">Sign In</button>
+            <button type="submit" autofocus onclick="login();" class="btn btn-primary btn-block btn-flat" style="background-color: rgb( 17, 122, 101);color: #ffff">Sign In</button>
           </div><!-- /.col -->
         </div>
         <br>
