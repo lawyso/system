@@ -388,6 +388,16 @@ function changepass() {
 
 }
 
+function change_Defaultpass() {
+
+   var userid = $('#userid').val();
+   var new_pass = $('#new_pass').val();
+   var new_passConfirm = $('#new_passConfirm').val();
+   var params = "new_pass=" + new_pass + "&userid=" + userid + "&new_passConfirm=" + new_passConfirm;
+   dbaction('actions/change_Defaultpass.php', params, '#changePass_feedback');
+
+}
+
 
 function overlayshow(divid, params, resource) {
    $(divid).modal('toggle');

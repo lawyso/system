@@ -1,7 +1,6 @@
 <?php
 include_once 'session.php';
 ?>
-
 <!DOCTYPE html>
 <html>
 

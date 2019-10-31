@@ -37,6 +37,16 @@ function validate_session($session_id)
   $valid = checkrowexists('d_users_primary', "uid='$ses'", "uid");
   return $valid;
 }
+
+function check_passChange($session_id)
+{
+  $ses = decurl($session_id);
+
+  $changed_defaultPass = checkrowexists('d_users_primary', "uid='$ses' AND pass_change='1'", "uid");
+
+  return $changed_defaultPass;
+}
+
 function session_details($sid)
 {
   $rid = decurl($sid);
