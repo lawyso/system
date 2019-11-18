@@ -7,7 +7,8 @@ include_once 'session.php';
 
 <head>
   <meta charset="UTF-8" />
-  <title>DMS Details || Dashboard</title>
+  <title>Dissertation Management Sytem || details</title>
+  <link rel="shortcut icon" href="images/dms_logo.jpg" alt="Dissertation Management System" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 
@@ -20,7 +21,7 @@ include_once 'session.php';
   include_once 'includes/func.php';
 
   ?>
-  <main class="pt-5 mx-lg-5">
+  <main class="pt-5 mx-lg-3">
     <div class="container-fluid mt-5">
 
       <!--Grid row-->
@@ -29,22 +30,12 @@ include_once 'session.php';
         <!--Grid column-->
         <div class="col-md-12 mb-4">
           <?php
-          if (isset($_GET['courses'])) {
-            include_once 'resources/courses_details.php';
-          } elseif (isset($_GET['departments'])) {
-            include_once 'resources/department_details.php';
-          } elseif (isset($_GET['faculties'])) {
-            include_once 'resources/faculty_details.php';
-          } elseif (isset($_GET['department_students'])) {
-            include_once 'resources/depStudent_details.php';
-          } elseif (isset($_GET['department_supervisors'])) {
-            include_once 'resources/depSupervisor_details.php';
-          } elseif (isset($_GET['department_courses'])) {
-            include_once 'resources/depcourse_details.php';
-          } elseif (isset($_GET['department_pendingDefenses'])) {
-            include_once 'resources/pendingDefense_details.php';
-          } elseif (isset($_GET['defense'])) {
-            include_once 'defense_details.php';
+          if (isset($_GET['registeredStudents'])) {
+            include_once 'resources/registered_students.php';
+          } elseif (isset($_GET['pendingApprovals'])) {
+            include_once 'resources/pending_approvals.php';
+          } elseif (isset($_GET['rejectedTopics'])) {
+            include_once 'resources/rejectedTopics.php';
           }
           ?>
         </div>

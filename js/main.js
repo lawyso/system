@@ -262,14 +262,12 @@ function saveuser() {
    var gender = $('#gender').val();
    var user_group = $('#user_group').val();
    var status = $('#status').val();
-   var title = $('#title').val();
-   var department = $('#department').val();
-   var school = $('#school').val();
+   var reg_no = $('#reg_no').val();
 
-   var params = "title=" + title + "&sid=" + sid + "&first_name=" + first_name +
+   var params = "sid=" + sid + "&reg_no=" + reg_no + "&first_name=" + first_name +
       "&last_name=" + last_name + "&primary_email=" + primary_email + "&primary_phone=" +
       primary_phone + "&user_name=" + user_name + "&user_group=" + user_group + "&gender=" +
-      gender + "&status=" + status + "&national_id=" + national_id + "&department=" + department + "&school=" + school;
+      gender + "&status=" + status + "&national_id=" + national_id;
 
 
    dbaction('actions/save_user.php', params, '#user_feedback');
@@ -277,18 +275,13 @@ function saveuser() {
 
 }
 
-function savecourse() {
+function savetopic() {
    var sid = $('#sid').val();
-   var department = $('#department').val();
-   var school = $('#school').val();
-   var course = $('#course').val();
-   var admission_date = $('#admission_date').val();
+   var topic_title = $('#topic_title').val();
 
+   var params = "sid=" + sid + "&topic_title=" + topic_title;
 
-   var params = "sid=" + sid + "&department=" + department + "&school=" + school + "&course=" + course + "&admission_date=" + admission_date;
-
-
-   dbaction('actions/save_course.php', params, '#course_feedback');
+   dbaction('actions/save_topic.php', params, '#register_feedback');
 
 
 }
@@ -427,10 +420,10 @@ function checkuser() {
 
 }
 
-function delete_proposal(pid) {
+function del_topic(tid) {
 
    bootbox.confirm({
-      message: "Are you sure you want to Delete this Proposal?",
+      message: "Are you sure you want to Delete this Research Topic?",
       buttons: {
          confirm: {
             label: 'Yes',
@@ -443,8 +436,8 @@ function delete_proposal(pid) {
       },
       callback: function (result) {
          if (result == 1) {
-            var params = "proposal_id=" + pid + "&action=1";
-            dbaction('actions/proposal_action.php', params, '#prop_feedback');
+            var params = "topic_id=" + tid + "&action=4";
+            dbaction('actions/topic_action.php', params, '#topic_feedback');
          }
 
       }
@@ -452,11 +445,11 @@ function delete_proposal(pid) {
 
 }
 
-
-function del_proposal(pid) {
+function reject_topic(tid) {
 
    bootbox.confirm({
-      message: "Are you sure you want to Delete this Proposal?",
+      message: "Are you sure you want to Reject this Research Topic?",
+      swapButtonOrder: true,
       buttons: {
          confirm: {
             label: 'Yes',
@@ -469,90 +462,14 @@ function del_proposal(pid) {
       },
       callback: function (result) {
          if (result == 1) {
-            var params = "proposal_id=" + pid + "&action=5";
-            dbaction('actions/proposal_action.php', params, '#pro_feedback');
+            var params = "topic_id=" + tid + "&action=2";
+            dbaction('actions/topic_actions.php', params, '#topic_feedback');
          }
 
       }
    });
 
 }
-
-function del_course(cid) {
-
-   bootbox.confirm({
-      message: "Are you sure you want to Delete this Course?",
-      buttons: {
-         confirm: {
-            label: 'Yes',
-            className: 'btn-success btn-sm'
-         },
-         cancel: {
-            label: 'No',
-            className: 'btn-danger btn-sm'
-         }
-      },
-      callback: function (result) {
-         if (result == 1) {
-            var params = "course_id=" + cid + "&action=0";
-            dbaction('actions/course_actions.php', params, '#co_feedback');
-         }
-
-      }
-   });
-
-}
-
-function del_dept(did) {
-
-   bootbox.confirm({
-      message: "Are you sure you want to Delete this Department?",
-      buttons: {
-         confirm: {
-            label: 'Yes',
-            className: 'btn-success btn-sm'
-         },
-         cancel: {
-            label: 'No',
-            className: 'btn-danger btn-sm'
-         }
-      },
-      callback: function (result) {
-         if (result == 1) {
-            var params = "dept_id=" + did + "&action=0";
-            dbaction('actions/department_actions.php', params, '#dept_feedback');
-         }
-
-      }
-   });
-
-}
-
-function del_fal(fid) {
-
-   bootbox.confirm({
-      message: "Are you sure you want to Delete this Faculty/School?",
-      buttons: {
-         confirm: {
-            label: 'Yes',
-            className: 'btn-success btn-sm'
-         },
-         cancel: {
-            label: 'No',
-            className: 'btn-danger btn-sm'
-         }
-      },
-      callback: function (result) {
-         if (result == 1) {
-            var params = "fac_id=" + fid + "&action=0";
-            dbaction('actions/school_actions.php', params, '#fa_feedback');
-         }
-
-      }
-   });
-
-}
-
 
 
 function save_defense() {
@@ -582,60 +499,10 @@ function update_bio() {
 
 }
 
-function approve_proposal(pid) {
+function approve_topic(tid) {
 
    bootbox.confirm({
-      message: "Are you sure you want to Approve this Proposal?",
-      buttons: {
-         confirm: {
-            label: 'Yes',
-            className: 'btn-success btn-sm'
-         },
-         cancel: {
-            label: 'No',
-            className: 'btn-danger btn-sm'
-         }
-      },
-      callback: function (result) {
-         if (result == 1) {
-            var params = "proposal_id=" + pid + "&action=2";
-            dbaction('actions/proposal_action.php', params, '#prop_feedback');
-         }
-
-      }
-   });
-
-}
-
-function reject_proposal(pid) {
-
-   bootbox.confirm({
-      message: "Are you sure you want to Reject this Proposal?",
-      buttons: {
-         confirm: {
-            label: 'Yes',
-            className: 'btn-success btn-sm'
-         },
-         cancel: {
-            label: 'No',
-            className: 'btn-danger btn-sm'
-         }
-      },
-      callback: function (result) {
-         if (result == 1) {
-            var params = "proposal_id=" + pid + "&action=3";
-            dbaction('actions/proposal_action.php', params, '#prop_feedback');
-         }
-
-      }
-   });
-
-}
-
-function reject_defense(did) {
-
-   bootbox.confirm({
-      message: "Are you sure you want to Reject this Defense?",
+      message: "Are you sure you want to Approve this Research Topic?",
       swapButtonOrder: true,
       buttons: {
          confirm: {
@@ -649,62 +516,13 @@ function reject_defense(did) {
       },
       callback: function (result) {
          if (result == 1) {
-            var params = "defense_id=" + did + "&action=3";
-            dbaction('actions/defense_action.php', params, '#defenseAction_feedback');
+            var params = "topic_id=" + tid + "&action=1";
+            dbaction('actions/topic_action.php', params, '#topic_feedback');
          }
 
       }
    });
-}
 
-function approve_defense(did) {
-
-   bootbox.confirm({
-      message: "Are you sure you want to Approve this Defense?",
-      swapButtonOrder: true,
-      buttons: {
-         confirm: {
-            label: 'Yes',
-            className: 'btn-success btn-sm'
-         },
-         cancel: {
-            label: 'No',
-            className: 'btn-danger btn-sm'
-         }
-      },
-      callback: function (result) {
-         if (result == 1) {
-            var params = "defense_id=" + did + "&action=2";
-            dbaction('actions/defense_action.php', params, '#defenseAction_feedback');
-         }
-
-      }
-   });
-}
-
-function close_defense(did) {
-
-   bootbox.confirm({
-      message: "Are you sure you want to Close this Defense?",
-      swapButtonOrder: true,
-      buttons: {
-         confirm: {
-            label: 'Yes',
-            className: 'btn-success btn-sm'
-         },
-         cancel: {
-            label: 'No',
-            className: 'btn-danger btn-sm'
-         }
-      },
-      callback: function (result) {
-         if (result == 1) {
-            var params = "defense_id=" + did + "&action=4";
-            dbaction('actions/defense_action.php', params, '#defenseAction_feedback');
-         }
-
-      }
-   });
 }
 
 function course_prod() {

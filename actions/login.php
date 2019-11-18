@@ -8,24 +8,26 @@ $method = $_SERVER['REQUEST_METHOD'];
 if ($method == 'POST') {
   $email = mysqli_real_escape_string($con, $_POST['u_name']);
   $password = mysqli_real_escape_string($con, $_POST['u_pass']);
-  //////////////________________validation
+
+  //////////////________________check if username is supplied
   $emailOk = input_available($email);
   if ($emailOk == 0) {
     echo error('<i class="fa fa-exclamation-triangle"></i> Email/Username invalid');
   }
-
+  ////////////_____________________Check if Password is supplied
   $passwordOk = input_available($password);
   if ($passwordOk == 0) {
     echo error('<i class="fa fa-exclamation-triangle"></i> Password is required');
   }
 
+  ///////////___________validation check
   $validation = $emailOk + $passwordOk;
 
   if ($validation == 2) {
     $username = $email;
 
-    //// Check account
-    ///~~~~~~~~Fetch user id
+    /////////_______________ Check account
+    /////////~~~~~~~~Fetch user id
     $userid = fetchrow('d_users_primary', "status='1' AND primary_email='$username'
         || user_name='$username'AND status='1' ", 'uid');
 
@@ -43,11 +45,11 @@ if ($method == 'POST') {
 
       if ($encpass == $databasepass) {
         $encuserid = encurl($userid);
+        ////////////////_________Registering session
         $_SESSION['dms_'] = $encuserid;
         if (isset($_SESSION['dms_'])) {
           $refresh = 1;
-
-          ////////////________
+          ////////////________Login success proceed to homepage
           echo sucmes('Successfully loggedin. Please wait...');
         } else {
           echo errormes('<i class=\"fa fa-exclamation-triangle\"></i> Incorrect username and password combination');

@@ -7,7 +7,8 @@ include_once 'session.php';
 
 <head>
   <meta charset="UTF-8" />
-  <title>DMS Bio-Data || Details</title>
+  <title>Dissertation Management System || Bio-Data Details</title>
+  <link rel="shortcut icon" href="images/dms_logo.jpg" alt="Dissertation Management System" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script>
     $(document).ready(function(e) {
@@ -161,7 +162,7 @@ include_once 'session.php';
                     </td>
                   </tr>
                   <tr>
-                    <td>Group</td>
+                    <td>User Role</td>
                     <td>
                       <input type="text" disabled class="form-control" value="<?php echo $group_name; ?>" />
                     </td>

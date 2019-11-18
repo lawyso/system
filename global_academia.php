@@ -3,22 +3,14 @@ include_once 'session.php';
 require_once 'includes/conn.inc';
 require_once 'includes/func.php';
 $ugroup = usergroup($_SESSION['dms_']);
-if ($ugroup != 1) {
-  die('<span><div class="alert alert-danger">
-                    <h4><i class="icon fa fa-ban"></i> Access Denied!</h4>
-                    You don\'t have permission to view this page.
-                  </div></span>');
-  exit('');
-}
 
 ?>
-
 <!DOCTYPE html>
 <html>
 
 <head>
   <meta charset="UTF-8" />
-  <title>Dissertation Management System || System Users</title>
+  <title>Dissertation Management System || Topics in Global Academia</title>
   <!-- favicon -->
   <link rel="shortcut icon" href="images/dms_logo.jpg" alt="Dissertation Management System" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -43,21 +35,17 @@ if ($ugroup != 1) {
             if (!isset($_GET['user'])) {
               ?>
               <div class="card-header">
-                <p>User List&emsp;<button class="btn btn-sm" data-toggle="modal" data-target="#centralModalLGInfoDemo" style="background-color: rgb( 17, 122, 101);color: #ffff">Add New User</button>
+                <p>Research Topics In The Global Academia World</p>
               </div>
               <div class="card-body box-body">
                 <div class="col-lg-12">
-                  <table id="user_table" class="table table-bordered table-striped display table-responsive-lg">
+                  <table id="research_table" class="table table-bordered table-striped display table-responsive-lg">
                     <thead>
                       <tr class="bg-white">
-                        <th>First Name </th>
-                        <th>Last Name</th>
-                        <th>User Level</th>
-                        <th>Id Number</th>
-                        <th>Email Address</th>
-                        <th>Username</th>
-                        <th>Action</th>
-
+                        <th>Research Topic </th>
+                        <th>Researcher</th>
+                        <th>Institution</th>
+                        <th>Supervisor</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -70,22 +58,13 @@ if ($ugroup != 1) {
                 </div>
                 <script>
                   $(document).ready(function() {
-                    var dataTable = $('#user_table').DataTable({
+                    var dataTable = $('#research_table').DataTable({
                       "processing": true,
                       "serverSide": true,
                       "ajax": {
-                        url: "resources/user_list.php",
+                        url: "resources/research_list.php",
                         type: "post"
                       },
-                      "columnDefs": [{
-
-                        "render": function(data, type, row) {
-                          let rowID = row[6];
-                          return `<a href="user_details?user=${ rowID }"><i class="fa fa-eye"></i></a>`
-                        },
-                        "targets": 6
-
-                      }],
                       "order": [
                         [0, 'asc']
                       ],
@@ -114,7 +93,6 @@ if ($ugroup != 1) {
               $primary_email = $sd['primary_email'];
               $primary_phone = $sd['primary_phone'];
               $user_name = $sd['user_name'];
-              $reg_no = $sd['Reg_No'];
               $user_group = $sd['user_group'];
               $title = $sd['title'];
               $group_name = fetchrow('s_user_groups', "uid='$user_group'", "group_name");
@@ -161,10 +139,6 @@ if ($ugroup != 1) {
                     <form role="form" method="POST" onsubmit="return false;">
                       <div class="box-body">
                         <div class="form-group">
-                          <div class="form-group">
-                            <label for="regNo/staffNo">Reg Number/Staff Number</label>
-                            <input type="text" class="form-control" value="<?php echo $reg_no; ?>" id="reg_no" auto-complete="off" />
-                          </div>
                           <div class="form-group">
                             <label for="first_name">First Name</label><input type="hidden" value="<?php echo $sid; ?>" id="sid" />
                             <input type="text" class="form-control" value="<?php echo $first_name; ?>" id="first_name" />

@@ -20,55 +20,44 @@ $columns = array(
   // datatable column index  => database column name
 
 
-  0 => 'first_name',
-  1 => 'last_name',
-  2 => 'user_group',
-  3 => 'national_id',
-  4 => 'primary_email',
-  5 => 'user_name',
-  6 => 'uid'
+  0 => 'topic_name',
+  1 => 'created_by',
+  2 => 'u_code',
+  3 => 'created_by',
+
 );
 
-$sql = "SELECT uid,first_name,last_name,user_group,national_id,primary_email,user_name,user_group";
-$sql .= " FROM d_users_primary WHERE status =1 AND u_code='$c_code'";
+$sql = "SELECT created_by,topic_name,u_code";
+$sql .= " FROM d_topics WHERE status ='4'";
 
-$query = mysqli_query($conn, $sql) or die("User_list.php: get Users");
+$query = mysqli_query($conn, $sql) or die("Global_Research_list.php: get Research Topics");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
 
 if (!empty($requestData['search']['value'])) {
   // if there is a search parameter, $requestData['search']['value'] contains search parameter
-  $sql .= " AND ( first_name LIKE '%" . $requestData['search']['value'] . "%' ";
+  $sql .= " AND ( topic_name LIKE '%" . $requestData['search']['value'] . "%' ";
 
-  $sql .= " OR last_name LIKE '%" . $requestData['search']['value'] . "%' ";
+  $sql .= " OR u_code LIKE '" . $requestData['search']['value'] . "%' ";
 
-  $sql .= " OR national_id LIKE '%" . $requestData['search']['value'] . "%' ";
-
-  $sql .= " OR primary_email LIKE '%" . $requestData['search']['value'] . "%' ";
-
-  $sql .= " OR user_name LIKE '" . $requestData['search']['value'] . "%' ";
-
-  $sql .= " OR user_group LIKE '" . $requestData['search']['value'] . "%' )";
+  $sql .= " OR created_by LIKE '" . $requestData['search']['value'] . "%' )";
 }
 
-$query = mysqli_query($conn, $sql) or die("user_list.php: get Users");
+$query = mysqli_query($conn, $sql) or die("Global_Research_list.php: get Research Topics");
 $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result.
 $sql .= " ORDER BY " . $columns[$requestData['order'][0]['column']] . "   " . $requestData['order'][0]['dir'] . "  LIMIT " . $requestData['start'] . " ," . $requestData['length'] . " ";
 /* $requestData['order'][0]['column'] contains colmun index, $requestData['order'][0]['dir'] contains order such as asc/desc  */
-$query = mysqli_query($conn, $sql) or die("user_list.php: get Users401");
+$query = mysqli_query($conn, $sql) or die("Global_Research_list.php: get Research Topics");
 
 $data = array();
 while ($row = mysqli_fetch_array($query)) {  // preparing an array
   $nestedData = array();
 
-  $nestedData[] = $row["first_name"];
-  $nestedData[] = $row["last_name"];
-  $nestedData[] = userlevel_name($row["user_group"]);
-  $nestedData[] = $row["national_id"];
-  $nestedData[] = $row["primary_email"];
-  $nestedData[] = $row["user_name"];
-  $nestedData[] = encurl($row["uid"]);
+  $nestedData[] = $row["topic_name"];
+  $nestedData[] = profileName($row["created_by"]);
+  $nestedData[] = university($row["u_code"]);
+  $nestedData[] =  profileName(supervisor($row["created_by"]));
   $data[] = $nestedData;
 }
 

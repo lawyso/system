@@ -1,36 +1,3 @@
-<?php
-include_once 'session.php';
-?>
-
-<!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="UTF-8" />
-  <title>Dissertation Management System || System Users</title>
-  <!-- favicon -->
-  <link rel="shortcut icon" href="images/dms_logo.jpg" alt="Dissertation Management System" />
-</head>
-
-<body class="grey lighten-3">
-  <?php
-  include_once 'header.php';
-  include_once 'includes/conn.inc';
-  include_once 'includes/func.php';
-
-  ?>
-  <!--Main layout-->
-  <main class="pt-5 mx-lg-5">
-    <div class="container-fluid mt-5">
-
-      <!--Grid row-->
-      <div class="row wow">
-
-        <!--Grid column-->
-        <div class="col-md-12 mb-4">
-          <div class="card">
-            <div class="card-header">
-
               <?php
               if (isset($_GET['user'])) {
                 $esid = $_GET['user'];
@@ -57,11 +24,6 @@ include_once 'session.php';
                 $status_name = admin_status($status);
               }
               ?>
-              <a href="#" target="_blank"><?php echo $group_name; ?>'s Profile</a>
-
-
-            </div>
-            <div class="card-body box-body">
               <div class="col-lg-12">
                 <table class="table table-user-information">
                   <tbody>
@@ -130,23 +92,4 @@ include_once 'session.php';
 
                   </tbody>
                 </table>
-                <?php
-                if ($ugroup == 1) {
-                  echo " <a href=\"settings.php?edit-user=$esid\" class=\"btn btn-md\" style=\"background-color: rgb( 17, 122, 101);color: #ffff\">Edit User</a>";
-                }
-
-                ?>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-  <!--Main layout-->
-  <script src="js/main.js" type="text/javascript"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.3.2/bootbox.min.js"></script>
-  <?php include_once 'footer.php'; ?>
-</body>
-
-</html>

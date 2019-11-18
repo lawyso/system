@@ -7,7 +7,8 @@ include_once 'session.php';
 
 <head>
   <meta charset="UTF-8" />
-  <title>DMS Home || Dashboard</title>
+  <title>Dissertation Management System || My Profile</title>
+  <link rel="shortcut icon" href="images/dms_logo.jpg" alt="Dissertation Management System" />
 </head>
 
 <body class="grey lighten-3">
@@ -82,31 +83,9 @@ include_once 'session.php';
                   <td><?php echo $user_name; ?></td>
                 </tr>
                 <tr>
-                  <td>Group</td>
+                  <td>User Group</td>
                   <td><?php echo $group_name; ?></td>
                 </tr>
-                <?php
-                if ($user_group == 2) {
-                  ?>
-                  <tr>
-                    <td>Course</td>
-                    <td><?php echo course_name($sid); ?></td>
-                  </tr>
-                <?php
-                }
-                if ($user_group != 1) {
-                  ?>
-                  <tr>
-                    <td>Department</td>
-                    <td><?php echo $department_name; ?></td>
-                  </tr>
-                  <tr>
-                    <td>School/Faculty</td>
-                    <td><?php echo $school_name; ?></td>
-                  </tr>
-                <?php
-                }
-                ?>
                 <tr>
                   <td colspan="2"><button class="btn disabled" onclick="update_profile()" style="background-color: rgb( 17, 122, 101);color: #ffff;display:none">Update Profile</button></td>
                 </tr>

@@ -7,7 +7,102 @@ include_once 'session.php';
 
 <head>
   <meta charset="UTF-8" />
-  <title>DMS Student || Details</title>
+  <title>Dissertation Management System || Student Details</title>
+  <link rel="shortcut icon" href="images/dms_logo.jpg" alt="Dissertation Management System" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  <script>
+    $(document).ready(function(e) {
+      // Submit form data via Ajax
+      $("#fupForm").on('submit', function(e) {
+        e.preventDefault();
+        $.ajax({
+          type: 'POST',
+          url: 'actions/document_upload.php',
+          data: new FormData(this),
+          dataType: 'json',
+          contentType: false,
+          cache: false,
+          processData: false,
+          beforeSend: function() {
+            $('.submitBtn').attr("disabled", "disabled");
+            $('#fupForm').css("opacity", ".5");
+          },
+          success: function(response) { //console.log(response);
+            $('.statusMsg').html('');
+            if (response.status == 1) {
+              $('#fupForm')[0].reset();
+              $('.statusMsg').html('<p class="alert alert-success">' + response.message + '</p>');
+              setTimeout(function() {
+                reload();
+              }, 2000);
+
+            } else {
+              $('.statusMsg').html('<p class="alert alert-danger">' + response.message + '</p>');
+            }
+            $('#fupForm').css("opacity", "");
+            $(".submitBtn").removeAttr("disabled");
+          }
+        });
+      });
+      // File type validation
+      $("#document_").change(function() {
+        var file = this.files[0];
+        var fileType = file.type;
+        var match = ['application/pdf', 'application/msword', 'application/vnd.ms-office'];
+        if (!((fileType == match[0]) || (fileType == match[1]) || (fileType == match[2]))) {
+          bootbox.alert({
+            size: "medium",
+            title: "<i style='color:red'>Upload Error</i>",
+            message: "Sorry, only PDF and DOC files are allowed to be uploaded.",
+            callback: function() {
+              /* your callback code */
+            }
+          });
+          $("#document_").val('');
+          return false;
+
+        }
+      });
+    });
+  </script>
+  <script>
+    $(document).ready(function(e) {
+      // Submit form data via Ajax
+      $("#comForm").on('submit', function(e) {
+        e.preventDefault();
+        $.ajax({
+          type: 'POST',
+          url: 'actions/comments.php',
+          data: new FormData(this),
+          dataType: 'json',
+          contentType: false,
+          cache: false,
+          processData: false,
+          beforeSend: function() {
+            $('.submit-Btn').attr("disabled", "disabled");
+            $('#comForm').css("opacity", ".5");
+          },
+          success: function(response) { //console.log(response);
+            $('.comment-Msg').html('');
+            if (response.status == 1) {
+              $('#comForm')[0].reset();
+              $('.comment-Msg').html('<p class="alert alert-success">' + response.message + '</p>');
+              setTimeout(function() {
+                reload();
+              }, 2000);
+
+            } else {
+              $('.comment-Msg').html('<p class="alert alert-danger">' + response.message + '</p>');
+            }
+            $('#comForm').css("opacity", "");
+            $(".submit-Btn").removeAttr("disabled");
+          }
+        });
+      });
+
+    });
+  </script>
 </head>
 
 <body class="grey lighten-3">
@@ -18,198 +113,198 @@ include_once 'session.php';
 
   ?>
   <!--Main layout-->
-  <main class="pt-5 mx-lg-5">
+  <main class="pt-5 mx-lg-2">
     <div class="container-fluid mt-5">
 
-      <!-- Heading -->
-      <div class="card mb-4 wow fadeIn">
-
-        <!--Card content-->
-        <div class="card-body d-sm-flex justify-content-between">
-
-          <h4 class="mb-2 mb-sm-0 pt-1">
-            <a href="#" target="_blank">Student</a>
-            <span>/</span>
-            <span>Details</span>
-          </h4>
-
-
-        </div>
-
-      </div>
-      <!-- Heading -->
-
       <!--Grid row-->
-      <div class="row wow fadeIn">
+      <div class="row wow">
 
         <!--Grid column-->
         <div class="col-md-12 mb-4">
-
-          <!--Card-->
           <div class="card">
 
-            <!--Card content-->
-            <div class="card-body">
-              <?php
-              if (isset($_GET['student'])) {
-                $esid = $_GET['student'];
-                $sid = decurl($esid);
-                $sd = fetchonerow('d_users_primary', "uid='$sid'");
-                $first_name = $sd['first_name'];
-                $last_name = $sd['last_name'];
-                $primary_email = $sd['primary_email'];
-                $primary_phone = $sd['primary_phone'];
-                $national_id = $sd['national_id'];
-                $user_name = $sd['user_name'];
+            <?php
+            if (isset($_GET['student'])) {
+              $esid = $_GET['student'];
+              $sid = decurl($esid);
+              $sd = fetchonerow('d_users_primary', "uid='$sid'");
+              $first_name = $sd['first_name'];
+              $last_name = $sd['last_name'];
+              $primary_email = $sd['primary_email'];
+              $primary_phone = $sd['primary_phone'];
+              $topic_id = $sd['topic_id'];
+              $topic_name = fetchrow('d_topics', "topic_id='$topic_id'", "topic_name");
+              $title = $sd['title'];
+              $title_name = fetchrow('d_title', "uid='$title'", "name");
+              $user_group = $sd['user_group'];
+              $group_name = fetchrow('d_user_groups', "uid='$user_group'", "group_name");
+            }
+            ?>
+            <div class="card-header">
+              <a href="#" target="_blank"><?php echo $first_name . ' ' . $last_name; ?>'s Profile </a>(<i><?php echo $group_name; ?></i>)
+            </div>
+            <div class="card-body box-body">
+              <div class="row">
+                <div class="col-lg-5">
+                  <table class="table table-user-information table-responsive table-striped">
+                    <tbody>
+                      <tr>
+                        <td><b>Full Name:</b></td>
+                        <td><?php echo $title_name . ' ' . $first_name . ' ' . $last_name;  ?>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><b>Email:</b></td>
+                        <td><?php echo $primary_email; ?></td>
+                      </tr>
+                      <tr>
+                        <td><b>Phone:</b></td>
+                        <td><?php echo $primary_phone; ?></td>
+                      </tr>
+                      <tr>
+                        <td><b>Research Title:</b></td>
+                        <td><?php echo $topic_name; ?>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <button class="btn btn-sm bg-navy" aria-hidden="true" data-toggle="modal" data-target="#centralModalLGInfoDemo" style="color: #ffff">Upload Document</button>
+                  <button class="btn btn-sm bg-navy" aria-hidden="true" data-toggle="modal" data-target="#commentFormModal" style="color: #ffff">Add Comment</button>
 
-                $department = $sd['department'];
-                $department_name = fetchrow('d_departments', "uid='$department'", "department_name");
-                $school = $sd['faculty'];
-                $school_name = fetchrow('d_schools', "uid='$school'", "school_name");
-                $title = $sd['title'];
-                $title_name = fetchrow('d_title', "uid='$title'", "name");
-                $added_date = $sd['added_date'];
-                $user_group = $sd['user_group'];
-                $group_name = fetchrow('d_user_groups', "uid='$user_group'", "group_name");
-                $gender = $sd['gender'];
-                $gender_name = gender($gender);
-
-                $course = fetchrow('d_users_courses', "user='$sid' AND status=1", "course");
-                $admission_date = fetchrow('d_users_courses', "user='$sid' AND status=1", "admission_date");
-                $course_duration = fetchrow('d_users_courses', "user='$sid' AND status=1", "course_duration");
-                $course_name = fetchrow('d_courses', "uid='$course'", "course_name");
-
-                $proposal_upload = fetchrow('d_proposals', "user='$sid' AND status !=3", "proposal_upload");
-                $proposal_status = fetchrow('d_proposals', "user='$sid' AND status !=3", "status");
-                $approved_proposal = fetchrow('d_proposals', "user='$sid' AND status !=3", "title");
-                $comments = fetchrow('d_proposals', "user='$sid' AND status !=3", "comments");
-                $prop_id = fetchrow('d_proposals', "user='$sid' AND status !=3", "uid");
-
-                $proposal_download = "<a target=\"_BLANK\" href=\"props/$proposal_upload\"> <button class=\"btn btn-sm btn-default\">View and Download</button></a>";
-
-                $approved_area_study = fetchrow('d_proposals', "user='$sid' AND status !=3", "area_study");
-
-                if ($proposal_upload == null) {
-                  $status_name = "<button class=\"btn btn-sm btn-danger\">Inactive</button> No proposal submitted yet.";
-                } elseif ($proposal_upload != null && $proposal_status == 1) {
-                  $status_name = "<button class=\"btn btn-sm btn-warning\">Pending Approval</button> Proposal Pending Approval";
-                } elseif ($proposal_upload != null && $proposal_status == 2) {
-                  $status_name = "<button class=\"btn btn-sm btn-success\">Approved</button> Proposal Approved";
-                } elseif ($proposal_upload != null && $proposal_status == 3) {
-                  $status_name = "<button class=\"btn btn-sm btn-danger\">Rejected</button>Proposal Rejected";
-                } elseif ($proposal_upload != null && $proposal_status == 4) {
-                  $status_name = "<button class=\"btn btn-sm btn-info\">Closed</button> Proposal Closed for defense";
-                }
-              }
-              ?>
-              <table class="table table-user-information table-responsive">
-                <tbody>
-                  <tr>
-                    <td><b>Full Name:</b></td>
-                    <td><?php echo $title_name . ' ' . $first_name . ' ' . $last_name;  ?>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><b>Gender:</b></td>
-                    <td><?php echo $gender_name; ?></td>
-                  </tr>
-                  <tr>
-                    <td><b>Email:</b></td>
-                    <td><?php echo $primary_email; ?></td>
-                  </tr>
-                  <tr>
-                    <td><b>Phone:</b></td>
-                    <td><?php echo $primary_phone; ?></td>
-                  </tr>
-                  <tr>
-                    <td><b>Department:</b></td>
-                    <td><?php echo $department_name; ?></td>
-                  </tr>
-                  <tr>
-                    <td><b>School/Faculty:</b></td>
-                    <td><?php echo $school_name; ?></td>
-                  </tr>
-                  <tr>
-                    <td><b>Admission Date:</b></td>
-                    <td><?php echo $admission_date; ?></td>
-                  </tr>
-                  <tr>
-                    <td><b>Course:</b></td>
-                    <td><?php echo $course_name; ?>
-                    </td>
-
-                  </tr>
-                  <tr>
-                    <td><b>Course Duration:</b></td>
-                    <td><?php echo $course_duration; ?> year<small>(s)</small>
-                    </td>
-
-                  </tr>
-                  <tr>
-                    <td><b>Proposal Title:</b></td>
-                    <td><?php echo $approved_proposal; ?>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><b>Area of Study:</b></td>
-                    <td><?php echo $approved_area_study; ?>
-                    </td>
-
-                  </tr>
-                  <tr>
-                    <td><b>Proposal Document:</b></td>
-                    <td><?php echo $proposal_download; ?>
-                    </td>
-
-                  </tr>
-                  <tr>
-                    <td><b>Status:</b></td>
-                    <td><?php echo "$status_name"; ?></td>
-                  </tr>
-                  <tr>
-                    <td><b>Comments:</b></td>
-                    <td><?php echo "$comments"; ?></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td id="prop_feedback"></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td><?php
-
-                        if ($proposal_status == 1) {
-                          ?>
-                        <button onclick="approve_proposal('<?php echo $prop_id;  ?>');" class="btn btn-sm btn-success">APPROVE PROPOSAL</button>
-                        &nbsp;<button disabled onclick="('<?php echo $prop_id;  ?>');" class="btn btn-sm btn-warning">UPLOAD NEW DOCUMENT</button>
-                        </a>&nbsp;<button onclick="reject_proposal('<?php echo $prop_id;  ?>');" class="btn btn-sm btn-danger">REJECT PROPOSAL</button>
-                        </a>
+                </div>
+                <div class="col-lg-7">
+                  <div class="card-header bg-teal">
+                    My Dissertation (<i>Student/Supervisor</i>) Files
+                  </div>
+                  <table class="table table-bordered table-striped display table-responsive-sm">
+                    <thead>
+                      <tr><b>
+                          <th>File Name</th>
+                          <th>Created By</th>
+                          <th>Date Submitted</th>
+                        </b>
+                      </tr>
+                    </thead>
+                    <tbody>
                       <?php
+                      $files = fetchtable('d_uploads', "created_by='$myid' AND directed_to='$sid' || created_by='$sid'", "upload_id", "asc", "1000");
+                      $total = mysqli_num_rows($files);
+                      while ($fd = mysqli_fetch_array($files)) {
+                        $filename = $fd['filename'];
+                        $date_submitted = $fd['created_date'];
+                        $created_by = profileName($fd['created_by']);
+                        $path = $fd['upload_path'];
+                        echo "<tr style='color:blue;'>
+                            <td><a href='$path' target='_blank' style='color:blue;'>$filename</a></td>
+                            <td>$created_by</td>
+                            <td>$date_submitted</td>
+                            </tr>";
+                      }
+                      if ($total == 0) {
+                        echo "<tr><td colspan=\"20\" color=\"blue-purple\"><em><b>No file found at the moment<b></em></td>
+                                  </tr> ";
                       }
                       ?>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="card-header bg-orange">
+                    My Dissertation Comments/Remarks
+                  </div>
+                  <table class="table table-bordered table-striped display table-responsive-sm">
+                    <thead>
+                      <tr><b>
+                          <th>Comment Body</th>
+                          <th>Submitted By</th>
+                          <th>Submitted Date</th>
+                        </b>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                      $remarks = fetchtable('d_comments', "created_by='$myid' AND directed_to='$sid' || created_by='$sid'", "comment_id", "desc", "1000");
+                      $count = mysqli_num_rows($remarks);
+                      while ($rm = mysqli_fetch_array($remarks)) {
+                        $comment = $rm['comment'];
+                        $date_submitted = $rm['created_date'];
+                        $created_by = profileName($rm['created_by']);
+                        echo "<tr style='color:navy;'>
+                            <td>$comment</td>
+                            <td>$created_by</td>
+                            <td>$date_submitted</td>
+                            </tr>";
+                      }
+                      if ($count == 0) {
+                        echo "<tr><td colspan=\"20\" color=\"blue-purple\"><em><b>No pending Comments/Remarks at the moment<b></em></td>
+                                  </tr> ";
+                      }
+                      ?>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
-
           </div>
-          <!--/.Card-->
-
         </div>
-        <!--Grid column-->
-
-
-
       </div>
-      <!--Grid row-->
     </div>
+    <?php
+    include_once 'resources/upload_modal.php';
+    ?>
   </main>
   <!--Main layout-->
   <script src="js/main.js" type="text/javascript"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.3.2/bootbox.min.js"></script>
   <?php include_once 'footer.php'; ?>
 </body>
+<!-- Central Modal Large Info-->
+<div class="modal fade" id="commentFormModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md modal-notify" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header" style="background-color: rgb( 17, 122, 101);color: #ffff">
+        <p class="heading lead">Dissertation Remarks/Comments Form</p>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+      <!--Body-->
+      <div class="modal-body">
+        <!-- form start -->
+        <form method="POST" enctype="multipart/form-data" id="comForm">
+          <div class="box-body">
+            <div class="form-group">
+              <div class="form-group">
+                <input type="hidden" value="<?php echo $myid; ?>" id="sid" name="sid" />
+                <input type="hidden" value="<?php echo  $sid; ?>" id="directed_to" name="directed_to" />
+              </div>
+              <div class="comment-Msg"></div>
+              <div class="form-group">
+                <label for="Remarks">Comment/Remarks:</label>
+                <textarea name="comment_" class="form-control" id="comment_" rows="4" required placeholder="Your Remarks Here..."> </textarea>
+              </div>
+              <div id="comment_feedback"></div>
+        </form>
+      </div>
+
+      <!--Footer-->
+      <div class="modal-footer">
+        <input type="submit" name="submit" class="btn btn-sm btn-dms submit-Btn" value="Submit Comment" />
+        <i class="far fa-gem ml-1"></i>
+
+        <a role="button" class="btn btn-sm waves-effect" data-dismiss="modal" style="color: rgb( 17, 122, 101)">No,
+          thanks</a>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!-- Central Modal Large Info-->
+
 
 </html>

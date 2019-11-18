@@ -9,6 +9,7 @@ $yr = date('Y');
 $mnt = date('m');
 $day = date('m');
 $thisurl = $_SERVER['REQUEST_URI'];
+$c_code = "DMS/001";
 
 function passencrypt($pass)
 {
@@ -67,8 +68,31 @@ function profileName($sid)
   $d = fetchonerow('d_users_primary', "uid='$sid'");
   $fname = $d['first_name'];
   $lname = $d['last_name'];
+  $title = $d['title'];
+  $thead = fetchrow('d_title', "uid='$title'", "name");
 
-  return $fname . ' ' . $lname;
+  return $thead . ' ' . $fname . ' ' . $lname;
+}
+
+function supervisor($sid)
+{
+  $supId = fetchrow('d_users_primary', "uid='$sid'", "supervisor_id");
+
+  return $supId;
+}
+
+function topicName($sid)
+{
+  $tName = fetchrow('d_topics', "topic_id='$sid'", "topic_name");
+
+  return $tName;
+}
+
+function university($sid)
+{
+  $uniName = fetchrow('d_uni_codes', "u_code='$sid'", "name");
+
+  return $uniName;
 }
 
 function user_mail($sid)
@@ -243,6 +267,18 @@ function deletedata($tb, $did)
     return 1;
   }
 }
+
+function deletetopic($tb, $did)
+{
+  global $con;
+  $insertd = "DELETE FROM $tb WHERE topic_id=$did"; //var_dump($insertd);
+  if (!mysqli_query($con, $insertd)) {
+    return 0;
+  } else {
+    return 1;
+  }
+}
+
 function delete2($tb, $where)
 {
   global $con;
@@ -289,7 +325,8 @@ function addtodb($tb, $fds, $vals)
   $values = implode("','", $vals);
   $values = "'$values'";
 
-  $insertq = "INSERT into $tb ($fields) VALUES ($values)";  //echo $insertq;
+  $insertq = "INSERT into $tb ($fields) VALUES ($values)";
+  //echo $insertq;
 
   if (!mysqli_query($con, $insertq)) {
     return mysqli_error($con); // var_dump($e);
@@ -494,7 +531,6 @@ function title($id)
 
 function sendmail($from, $to, $subject, $body)
 {
-
   // To send HTML mail, the Content-type header must be set
   $headers  = 'MIME-Version: 1.0' . "\r\n";
   $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";

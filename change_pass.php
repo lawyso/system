@@ -6,8 +6,8 @@ include_once 'session.php';
 
 <head>
   <meta charset="UTF-8" />
-  <title>DMS Home || Dashboard</title>
-
+  <title>Dissertation Management System || Change Password</title>
+  <link rel="shortcut icon" href="images/dms_logo.jpg" alt="Dissertation Management System" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 

@@ -5,7 +5,6 @@ $user = profile($_SESSION['dms_']);
 $ugroup = usergroup($_SESSION['dms_']);
 $id = session_details($_SESSION['dms_']);
 $user = profile($_SESSION['dms_']);
-$user = profile($_SESSION['dms_']);
 $user_email = user_mail($_SESSION['dms_']);
 $groupName = usergroup_name($_SESSION['dms_']);
 
@@ -67,8 +66,8 @@ $groupName = usergroup_name($_SESSION['dms_']);
               $home_current = 'active';
             } elseif (strpos($page, 'register') !== false) {
               $home_reg = 'active';
-            } elseif (strpos($page, 'proposals') !== false) {
-              $home_pro = 'active';
+            } elseif (strpos($page, 'registeredStudents') !== false) {
+              $home_reg = 'active';
             } elseif (strpos($page, 'defense') !== false) {
               $home_def = 'active';
             } elseif (strpos($page, 'supervisors') !== false) {
@@ -81,38 +80,20 @@ $groupName = usergroup_name($_SESSION['dms_']);
               $home_bio = 'active';
             } elseif (strpos($page, 'assigned_students') !== false) {
               $home_asgn = 'active';
-            } elseif (strpos($page, 'supervisors') !== false) {
-              $home_sup = 'active';
+            } elseif (strpos($page, 'pendingApprovals') !== false) {
+              $home_app = 'active';
             } elseif (strpos($page, 'global_academia') !== false) {
               $home_gac = 'active';
             } elseif (strpos($page, 'home') !== false) {
               $home_hom = 'active';
-            } elseif (strpos($page, 'dormant_students') !== false) {
-              $home_ds = 'active';
+            } elseif (strpos($page, 'rejectedTopics') !== false) {
+              $home_top = 'active';
             } elseif (strpos($page, 'settings') !== false) {
               $home_users = 'active';
             } elseif (strpos($page, 'profile') !== false) {
               $home_profile = 'active';
-            } elseif (strpos($page, 'mail_box') !== false) {
-              $home_mail = 'active';
             } elseif (strpos($page, 'change_pass') !== false) {
               $home_pass = 'active';
-            } elseif (strpos($page, 'courses') !== false) {
-              $home_course = 'active';
-            } elseif (strpos($page, 'departments') !== false) {
-              $home_dept = 'active';
-            } elseif (strpos($page, 'faculties') !== false) {
-              $home_sch = 'active';
-            } elseif (strpos($page, 'department_students') !== false) {
-              $home_dp = 'active';
-            } elseif (strpos($page, 'department_pendingDefenses') !== false) {
-              $home_pd = 'active';
-            } elseif (strpos($page, 'department_supervisors') !== false) {
-              $home_p = 'active';
-            } elseif (strpos($page, 'department_scheduledDefenses') !== false) {
-              $home_dpsd = 'active';
-            } elseif (strpos($page, 'department_courses') !== false) {
-              $home_deptc = 'active';
             } else { }
 
             if ($ugroup == 2) {
@@ -124,28 +105,7 @@ $groupName = usergroup_name($_SESSION['dms_']);
                 <a class="nav-link waves-effect" href="update_bio">Bio-Data</a>
               </li>
               <li class="nav-item <?php echo $home_reg; ?>">
-                <a class="nav-link waves-effect" href="register">Course-Registration</a>
-              </li>
-              <?php
-                $registrationOk = checkrowexists('d_users_courses', "user='$myid' AND status='1'");
-                if ($registrationOk == 1) {
-                  ?>
-                <li class="nav-item <?php echo $home_pro; ?>">
-                  <a class="nav-link waves-effect" href="proposals">Proposals</a>
-                </li>
-              <?php
-                }
-                $proposalOk = checkrowexists('d_proposals', "user='$myid' AND status='2'");
-                if ($proposalOk == 1) {
-                  ?>
-                <li class="nav-item <?php echo $home_def; ?>">
-                  <a class="nav-link waves-effect" href="defense">Defense</a>
-                </li>
-              <?php
-                }
-                ?>
-              <li class="nav-item <?php echo $home_sup; ?>">
-                <a class="nav-link waves-effect" href="supervisors">Supervisors</a>
+                <a class="nav-link waves-effect" href="register">Topic-Registration</a>
               </li>
               <li class="nav-item <?php echo $home_gac; ?>">
                 <a class="nav-link waves-effect" href="global_academia">Global Academia</a>
@@ -160,13 +120,7 @@ $groupName = usergroup_name($_SESSION['dms_']);
                 <a class="nav-link waves-effect" href="update_bio">Bio-Data</a>
               </li>
               <li class="nav-item <?php echo $home_asgn; ?>">
-                <a class="nav-link waves-effect" href="assigned_students">Students/Proposals</a>
-              </li>
-              <li class="nav-item <?php echo $home_ds; ?>">
-                <a class="nav-link waves-effect" href="dormant_students">Dormant Students</a>
-              </li>
-              <li class="nav-item <?php echo $home_reg; ?>">
-                <a class="nav-link waves-effect" href="update_bio">Tasks</a>
+                <a class="nav-link waves-effect" href="assigned_students">Students Report</a>
               </li>
             <?php
             } elseif ($ugroup == 4) {
@@ -177,38 +131,17 @@ $groupName = usergroup_name($_SESSION['dms_']);
               <li class="nav-item <?php echo $home_bio; ?>">
                 <a class="nav-link waves-effect" href="update_bio">Bio-Data</a>
               </li>
-              <li class="nav-item <?php echo $home_dp; ?>">
-                <a class="nav-link waves-effect" href="details?department_students">Students</a>
+              <li class="nav-item <?php echo $home_reg; ?>">
+                <a class="nav-link waves-effect" href="details?registeredStudents">Registered Students</a>
               </li>
-              <li class="nav-item <?php echo $home_sup; ?>">
-                <a class="nav-link waves-effect" href="details?department_supervisors">Supervisors</a>
+              <li class="nav-item <?php echo $home_app; ?>">
+                <a class="nav-link waves-effect" href="details?pendingApprovals">Pending Approvals</a>
               </li>
-              <li class="nav-item <?php echo $home_course; ?>">
-                <a class="nav-link waves-effect" href="details?department_courses">Courses</a>
+              <li class="nav-item <?php echo $home_top; ?>">
+                <a class="nav-link waves-effect" href="details?rejectedTopics">Rejected Topics</a>
               </li>
               <li class="nav-item <?php echo $home_pd; ?>">
-                <a class="nav-link waves-effect" href="details?department_pendingDefenses">Pending Approvals</a>
-              </li>
-              <li class="nav-item <?php echo $home_def; ?>">
-                <a class="nav-link waves-effect" href="scheduled_defenses">Defense Schedule</a>
-              </li>
-            <?php
-            } elseif ($ugroup == 5) {
-              ?>
-              <li class="nav-item <?php echo $home_current; ?>">
-                <a class="nav-link waves-effect" href="index">Home</a>
-              </li>
-              <li class="nav-item <?php echo $home_bio; ?>">
-                <a class="nav-link waves-effect" href="update_bio">Bio-Data</a>
-              </li>
-            <?php
-            } elseif ($ugroup == 6) {
-              ?>
-              <li class="nav-item <?php echo $home_current; ?>">
-                <a class="nav-link waves-effect" href="index">Home</a>
-              </li>
-              <li class="nav-item <?php echo $home_bio; ?>">
-                <a class="nav-link waves-effect" href="update_bio">Bio-Data</a>
+                <a class="nav-link waves-effect" href="details?department_pendingDefenses">Assign Supervisors</a>
               </li>
             <?php
             } elseif ($ugroup == 1) {
@@ -222,20 +155,17 @@ $groupName = usergroup_name($_SESSION['dms_']);
               <li class="nav-item <?php echo $home_users; ?>">
                 <a class="nav-link waves-effect" href="settings">Manage Users</a>
               </li>
-              <li class="nav-item <?php echo $home_course; ?>">
-                <a class="nav-link waves-effect" href="details?courses">Manage Courses</a>
+              <li class="nav-item">
+                <a class="nav-link waves-effect" href="settings">Assign Supervisors</a>
               </li>
-              <li class="nav-item <?php echo $home_dept; ?>">
-                <a class="nav-link waves-effect" href="details?departments">Manage Departments</a>
-              </li>
-              <li class="nav-item <?php echo $home_sch; ?>">
-                <a class="nav-link waves-effect" href="details?faculties">Manage Sschools</a>
+              <li class="nav-item <?php echo $home_gac; ?>">
+                <a class="nav-link waves-effect" href="global_academia">Global Academia</a>
               </li>
             <?php
             }
             ?>
 
-            <li class="dropdown nav-item">
+            <li class="dropdown nav-item pull-right" style="float:right">
               <button class="dropbtn nav-link">Account Settings
                 <i class="fa fa-caret-down"></i>
               </button>
@@ -245,26 +175,7 @@ $groupName = usergroup_name($_SESSION['dms_']);
                 <a href="login?logout" class="list-group-item  waves-effect"><i class="fas fa-sign-out-alt mr-3"></i> Signout </a>
               </div>
             </li>
-            <!--
-            <li class="nav-item">
-              <a class="nav-link waves-effect" href="#" target="_blank">SUPERVISORS</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link waves-effect" href="#" target="_blank">DEPARMENT HEADS</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link waves-effect" href="#" target="_blank">ACADEMIC REGISTRA</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link waves-effect" href="#" target="_blank">DVC GRADUATE</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link waves-effect" href="#" target="_blank">PROPOSALS</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link waves-effect" href="#" target="_blank">GLOBAL ACADEMIA</a>
-            </li>
-            --->
+
           </ul>
 
         </div>
@@ -280,7 +191,7 @@ $groupName = usergroup_name($_SESSION['dms_']);
         <?php
         $passport = fetchrow('d_users_primary', "uid='$myid'", "profile_upload");
         if ($passport == null) {
-          $passport_image = "img/avatar5.png";
+          $passport_image = "images/avatar.png";
         } else {
           $passport_image = "faces/$passport";
         }
@@ -290,7 +201,7 @@ $groupName = usergroup_name($_SESSION['dms_']);
 
       </a>
       <span>
-        <center style="color:#4a235a ;font-weight:bold;font-size:18px"><?php echo 'Hi ' . $user; ?></center>
+        <center style="color:#4a235a ;font-weight:bold;font-size:18px"><?php echo 'Hey, ' . $user; ?></center>
       </span>
 
       <div class="list-group list-group-flush">
@@ -299,8 +210,6 @@ $groupName = usergroup_name($_SESSION['dms_']);
         </a>
         <a href="profile" class="list-group-item  waves-effect <?php echo $home_profile; ?>" style="color:black;">
           <i class="fas fa-user mr-3"></i>Profile</a>
-        <a href="mail_box" class="list-group-item waves-effect <?php echo $home_mail; ?>" style="color:black;">
-          <i class="fas fa-envelope mr-3"></i>Mailbox</a>
         <a href="change_pass" class="list-group-item waves-effect <?php echo $home_pass; ?>" style="color:black;">
           <i class="fas fa-lock mr-3"></i>Change Password</a>
         <?php

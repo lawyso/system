@@ -29,7 +29,7 @@ $total_approved_defense = countotal('d_defense', "user='$myid' AND status='3'");
       <div class="inner">
         <h4> <?php echo $total_courses; ?></h4>
 
-        <p style="font-size: 18px">ACTIVE COURSES</p>
+        <p style="font-size: 18px">ACTIVE STUDENTS</p>
 
       </div>
       <div class="icon">
