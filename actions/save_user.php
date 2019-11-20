@@ -135,8 +135,6 @@ if ($validation == 11) {
 }
 
 ?>
-
-
 <script>
     var action = '<?php echo $proceed; ?>';
     if (action == '1') {

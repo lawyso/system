@@ -553,27 +553,22 @@ function sendmail($from, $to, $subject, $body)
   return $sm;
 }
 
-function proposal($id)
+function topic_status($id)
 {
-  $proposal_state = fetchrow('d_proposal_statuses', "uid='$id'", "name");
+  $topic_state = fetchrow('d_topic_statuses', "uid='$id'", "name");
+  if ($id == 0) {
+    $state_name = "<span class=\"label label-primary\">$topic_state</span>";
+  }
   if ($id == 1) {
-    $state_name = "<span class=\"label label-primary\">$proposal_state</span>";
+    $state_name = "<span class=\"label label-success\">$topic_state</span>";
   }
   if ($id == 2) {
-    $state_name = "<span class=\"label label-success\">$proposal_state</span>";
+    $state_name = "<span class=\"label label-dager\">$topic_state</span>";
   }
   if ($id == 3) {
-    $state_name = "<span class=\"label label-warning\">$proposal_state</span>";
+    $state_name = "<span class=\"label label-warning\">$topic_state</span>";
   }
-  if ($id == 4) {
-    $state_name = "<span class=\"label label-default\">$proposal_state</span>";
-  }
-  if ($id == 5) {
-    $state_name = "<span class=\"label label-danger\">$proposal_state</span>";
-  }
-  if ($id == 0) {
-    $state_name = "<span class=\"label label-info\"> Pending Submission </span>";
-  }
+
   return $state_name;
 }
 

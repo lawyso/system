@@ -1,11 +1,9 @@
 <?php
 $total_users = countotal('d_users_primary', "uid>0 AND status in (1,2,3,4)");
-$total_courses = countotal('d_courses', "uid>0 AND status='1'");
-$total_depatments = countotal('d_departments', "uid>0 AND status='1'");
-$total_schools = countotal('d_schools', "uid>0 AND status='1'");
-$total_deleted_proposal = countotal('d_proposals', "user='$myid' AND status='5'");
-$total_approved_defense = countotal('d_defense', "user='$myid' AND status='1'");
-$total_approved_defense = countotal('d_defense', "user='$myid' AND status='3'");
+$total_students = countotal('d_users_primary', "uid>0 AND status='1' AND user_group='2'");
+$total_supervisors = countotal('d_users_primary', "uid>0 AND status='1' AND user_group='3'");
+$total_admin = countotal('d_users_primary', "uid>0 AND status='1' AND user_group='4'");
+
 ?>
 <div class="row">
   <div class="col-md-3 col-sm-6 col-xs-12">
@@ -27,7 +25,7 @@ $total_approved_defense = countotal('d_defense', "user='$myid' AND status='3'");
     <!-- small box -->
     <div class="small-box bg-blue">
       <div class="inner">
-        <h4> <?php echo $total_courses; ?></h4>
+        <h4> <?php echo $total_students; ?></h4>
 
         <p style="font-size: 18px">ACTIVE STUDENTS</p>
 
@@ -35,37 +33,37 @@ $total_approved_defense = countotal('d_defense', "user='$myid' AND status='3'");
       <div class="icon">
         <i class="fas fa-user-graduate"></i>
       </div>
-      <a href="details?courses" class="small-box-footer">view <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="details?studentUsers" class="small-box-footer">view <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
   <div class="col-md-3 col-sm-6 col-xs-12">
     <!-- small box -->
     <div class="small-box bg-orange">
       <div class="inner">
-        <h4> <?php echo $total_depatments; ?></h4>
+        <h4> <?php echo $total_supervisors; ?></h4>
 
-        <p style="font-size: 18px">DEPARTMENTS</p>
+        <p style="font-size: 18px">ACTIVE SUPERVISORS</p>
 
       </div>
       <div class="icon">
-        <i class="fas fa-book-reader"></i>
+        <i class="fas fa-chalkboard-teacher"></i>
       </div>
-      <a href="details?departments" class="small-box-footer">view <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="details?supervisorUsers" class="small-box-footer">view <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
   <div class="col-md-3 col-sm-6 col-xs-12">
     <!-- small box -->
-    <div class="small-box bg-maroon">
+    <div class="small-box bg-red">
       <div class="inner">
-        <h4> <?php echo $total_schools; ?></h4>
+        <h4> <?php echo $total_admin; ?></h4>
 
-        <p style="font-size: 18px">SCHOOLS/FACULTY</p>
+        <p style="font-size: 18px">UNIVERSITY ADMIN</p>
 
       </div>
       <div class="icon">
         <i class="fas fa-school"></i>
       </div>
-      <a href="details?faculties" class="small-box-footer">view <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="details?adminUsers" class="small-box-footer">view <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
 </div>

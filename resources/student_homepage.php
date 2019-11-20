@@ -5,7 +5,12 @@ $first_name = $sd['first_name'];
 $last_name = $sd['last_name'];
 $title = $sd['title'];
 $topic = $sd['topic_id'];
-$topic_name = fetchrow('d_topics', "topic_id='$topic'", "topic_name");
+
+if ($topic == 0) {
+  $topic_name = "<i class=\"text-red\">No Research Topic Registered</i>";
+} else {
+  $topic_name = fetchrow('d_topics', "topic_id='$topic'", "topic_name");
+}
 
 $title_name = fetchrow('d_title', "uid='$title'", "name");
 $reg_no = $sd['Reg_No'];
@@ -32,6 +37,10 @@ $directed_to = 0;
         <tr>
           <td><b>Research Topic:</b></td>
           <td><b><?php echo $topic_name; ?></b></td>
+        </tr>
+        <tr>
+          <td><b>Research Topic Status:</b></td>
+          <td><b><?php echo topic_status($topic); ?></b></td>
         </tr>
       </tbody>
     </table>

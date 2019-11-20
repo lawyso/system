@@ -68,10 +68,6 @@ $groupName = usergroup_name($_SESSION['dms_']);
               $home_reg = 'active';
             } elseif (strpos($page, 'registeredStudents') !== false) {
               $home_reg = 'active';
-            } elseif (strpos($page, 'defense') !== false) {
-              $home_def = 'active';
-            } elseif (strpos($page, 'supervisors') !== false) {
-              $home_sup = 'active';
             } elseif (strpos($page, 'global_academia') !== false) {
               $home_gac = 'active';
             } elseif (strpos($page, 'home') !== false) {
@@ -155,9 +151,6 @@ $groupName = usergroup_name($_SESSION['dms_']);
               <li class="nav-item <?php echo $home_users; ?>">
                 <a class="nav-link waves-effect" href="settings">Manage Users</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link waves-effect" href="settings">Assign Supervisors</a>
-              </li>
               <li class="nav-item <?php echo $home_gac; ?>">
                 <a class="nav-link waves-effect" href="global_academia">Global Academia</a>
               </li>
@@ -198,7 +191,6 @@ $groupName = usergroup_name($_SESSION['dms_']);
         echo '<img src="' . $passport_image . '" class="user_image" title="' . $groupName . '"/>';
 
         ?>
-
       </a>
       <span>
         <center style="color:#4a235a ;font-weight:bold;font-size:18px"><?php echo 'Hey, ' . $user; ?></center>
@@ -220,7 +212,6 @@ $groupName = usergroup_name($_SESSION['dms_']);
         <?php
         }
         ?>
-
         <a href="login?logout" class="list-group-item waves-effect" style="color:black;">
           <i class="fas fa-sign-out-alt mr-3"></i>Signout</a>
       </div>

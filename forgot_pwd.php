@@ -90,11 +90,11 @@ if (isset($_GET['logout'])) {
     <div class="col-sm-8">
       <div class="login-box">
         <div class="login-box-body">
-          <p class="login-box-msg">RECOVER LOST PASSWORD</p>
-          <span>Please enter your account email address below to reset your password.If you do not wish to proceed, please
+          <p class="login-box-msg">Lost Password Recovery</p>
+          <p>Please enter your account email address below to reset your password.If you do not wish to proceed, please
             <a href="index">click here</a> to return to login
-          </span>
-          <br>
+          </p>
+          <br />
           <form method="POST" enctype="multipart/form-data" id="forgotPassForm">
 
             <div class="form-group has-feedback">

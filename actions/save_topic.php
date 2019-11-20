@@ -48,6 +48,8 @@ if ($topicExists == 1) {
 
         if ($create == 1) {
           $refresh = 1;
+          $topic_id = fetchrow('d_topics', "status='0' AND created_by='$myid'", "topic_id");
+          $update = updatedb('d_users_primary', "topic_id='$topic_id'", "uid='$myid'");
           echo sucmes('Your comment has been saved and submitted successfully');
         } else {
           echo errormes('Comment could not be saved at the moment,try later.');
@@ -63,6 +65,5 @@ if ($topicExists == 1) {
     setTimeout(function() {
       window.location = 'register';
     }, 3000);
-
   }
 </script>

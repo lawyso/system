@@ -27,13 +27,13 @@ if (isset($_GET['logout'])) {
   <link rel="stylesheet" href="styles/main.css" />
   <style>
     .page-body {
-      background: url(images/dms_bg.jpg);
+      background: url(images/dms.jpg);
       background-repeat: no-repeat;
       background-size: cover
     }
 
     .login-box {
-      opacity: 0.9;
+      opacity: 0.8;
       position: relative;
     }
 
@@ -50,7 +50,7 @@ if (isset($_GET['logout'])) {
   <div class="login-box">
     <!-- /.login-box-body -->
     <div class="login-box-body">
-      <p class="login-box-msg">DISSERTATION MANAGEMENT SYSTEM LOGIN</p>
+      <p class="login-box-msg">Dissertation Management System Login</p>
       <br />
       <form onsubmit="return false;" method="post">
 

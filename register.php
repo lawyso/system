@@ -68,8 +68,6 @@ include_once 'session.php';
                   $esid = 0;
                   $action = "Register Research Title";
                 }
-
-
                 ?>
               </div>
 
