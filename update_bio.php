@@ -101,7 +101,7 @@ include_once 'session.php';
               $title = $sd['title'];
               $title_name = fetchrow('d_title', "uid='$title'", "name");
               ?>
-              <form role="form" method="POST" enctype="multipart/form-data" id="bioForm">
+              <form role="form" method="POST" enctype="multipart/form-data" id="bioForm" enctype="multipart/form-data" id="bioForm">
                 <table class="table table-bordered table-striped">
                   <tr>
                     <td>Title</td>

@@ -90,6 +90,8 @@ $groupName = usergroup_name($_SESSION['dms_']);
               $home_profile = 'active';
             } elseif (strpos($page, 'change_pass') !== false) {
               $home_pass = 'active';
+            } elseif (strpos($page, 'reports') !== false) {
+              $home_rep = 'active';
             } else { }
 
             if ($ugroup == 2) {
@@ -139,6 +141,9 @@ $groupName = usergroup_name($_SESSION['dms_']);
               <li class="nav-item <?php echo $home_pd; ?>">
                 <a class="nav-link waves-effect" href="details?department_pendingDefenses">Assign Supervisors</a>
               </li>
+              <li class="nav-item <?php echo $home_rep; ?>">
+                <a class="nav-link waves-effect" href="details?reports">Reports</a>
+              </li>
             <?php
             } elseif ($ugroup == 1) {
               ?>
@@ -150,6 +155,9 @@ $groupName = usergroup_name($_SESSION['dms_']);
               </li>
               <li class="nav-item <?php echo $home_users; ?>">
                 <a class="nav-link waves-effect" href="settings">Manage Users</a>
+              </li>
+              <li class="nav-item <?php echo $home_rep; ?>">
+                <a class="nav-link waves-effect" href="details?reports">Reports</a>
               </li>
               <li class="nav-item <?php echo $home_gac; ?>">
                 <a class="nav-link waves-effect" href="global_academia">Global Academia</a>

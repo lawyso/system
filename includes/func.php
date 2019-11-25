@@ -542,7 +542,6 @@ function sendmail($from, $to, $subject, $body)
 
   // Compose a simple HTML email message
   $message = '<html><body>';
-  $message .= '<h3 style="color:#080;text-decoration:underline">' . $subject . '</h3>';
   $message .= '<p style="font-size:15px;">' . $body . '</p>';
   $message .= '</body></html>';
 
@@ -555,17 +554,19 @@ function sendmail($from, $to, $subject, $body)
 
 function topic_status($id)
 {
-  $topic_state = fetchrow('d_topic_statuses', "uid='$id'", "name");
-  if ($id == 0) {
+  $status = fetchrow('d_topics', "topic_id='$id'", "status");
+  $topic_state = fetchrow('d_topic_statuses', "uid='$status'", "name");
+
+  if ($status == 0) {
     $state_name = "<span class=\"label label-primary\">$topic_state</span>";
   }
-  if ($id == 1) {
+  if ($status == 1) {
     $state_name = "<span class=\"label label-success\">$topic_state</span>";
   }
-  if ($id == 2) {
+  if ($status == 2) {
     $state_name = "<span class=\"label label-dager\">$topic_state</span>";
   }
-  if ($id == 3) {
+  if ($status == 3) {
     $state_name = "<span class=\"label label-warning\">$topic_state</span>";
   }
 
@@ -609,4 +610,26 @@ function item_state($sid)
     $statename = "<span class=\"label label-danger\">Inactive</span>";
   }
   return $statename;
+}
+
+function topic_name($tip)
+{
+  if ($tip > 0) {
+    $tName = fetchrow('d_topics', "topic_id='$tip'", "topic_name");
+  } else {
+    $tName = "NULL";
+  }
+
+  return $tName;
+}
+
+function research_progress($pid)
+{
+  if ($pid > 0) {
+    $progress_stage = fetchrow('d_progress_stages', "uid='$pid'", "name");
+  } else {
+    $progress_stage = "Not Started";
+  }
+
+  return $progress_stage;
 }

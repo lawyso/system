@@ -36,6 +36,8 @@ include_once 'session.php';
             include_once 'resources/pending_approvals.php';
           } elseif (isset($_GET['rejectedTopics'])) {
             include_once 'resources/rejectedTopics.php';
+          } elseif (isset($_GET['reports'])) {
+            include_once 'resources/reports.php';
           }
           ?>
         </div>

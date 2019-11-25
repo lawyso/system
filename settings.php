@@ -22,6 +22,42 @@ if ($ugroup != 1) {
   <!-- favicon -->
   <link rel="shortcut icon" href="images/dms_logo.jpg" alt="Dissertation Management System" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(e) {
+      // Submit form data via Ajax
+      $("#userForm").on('submit', function(e) {
+        e.preventDefault();
+        $.ajax({
+          type: 'POST',
+          url: 'actions/save_user.php',
+          data: new FormData(this),
+          dataType: 'json',
+          contentType: false,
+          cache: false,
+          processData: false,
+          beforeSend: function() {
+            $('.submitBtn').attr("disabled", "disabled");
+            $('#userForm').css("opacity", ".5");
+          },
+          success: function(response) { //console.log(response);
+            $('.statusMsg').html('');
+            if (response.status == 1) {
+              $('#userForm')[0].reset();
+              $('.statusMsg').html('<p class="alert alert-success">' + response.message + '</p>');
+              setTimeout(function() {
+                window.location = 'settings';
+              }, 3000);
+
+            } else {
+              $('.statusMsg').html('<p class="alert alert-danger">' + response.message + '</p>');
+            }
+            $('#userForm').css("opacity", "");
+            $(".submitBtn").removeAttr("disabled");
+          }
+        });
+      });
+    });
+  </script>
 </head>
 
 <body class="grey lighten-3">
@@ -143,7 +179,7 @@ if ($ugroup != 1) {
             ?>
             <!-- Central Modal Large Info-->
             <div class="modal fade" id="centralModalLGInfoDemo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-md modal-notify" role="document">
+              <div class="modal-dialog modal-lg modal-notify" role="document">
                 <!--Content-->
                 <div class="modal-content">
                   <!--Header-->
@@ -158,48 +194,41 @@ if ($ugroup != 1) {
                   <!--Body-->
                   <div class="modal-body">
                     <!-- form start -->
-                    <form role="form" method="POST" onsubmit="return false;">
+                    <form role="form" method="POST" enctype="multipart/form-data" id="userForm">
                       <div class="box-body">
                         <div class="form-group">
                           <div class="form-group">
                             <label for="regNo/staffNo">Reg Number/Staff Number</label>
-                            <input type="text" class="form-control" value="<?php echo $reg_no; ?>" id="reg_no" auto-complete="off" />
+                            <input type="text" class="form-control" value="<?php echo $reg_no; ?>" id="reg_no" auto-complete="off" name="reg_no" />
                           </div>
                           <div class="form-group">
-                            <label for="first_name">First Name</label><input type="hidden" value="<?php echo $sid; ?>" id="sid" />
-                            <input type="text" class="form-control" value="<?php echo $first_name; ?>" id="first_name" />
+                            <label for="first_name">First Name</label><input type="hidden" value="<?php echo $sid; ?>" id="sid" name="sid" />
+                            <input type="text" class="form-control" value="<?php echo $first_name; ?>" id="first_name" name="first_name" />
                           </div>
                           <div class="form-group">
                             <label for="last_name">Last Name</label>
-                            <input type="text" class="form-control" value="<?php echo $last_name; ?>" id="last_name" />
+                            <input type="text" class="form-control" value="<?php echo $last_name; ?>" id="last_name" name="last_name" />
                           </div>
                           <div class="form-group">
                             <label>National Id</label>
-                            <input type="text" class="form-control" value="<?php echo $national_id; ?>" id="national_id" />
+                            <input type="text" class="form-control" value="<?php echo $national_id; ?>" id="national_id" name="national_id" />
                           </div>
-                          <div class="form-group">
-                            <label>Gender</label>
-                            <select id="gender" class="form-control">
-                              <option <?php echo $nogender; ?> value="0">~Select~</option>
-                              <option <?php echo $male; ?> value="1">Male</option>
-                              <option <?php echo $female; ?> value="2">Female</option>
-                            </select>
-                          </div>
+
                           <div class="form-group">
                             <label for="primary_email">Primary_email</label>
-                            <input type="text" value="<?php echo $primary_email; ?>" class="form-control" id="primary_email" />
+                            <input type="text" value="<?php echo $primary_email; ?>" class="form-control" id="primary_email" name="primary_email" />
                           </div>
                           <div class="form-group">
                             <label for="primary_phone">Primary Phone</label>
-                            <input type="text" class="form-control" value="<?php echo $primary_phone; ?>" id="primary_phone" />
+                            <input type="text" class="form-control" value="<?php echo $primary_phone; ?>" id="primary_phone" name="primary_phone" />
                           </div>
                           <div class="form-group">
                             <label for="user_name">User Name</label>
-                            <input type="text" class="form-control" value="<?php echo $user_name; ?>" id="user_name" />
+                            <input type="text" class="form-control" value="<?php echo $user_name; ?>" id="user_name" name="user_name" />
                           </div>
                           <div class="form-group">
                             <label for="user_group">User Group</label>
-                            <select class="form-control" id="user_group">
+                            <select class="form-control" id="user_group" name="user_group">
                               <option value="0">~Select~</option>
                               <?php
                               $groups = fetchtable('d_user_groups', "group_status=1", "group_name", "asc", "100");
@@ -223,7 +252,7 @@ if ($ugroup != 1) {
                             ?>
                             <div class="form-group">
                               <label for="status">Status</label>
-                              <select class="form-control" id="status">
+                              <select class="form-control" id="status" name="status">
                                 <option value="0">~Select~</option>
                                 <?php
                                   $state = fetchtable('d_user_status', "status=1", "status_name", "asc", "100");
@@ -244,7 +273,7 @@ if ($ugroup != 1) {
                           <?php
                           }
                           ?>
-                          <div id="user_feedback"></div>
+                          <div class="statusMsg"></div>
 
                     </form>
                   </div>
@@ -252,7 +281,7 @@ if ($ugroup != 1) {
                   <!--Footer-->
                   <div class="modal-footer">
 
-                    <button type="submit" onclick="saveuser();" class="btn btn-sm" style="background-color: rgb( 17, 122, 101);color: #ffff">Save</button>
+                    <input type="submit" name="submit" class="btn btn-sm btn-dms submitBtn" value="Save User" />
                     <i class="far fa-gem ml-1"></i>
 
                     <a role="button" class="btn btn-sm waves-effect" data-dismiss="modal" style="color: rgb( 17, 122, 101)">No,

@@ -20,10 +20,10 @@ $directed_to = 0;
 ?>
 <div class="row">
   <div class="col-lg-5">
-    <div class="card-header bg-warning">
+    <div class="card-header dark" style="font-size:16px;">
       My <?php echo $group_name; ?>'s Profile
     </div>
-    <table class="table table-user-information table-striped table-bordered" style="font-weight:bold">
+    <table class="table table-user-information table-bordered" style="font-weight:bold">
       <tbody>
         <tr>
           <td><b>Name:</b></td>
@@ -51,10 +51,10 @@ $directed_to = 0;
     <br /><br />
   </div>
   <div class="col-lg-7">
-    <div class="card-header bg-success">
+    <div class="card-header dark" style="font-size:16px;">
       My dissertation files
     </div>
-    <table class="table table-bordered table-striped display table-responsive-sm table-hover">
+    <table class="table table-bordered display table-responsive-sm table-hover">
       <thead>
         <tr><b>
             <th>File Name</th>
@@ -89,10 +89,10 @@ $directed_to = 0;
 </div>
 <div class="row">
   <div class="col-lg-12">
-    <div class="card-header bg-primary">
+    <div class="card-header dark" style="font-size:16px;">
       My Dissertation Comments/Remarks
     </div>
-    <table class="table table-bordered table-striped display table-responsive-sm">
+    <table class="table table-bordered display table-responsive-sm">
       <thead>
         <tr><b>
             <th>Comment Body</th>
