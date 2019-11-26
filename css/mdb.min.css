@@ -9490,7 +9490,7 @@ a.btn:not([href]):not([tabindex]):hover {
 }
 
 .navbar .breadcrumb .breadcrumb-item {
-  color: #fff
+  color: #0a0a0a
 }
 
 .navbar .breadcrumb .breadcrumb-item.active,
@@ -9558,7 +9558,7 @@ a.btn:not([href]):not([tabindex]):hover {
 
 .navbar.navbar-light .navbar-nav .nav-item .nav-link.disbled,
 .navbar.navbar-light .navbar-nav .nav-item .nav-link.disbled:hover {
-  color: #fff
+  color: #0a0a0a
 }
 
 .navbar.navbar-light .navbar-toggler-icon {
@@ -9568,7 +9568,7 @@ a.btn:not([href]):not([tabindex]):hover {
 
 .navbar.navbar-light .breadcrumb .nav-item .nav-link,
 .navbar.navbar-light .navbar-nav .nav-item .nav-link {
-  color: #fff;
+  color: #0a0a0a;
   -webkit-transition: .35s;
   -o-transition: .35s;
   transition: .35s
@@ -9588,7 +9588,7 @@ a.btn:not([href]):not([tabindex]):hover {
 
 .navbar.navbar-light .breadcrumb .nav-item.active>.nav-link,
 .navbar.navbar-light .navbar-nav .nav-item.active>.nav-link {
-  background-color: thistle
+  background-color: rgb(212, 209, 212)
 }
 
 .navbar.navbar-light form .md-form input {
@@ -9634,18 +9634,18 @@ a.btn:not([href]):not([tabindex]):hover {
 
 .navbar.navbar-dark .breadcrumb .nav-item .nav-link:hover,
 .navbar.navbar-dark .navbar-nav .nav-item .nav-link:hover {
-  color: rgba(255, 255, 255, .75)
+  color: rgb(212, 209, 212)
 }
 
 .navbar.navbar-dark .breadcrumb .nav-item.active>.nav-link,
 .navbar.navbar-dark .navbar-nav .nav-item.active>.nav-link {
-  background-color: thistle
+  background-color: rgb(212, 209, 212)
 }
 
 .navbar.navbar-dark .breadcrumb .nav-item.active>.nav-link:hover,
 .navbar.navbar-dark .navbar-nav .nav-item.active>.nav-link:hover,
 .navbar.navbar-dark .navbar-toggler {
-  color: rgb(61, 8, 8)
+  color: rgb(212, 209, 212)
 }
 
 .navbar.navbar-dark form .md-form input {
@@ -11716,7 +11716,7 @@ body.scrollable {
 
 footer.page-footer {
   bottom: 0;
-  color: #fff
+  color: #0a0a0a
 }
 
 footer.page-footer .container-fluid {
@@ -11725,12 +11725,12 @@ footer.page-footer .container-fluid {
 
 footer.page-footer .footer-copyright {
   overflow: hidden;
-  background-color: rgba(0, 0, 0, .2);
-  color: rgba(255, 255, 255, .6)
+  background-color: #fff;
+  color: #0a0a0a
 }
 
 footer.page-footer a {
-  color: #fff
+  color: #0a0a0a
 }
 
 .media .media-left {

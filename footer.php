@@ -6,8 +6,8 @@
     <p class="copyright"><strong>&copy; <script>
           var currentYear = new Date().getFullYear();
           document.write(currentYear);
-        </script> </strong>
-      Dms, All Rights Reserved.
+        </script>
+        Dissertation Management System, All Rights Reserved.</strong>
     </p>
   </div>
   <!--/.Copyright-->

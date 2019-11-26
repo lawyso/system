@@ -121,7 +121,7 @@ class PDF_MC_Table extends FPDF
 
     $this->Cell(100, 10, 'UNIVERSITY DISSERTATION MANAGEMENT REPORT', 0, 0, 'C');
     $this->Ln();
-    $this->Cell(200, 6, "Pending Approvals Report", 0, 0, 'C');
+    $this->Cell(200, 6, "Research Approval Report", 0, 0, 'C');
   }
   /* Page footer */
   function Footer()
@@ -136,7 +136,7 @@ class PDF_MC_Table extends FPDF
 }
 //make new object
 $pdf = new PDF_MC_Table('p', 'mm', 'Legal');
-$title = 'Research Pending Approval Report';
+$title = 'Research Approval Report';
 $pdf->SetTitle($title);
 $pdf->AliasNbPages();
 $pdf->SetAutoPageBreak(true, 40);
@@ -145,7 +145,7 @@ $pdf->Ln();
 $pdf->SetFont('Arial', 'B', 10);
 
 //set width for each column (6 columns)
-$pdf->SetWidths(array(12, 45, 110, 28));
+$pdf->SetWidths(array(12, 45, 100, 40));
 
 //set line height. This is the height of each lines, not rows.
 $pdf->SetLineHeight(6);
@@ -158,15 +158,15 @@ $pdf->SetAligns(array('L', 'L', 'L', 'L'));
 $pdf->SetFont('Arial', 'B', 11);
 $pdf->Cell(12, 6, "S/N", 1, 0);
 $pdf->Cell(45, 6, "Student Name", 1, 0);
-$pdf->Cell(110, 6, "Research Topic", 1, 0);
-$pdf->Cell(28, 6, "Date Created", 1, 0);
+$pdf->Cell(100, 6, "Research Topic", 1, 0);
+$pdf->Cell(40, 6, "Supervisor", 1, 0);
 $count = 1;
 //add a new line
 $pdf->Ln();
 //reset font
 $pdf->SetFont('Arial', '', 10);
 
-$result = fetchtable('d_topics', "status='0'", "topic_id", "asc", "1000000", '*');
+$result = fetchtable('d_topics', "status ='1'", "topic_id", "asc", "1000000", '*');
 //loop the data
 foreach ($result as $item) {
   //write data using Row() method containing array of values.
@@ -174,7 +174,7 @@ foreach ($result as $item) {
     $count . '.',
     profileName($item['created_by']),
     $item['topic_name'],
-    $item['created_date'],
+    profileName(supervisor($item['created_by'])),
   ));
   $count++;
 }

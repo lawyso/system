@@ -33,8 +33,9 @@ if (isset($_GET['logout'])) {
     </style>
 </head>
 
-<body class="login-page">
-
+<body class="login-page page-body">
+    <h3 style="padding-left:20px">DMS SYSTEM <a href="https://www.desoletech.co.ke"><span class="fa fa-book" style="float:right;padding-right:20px;font-size:17px"> Docs</span></h3>
+    </a>
     <?php
     if ((isset($_GET['fp_code'])) && (isset($_GET['fp_email'])) && (isset($_GET["action"]))
         && ($_GET["action"] == "reset") && (!isset($_POST["action"]))
@@ -55,31 +56,25 @@ if (isset($_GET['logout'])) {
                 <div class="login-box">
                     <!-- /.login-logo -->
                     <div class="login-box-body">
-                        <p class="login-box-msg">
-                            Reset Your Account Password
-                        </p>
                         <br>
                         <form onsubmit="return false;" method="post">
-                            <div class="form-group has-feedback">
-                                <input type="hidden" id="userid" class="form-control" value="<?php echo $userid ?>" />
-                                <input type="password" id="u_pass" class="form-control" placeholder="New Password" />
-                                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                            </div>
-                            <div class="form-group has-feedback">
-                                <input type="password" id="u_passConfirm" class="form-control" placeholder="Confirm Password" />
-                                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-8">
+                            <fieldset>
+                                <legend style="color:rgb(17, 122, 101)">Reset Your Password</legend>
+                                <div class="form-group has-feedback">
+                                    <input type="hidden" id="userid" class="form-control" value="<?php echo $userid ?>" />
+                                    <input type="password" id="u_pass" class="form-control" placeholder="New Password" />
+                                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                                </div>
+                                <div class="form-group has-feedback">
+                                    <input type="password" id="u_passConfirm" class="form-control" placeholder="Confirm Password" />
+                                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                                </div>
+                                <div class="form-group has-feedback">
+                                    <button type="submit" onclick="reset_pass();" class="btn btn-primary btn-block" style="background-color: rgb( 17, 122, 101);color: #ffff">Reset Password</button>
 
                                 </div><!-- /.col -->
-                                <div class="col-xs-4">
-                                    <button type="submit" onclick="reset_pass();" class="btn btn-primary btn-block btn-flat" style="background-color: rgb( 17, 122, 101);color: #ffff">Reset Password</button>
-
-                                </div><!-- /.col -->
-                            </div>
-                            <br />
-                            <span id="resetPass_feedback"></span>
+                                <span id="resetPass_feedback" class=notifications-menu></span>
+                            </fieldset>
                         </form>
 
                     </div><!-- /.login-box-body -->

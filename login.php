@@ -27,9 +27,10 @@ if (isset($_GET['logout'])) {
   <link rel="stylesheet" href="styles/main.css" />
   <style>
     .page-body {
-      background: url(images/dms.jpg);
+      background: #fefefe;
       background-repeat: no-repeat;
-      background-size: cover
+      background-size: cover;
+      color: #333
     }
 
     .login-box {
@@ -45,56 +46,58 @@ if (isset($_GET['logout'])) {
 </head>
 
 <body class="login-page page-body">
-  <br /><br />
+
+  <h3 style="padding-left:20px">DMS SYSTEM <a href="https://www.desoletech.co.ke"><span class="fa fa-book" style="float:right;padding-right:20px;font-size:17px"> Docs</span></h3>
+  </a>
+
+  <hr />
+
   <!-- /.login-box -->
   <div class="login-box">
+    <span id="login_feedback"></span>
     <!-- /.login-box-body -->
     <div class="login-box-body">
-      <p class="login-box-msg">Dissertation Management System Login</p>
-      <br />
+
       <form onsubmit="return false;" method="post">
-
-        <div class="form-group has-feedback">
-          <label for="Username">Username/Email:</label>
-          <input type="text" id="u_name" autofocus="" auto-complete="off" class="form-control" placeholder="Email/Username" auto-complete="off" />
-          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-        </div>
-
-        <div class="form-group has-feedback">
-          <label for="Password">Password:</label>
-          <input type="password" id="u_pass" class="form-control" auto-complete="off" placeholder="Password" />
-          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-        </div>
-
-        <div class="row">
-          <div class="col-xs-8">
-            <h4><a href="forgot_pwd">Forgot your Password ?</a></h4>
+        <fieldset>
+          <legend style="color:rgb(17, 122, 101)">Log in to your account</legend>
+          <div class="form-group has-feedback">
+            <label for="Username">Username/Email:</label>
+            <input type="text" id="u_name" autofocus="" auto-complete="off" class="form-control" placeholder="Email/Username" auto-complete="off" />
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
 
-          <div class="col-xs-4">
-            <button type="submit" onclick="login();" class="btn btn-block login-button">Sign In</button>
+          <div class="form-group has-feedback">
+            <label for="Password">Password:</label>
+            <input type="password" id="u_pass" class="form-control" auto-complete="off" placeholder="Password" />
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          </div>
+          <div class="form-group has-feedback">
+            <button type="submit" onclick="login();" class="btn btn-block btn-md login-button">Sign In</button>
+          </div>
+          <div class="row">
+            <div class="col-xs-8">
+              <h4><a href="forgot_pwd" style="color:rgb(17, 122, 101)">Forgot your Password ?</a></h4>
+            </div>
           </div>
 
-        </div>
-        <br>
-        <span id="login_feedback"></span>
-    </div>
-    <!-- /.login-box-body -->
-    <br>
-    <!--/.Login page-footer -->
-    <div style="text-align: center;">
-      <p class="copyright">
-        <strong>Dissertation Management System &copy;<script>
-            var currentYear = new Date().getFullYear();
-            document.write(currentYear);
-          </script>,
-          All Rights Reserved. </strong>
-      </p>
-    </div>
-    <!--/.Login page-footer -->
+
+        </fieldset>
+      </form>
+    </div> <!-- /.login-box-body -->
   </div>
   <!-- /.login-box -->
-
+  <hr />
+  <!--/.Login page-footer -->
+  <div style="text-align: left;padding-left:20px">
+    <p class="copyright">
+      &copy;DMS, <script>
+        var currentYear = new Date().getFullYear();
+        document.write(currentYear);
+      </script>,
+      All Rights Reserved. </p>
+  </div>
+  <!--/.Login page-footer -->
   <!-- jQuery 2.1.3 -->
   <script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
   <!-- Bootstrap 3.3.2 JS -->

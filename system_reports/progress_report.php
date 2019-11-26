@@ -3,10 +3,115 @@ include_once '../session.php';
 include_once '../includes/conn.inc';
 include_once '../includes/func.php';
 
-include_once 'fpdf/fpdf.php';
-
-class PDF extends FPDF
+//call main fpdf file
+require('fpdf/fpdf.php');
+//create new class extending fpdf class
+class PDF_MC_Table extends FPDF
 {
+  // variable to store widths and aligns of cells, and line height
+  var $widths;
+  var $aligns;
+  var $lineHeight;
+  //Set the array of column widths
+  function SetWidths($w)
+  {
+    $this->widths = $w;
+  }
+  //Set the array of column alignments
+  function SetAligns($a)
+  {
+    $this->aligns = $a;
+  }
+  //Set line height
+  function SetLineHeight($h)
+  {
+    $this->lineHeight = $h;
+  }
+  //Calculate the height of the row
+  function Row($data)
+  {
+    // number of line
+    $nb = 0;
+    // loop each data to find out greatest line number in a row.
+    for ($i = 0; $i < count($data); $i++) {
+      // NbLines will calculate how many lines needed to display text wrapped in specified width.
+      // then max function will compare the result with current $nb. Returning the greatest one. And reassign the $nb.
+      $nb = max($nb, $this->NbLines($this->widths[$i], $data[$i]));
+    }
+
+    //multiply number of line with line height. This will be the height of current row
+    $h = $this->lineHeight * $nb;
+    //Issue a page break first if needed
+    $this->CheckPageBreak($h);
+    //Draw the cells of current row
+    for ($i = 0; $i < count($data); $i++) {
+      // width of the current col
+      $w = $this->widths[$i];
+      // alignment of the current col. if unset, make it left.
+      $a = isset($this->aligns[$i]) ? $this->aligns[$i] : 'L';
+      //Save the current position
+      $x = $this->GetX();
+      $y = $this->GetY();
+      //Draw the border
+      $this->Rect($x, $y, $w, $h);
+      //Print the text
+      $this->MultiCell($w, 5, $data[$i], 0, $a);
+      //Put the position to the right of the cell
+      $this->SetXY($x + $w, $y);
+    }
+    //Go to the next line
+    $this->Ln($h);
+  }
+  function CheckPageBreak($h)
+  {
+    //If the height h would cause an overflow, add a new page immediately
+    if ($this->GetY() + $h > $this->PageBreakTrigger)
+      $this->AddPage($this->CurOrientation);
+  }
+  function NbLines($w, $txt)
+  {
+    //calculate the number of lines a MultiCell of width w will take
+    $cw = &$this->CurrentFont['cw'];
+    if ($w == 0)
+      $w = $this->w - $this->rMargin - $this->x;
+    $wmax = ($w - 2 * $this->cMargin) * 1000 / $this->FontSize;
+    $s = str_replace("\r", '', $txt);
+    $nb = strlen($s);
+    if ($nb > 0 and $s[$nb - 1] == "\n")
+      $nb--;
+    $sep = -1;
+    $i = 0;
+    $j = 0;
+    $l = 0;
+    $nl = 1;
+    while ($i < $nb) {
+      $c = $s[$i];
+      if ($c == "\n") {
+        $i++;
+        $sep = -1;
+        $j = $i;
+        $l = 0;
+        $nl++;
+        continue;
+      }
+      if ($c == ' ')
+        $sep = $i;
+      $l += $cw[$c];
+      if ($l > $wmax) {
+        if ($sep == -1) {
+          if ($i == $j)
+            $i++;
+        } else
+          $i = $sep + 1;
+        $sep = -1;
+        $j = $i;
+        $l = 0;
+        $nl++;
+      } else
+        $i++;
+    }
+    return $nl;
+  }
   /* Page header */
   function Header()
   {
@@ -30,7 +135,7 @@ class PDF extends FPDF
     $this->Cell(0, 10, 'Page ' . $this->PageNo() . '/{nb}', 0, 0, 'C');
   }
 }
-$pdf = new PDF('p', 'mm', 'Legal');
+$pdf = new PDF_MC_Table('p', 'mm', 'Legal');
 $title = 'Student Research Progress Report';
 $pdf->SetTitle($title);
 $pdf->AliasNbPages();
@@ -39,78 +144,43 @@ $pdf->AddPage();
 $pdf->Ln();
 $pdf->SetFont('Arial', 'B', 10);
 
-//set initial y axis position per page
-$y_axis_initial = 26;
+//set width for each column (6 columns)
+$pdf->SetWidths(array(9, 40, 40, 85, 25));
 
-//print column titles
-$pdf->SetFillColor(255, 255, 255);
+//set line height. This is the height of each lines, not rows.
+$pdf->SetLineHeight(6);
+
+//set alignment
+$pdf->SetAligns(array('L', 'L', 'L', 'L', 'L'));
+
+//add table heading using standard cells
+//set font to bold
 $pdf->SetFont('Arial', 'B', 11);
-$pdf->SetY($y_axis_initial);
-$pdf->SetX(10);
-$pdf->Cell(12, 6, 'S/N', 1, 0, 'L', 1);
-$pdf->Cell(40, 6, 'Students Name', 1, 0, 'L', 1);
-$pdf->Cell(46, 6, 'Supervised By', 1, 0, 'L', 1);
-$pdf->Cell(80, 6, 'Research Topic', 1, 0, 'L', 1);
-$pdf->Cell(22, 6, 'Status', 1, 0, 'L', 1);
-//Set Row Height
-$row_height = 6;
-
-//Set new y_axis
-$y_axis = $y_axis_initial + $row_height;
+$pdf->Cell(9, 6, "S/N", 1, 0);
+$pdf->Cell(40, 6, "Student Name", 1, 0);
+$pdf->Cell(40, 6, "Supervised By", 1, 0);
+$pdf->Cell(85, 6, "Research Topic", 1, 0);
+$pdf->Cell(25, 6, "Status", 1, 0);
+$count = 1;
+//add a new line
+$pdf->Ln();
+//reset font
+$pdf->SetFont('Arial', '', 10);
 
 //Select the Products you want to show in your PDF file
 $result = fetchtable('d_users_primary', "user_group='2' AND status='1'", "uid", "asc", "1000000", '*');
 
-//initialize counter
-$i = 0;
-
-//Set maximum rows per page
-$max = 25;
-
-while ($row = mysqli_fetch_array($result)) {
-  //If the current row is the last one, create new page and print column title
-  if ($i == $max) {
-    $pdf->AddPage();
-
-    //print column titles for the current page
-    $pdf->SetFont('Arial', 'B', 11);
-    $pdf->SetY($y_axis_initial);
-    $pdf->SetX(10);
-    $pdf->Cell(12, 6, 'S/N', 1, 0, 'L', 1);
-    $pdf->Cell(40, 6, 'Students Name', 1, 0, 'L', 1);
-    $pdf->Cell(46, 6, 'Supervised By', 1, 0, 'L', 1);
-    $pdf->Cell(80, 6, 'Research Topic', 1, 0, 'L', 1);
-    $pdf->Cell(22, 6, 'Status', 1, 0, 'L', 1);
-
-    //Go to next row
-    $y_axis = $y_axis_initial + $row_height;
-
-    //Set $i variable to 0 (first row)
-    $i = 0;
-  }
-
-  $sup_id = profileName($row['supervisor_id']);
-  $student_id = profileName($row['uid']);
-  $topic_id = topic_name($row['topic_id']);
-  $progress_id = research_progress($row['progress_stage']);
+//loop the data
+foreach ($result as $item) {
+  //write data using Row() method containing array of values.
+  $pdf->Row(array(
+    $count . '.',
+    profileName($item['uid']),
+    profileName($item['supervisor_id']),
+    topic_name($item['topic_id']),
+    research_progress($item['progress_stage']),
+  ));
   $count++;
-  $period = ".";
-  $pdf->SetFont('Arial', '', 10);
-  $pdf->SetY($y_axis);
-  $pdf->SetX(10);
-  $pdf->MultiCell(12, 6, $count . $period, 1, 'L', 1);
-  $pdf->SetXY(22, $y_axis);
-  $pdf->MultiCell(40, 6, $student_id, 1, 'L', 1);
-  $pdf->SetXY(62, $y_axis);
-  $pdf->MultiCell(46, 6, $sup_id, 1, 'L', 1);
-  $pdf->SetXY(108, $y_axis);
-  $pdf->MultiCell(80, 6, $topic_id, 1, 'L', 1);
-  $pdf->SetXY(188, $y_axis);
-  $pdf->MultiCell(22, 6, $progress_id, 1, 'L', 1);
-
-  //Go to next row
-  $y_axis = $y_axis + $row_height;
-  $i = $i + 1;
 }
 
 //Send file

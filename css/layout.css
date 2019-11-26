@@ -49,7 +49,7 @@
 }
 
 .navbar a:hover {
-  background-color: thistle
+  background-color: rgb(212, 209, 212)
 }
 
 .box-body {
@@ -278,6 +278,6 @@
 }
 
 .bg-dms {
-  background-color: rgb(17, 122, 101);
-  color: #ffff
+  background-color: #fff;
+  color: #0a0a0a
 }

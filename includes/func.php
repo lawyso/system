@@ -217,19 +217,19 @@ function validate_phone($phone)
 
 function errormes($x)
 {
-  return "<div class=\"alert alert-danger\">$x</div>";
+  return "<div class=\"alert alert-danger alert-dismissible\">$x</div>";
 }
 function sucmes($x)
 {
-  return "<div class=\"alert alert-success\">$x</div>";
+  return "<div class=\"alert alert-success alert-dismissible\">$x</div>";
 }
 function success($x)
 {
-  return "<div class=\"alert successbox\">$x</div>";
+  return "<div class=\"alert successbox alert-dismissible\">$x</div>";
 }
 function notice($x)
 {
-  return "<div class=\"alert alert-info\">$x</div>";
+  return "<div class=\"alert alert-info alert-dismissible\">$x</div>";
 }
 
 function error($x)
@@ -502,11 +502,7 @@ function school($id)
   $sc = fetchrow('d_schools', "uid='$id'", "school_name");
   return $sc;
 }
-function supervisors($id)
-{
-  $sp = fetchrow('d_supervisors', "uid='$id'", "s_name");
-  return $sp;
-}
+
 function user_roles($id)
 {
   $ug = fetchrow('d_user_groups', "uid='$id'", "group_name");
@@ -632,4 +628,11 @@ function research_progress($pid)
   }
 
   return $progress_stage;
+}
+function topicStatus($sid)
+{
+
+  $topic_state = fetchrow('d_topic_statuses', "uid='$sid'", "name");
+
+  return $topic_state;
 }

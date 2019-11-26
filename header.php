@@ -34,7 +34,7 @@ $groupName = usergroup_name($_SESSION['dms_']);
   <header>
 
     <!-- Navbar -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-dms scrolling-navbar text-white">
+    <nav class="navbar fixed-top navbar-expand-md navbar-light bg-dms scrolling-navbar">
       <div class="container-fluid">
 
         <!-- Brand -->

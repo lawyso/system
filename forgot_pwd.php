@@ -65,7 +65,7 @@ if (isset($_GET['logout'])) {
   </script>
   <style>
     .page-body {
-      background: url(images/dms_bg.jpg);
+      background: #fefefe;
       background-repeat: no-repeat;
       background-size: cover
     }
@@ -83,43 +83,41 @@ if (isset($_GET['logout'])) {
 </head>
 
 <body class="login-page page-body">
-  <br /><br />
-  <div class="row">
-    <div class="col-md-2">
-    </div>
-    <div class="col-sm-8">
-      <div class="login-box">
-        <div class="login-box-body">
-          <p class="login-box-msg">Lost Password Recovery</p>
-          <p>Please enter your account email address below to reset your password.If you do not wish to proceed, please
-            <a href="index">click here</a> to return to login
+  <h3 style="padding-left:20px">DMS SYSTEM <a href="https://www.desoletech.co.ke"><span class="fa fa-book" style="float:right;padding-right:20px;font-size:17px"> Docs</span></h3>
+  </a>
+  <hr />
+  <div class="login-box">
+    <div class="statusMsg"></div>
+    <div class="login-box-body">
+      <form method="POST" enctype="multipart/form-data" id="forgotPassForm">
+        <fieldset>
+          <legend style="color:rgb(17, 122, 101)">Forgot your password?</legend>
+          <p>Enter your registration Email Address and we will send you a password reset link.
           </p>
-          <br />
-          <form method="POST" enctype="multipart/form-data" id="forgotPassForm">
-
-            <div class="form-group has-feedback">
-              <label for="Email Address">Email Address:</label>
-              <input type="text" id="u_name" name="u_name" class="form-control" placeholder="e.g kamau@example.com" autofocus />
-              <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-            </div>
-
-            <div class="row">
-              <div class="col-xs-8">
-              </div>
-              <div class="col-xs-4">
-                <input type="submit" name="submit" class="btn btn-md submitBtn submit-button" value="submit" />
-              </div>
-            </div>
-            <br />
-            <div class="statusMsg"></div>
-          </form>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-2">
+          <div class="form-group has-feedback">
+            <label for="Email Address">Email Address:</label>
+            <input type="text" id="u_name" name="u_name" class="form-control" placeholder="e.g kamau@example.com" autofocus required />
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+          </div>
+          <div class="form-group has-feedback">
+            <input type="submit" name="submit" class="btn btn-md btn-block submitBtn submit-button" value="Send" />
+          </div>
+          <h4>Already have an account? <a href="index" style="color:rgb(17, 122, 101)">Log In </a></h4>
+        </fieldset>
+      </form>
     </div>
   </div>
-
+  <hr />
+  <!--/.Login page-footer -->
+  <div style="text-align: left;padding-left:20px">
+    <p class="copyright">
+      &copy;DMS, <script>
+        var currentYear = new Date().getFullYear();
+        document.write(currentYear);
+      </script>,
+      All Rights Reserved. </p>
+  </div>
+  <!--/.Login page-footer -->
   <!-- Bootstrap 3.3.2 JS -->
   <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
   <script src="js/main.js" type="text/javascript"></script>

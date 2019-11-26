@@ -86,10 +86,10 @@ if ($ugroup != 1) {
                   <table id="user_table" class="table table-bordered table-striped display table-responsive-lg">
                     <thead>
                       <tr class="bg-white">
-                        <th>First Name </th>
-                        <th>Last Name</th>
+                        <th>FirstName </th>
+                        <th>LastName</th>
                         <th>User Level</th>
-                        <th>Id Number</th>
+                        <th>Id.No</th>
                         <th>Email Address</th>
                         <th>Username</th>
                         <th>Action</th>
