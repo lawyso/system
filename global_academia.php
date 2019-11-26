@@ -44,7 +44,6 @@ $ugroup = usergroup($_SESSION['dms_']);
                       <tr class="bg-white">
                         <th>Research Topic </th>
                         <th>Researcher</th>
-                        <th>Institution</th>
                         <th>Supervisor</th>
                       </tr>
                     </thead>

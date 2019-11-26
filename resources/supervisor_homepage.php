@@ -45,6 +45,7 @@ $totalStudents = countotal('d_users_primary', "supervisor_id='$myid'");
           <th>First Name </th>
           <th>Last Name</th>
           <th>Research Topic</th>
+          <th>Status</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -67,10 +68,10 @@ $totalStudents = countotal('d_users_primary', "supervisor_id='$myid'");
           "columnDefs": [{
 
             "render": function(data, type, row) {
-              let rowID = row[3];
+              let rowID = row[4];
               return `<a href="student_details?student=${ rowID }"><i class="fa fa-eye"></i></a>`
             },
-            "targets": 3
+            "targets": 4
 
           }],
           "order": [
@@ -81,6 +82,5 @@ $totalStudents = countotal('d_users_primary', "supervisor_id='$myid'");
       });
     </script>
   </div>
-
 </div>
 </div>

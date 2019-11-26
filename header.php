@@ -118,14 +118,14 @@ $groupName = usergroup_name($_SESSION['dms_']);
                 <a class="nav-link waves-effect" href="update_bio">Bio-Data</a>
               </li>
               <li class="nav-item <?php echo $home_asgn; ?>">
-                <a class="nav-link waves-effect" href="assigned_students">Students Report</a>
+                <a class="nav-link waves-effect" href="details?assigned_students">Students Report</a>
+              </li>
+              <li class="nav-item <?php echo $home_gac; ?>">
+                <a class="nav-link waves-effect" href="global_academia">Global Academia</a>
               </li>
             <?php
             } elseif ($ugroup == 4) {
               ?>
-              <li class="nav-item <?php echo $home_current; ?>">
-                <a class="nav-link waves-effect" href="index">Home</a>
-              </li>
               <li class="nav-item <?php echo $home_bio; ?>">
                 <a class="nav-link waves-effect" href="update_bio">Bio-Data</a>
               </li>
@@ -142,7 +142,10 @@ $groupName = usergroup_name($_SESSION['dms_']);
                 <a class="nav-link waves-effect" href="details?department_pendingDefenses">Assign Supervisors</a>
               </li>
               <li class="nav-item <?php echo $home_rep; ?>">
-                <a class="nav-link waves-effect" href="details?reports">Reports</a>
+                <a class="nav-link waves-effect" href="details?reports">System Reports</a>
+              </li>
+              <li class="nav-item <?php echo $home_gac; ?>">
+                <a class="nav-link waves-effect" href="global_academia">Global Academia</a>
               </li>
             <?php
             } elseif ($ugroup == 1) {

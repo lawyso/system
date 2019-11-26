@@ -38,6 +38,8 @@ include_once 'session.php';
             include_once 'resources/rejectedTopics.php';
           } elseif (isset($_GET['reports'])) {
             include_once 'resources/reports.php';
+          } elseif (isset($_GET['assigned_students'])) {
+            include_once 'resources/assigned_students.php';
           }
           ?>
         </div>

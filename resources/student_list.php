@@ -22,10 +22,11 @@ $columns = array(
   0 => 'first_name',
   1 => 'last_name',
   2 => 'topic_id',
-  3 =>  'uid'
+  3 => 'progress_stage',
+  4 =>  'uid'
 );
 
-$sql = "SELECT uid,first_name,last_name,topic_id";
+$sql = "SELECT uid,first_name,last_name,topic_id,progress_stage";
 $sql .= " FROM d_users_primary WHERE status =1 AND supervisor_id='$myid' AND user_group='2'";
 
 $query = mysqli_query($conn, $sql) or die("Student_list.php: get Assigned Students");
@@ -57,6 +58,7 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array
   $nestedData[] = $row["first_name"];
   $nestedData[] = $row["last_name"];
   $nestedData[] = topicName($row["topic_id"]);
+  $nestedData[] = research_progress($row["progress_stage"]);
   $nestedData[] = encurl($row["uid"]);
   $data[] = $nestedData;
 }

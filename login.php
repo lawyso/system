@@ -13,10 +13,10 @@ if (isset($_GET['logout'])) {
 
 <head>
   <meta charset="UTF-8">
-  <title>Dissertation Management System || Portal Login</title>
+  <title>Dissertation Management System</title>
   <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
   <!-- favicon -->
-  <link rel="shortcut icon" href="images/dms_logo.jpg" alt="Dissertation Management System" />
+  <link rel="shortcut icon" href="images/avatar.png" alt="Dissertation Management System" />
   <!-- Bootstrap 3.3.2 -->
   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
   <!-- Font Awesome Icons -->
@@ -26,13 +26,6 @@ if (isset($_GET['logout'])) {
   <link href="styles/layout.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="styles/main.css" />
   <style>
-    .page-body {
-      background: #fefefe;
-      background-repeat: no-repeat;
-      background-size: cover;
-      color: #333
-    }
-
     .login-box {
       opacity: 0.8;
       position: relative;
@@ -45,51 +38,52 @@ if (isset($_GET['logout'])) {
   </style>
 </head>
 
-<body class="login-page page-body">
+<body>
+  <div class="login-page page-body">
+    <div class="main-header">
+      <h3 style="padding-left:20px">DMS SYSTEM <a href="https://www.desoletech.co.ke"><span class="fa fa-book" style="float:right;padding-right:20px;font-size:17px"> Docs</span></h3>
+      </a>
+    </div>
+    <hr />
 
-  <h3 style="padding-left:20px">DMS SYSTEM <a href="https://www.desoletech.co.ke"><span class="fa fa-book" style="float:right;padding-right:20px;font-size:17px"> Docs</span></h3>
-  </a>
+    <!-- /.login-box -->
+    <div class="login-box">
+      <span id="login_feedback"></span>
+      <!-- /.login-box-body -->
+      <div class="login-box-body">
 
-  <hr />
-
-  <!-- /.login-box -->
-  <div class="login-box">
-    <span id="login_feedback"></span>
-    <!-- /.login-box-body -->
-    <div class="login-box-body">
-
-      <form onsubmit="return false;" method="post">
-        <fieldset>
-          <legend style="color:rgb(17, 122, 101)">Log in to your account</legend>
-          <div class="form-group has-feedback">
-            <label for="Username">Username/Email:</label>
-            <input type="text" id="u_name" autofocus="" auto-complete="off" class="form-control" placeholder="Email/Username" auto-complete="off" />
-            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-          </div>
-
-          <div class="form-group has-feedback">
-            <label for="Password">Password:</label>
-            <input type="password" id="u_pass" class="form-control" auto-complete="off" placeholder="Password" />
-            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-          </div>
-          <div class="form-group has-feedback">
-            <button type="submit" onclick="login();" class="btn btn-block btn-md login-button">Sign In</button>
-          </div>
-          <div class="row">
-            <div class="col-xs-8">
-              <h4><a href="forgot_pwd" style="color:rgb(17, 122, 101)">Forgot your Password ?</a></h4>
+        <form onsubmit="return false;" method="post">
+          <fieldset>
+            <legend style="color:rgb(17, 122, 101)">Log in to your account</legend>
+            <div class="form-group has-feedback">
+              <label for="Username">Username/Email:</label>
+              <input type="text" id="u_name" autofocus="" auto-complete="off" class="form-control" placeholder="Email/Username" auto-complete="off" />
+              <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
-          </div>
+
+            <div class="form-group has-feedback">
+              <label for="Password">Password:</label>
+              <input type="password" id="u_pass" class="form-control" auto-complete="off" placeholder="Password" />
+              <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+              <button type="submit" onclick="login();" class="btn btn-block btn-md login-button">Sign In</button>
+            </div>
+            <div class="row">
+              <div class="col-xs-8">
+                <h4><a href="forgot_pwd" style="color:rgb(17, 122, 101)">Forgot your Password ?</a></h4>
+              </div>
+            </div>
 
 
-        </fieldset>
-      </form>
-    </div> <!-- /.login-box-body -->
+          </fieldset>
+        </form>
+      </div> <!-- /.login-box-body -->
+    </div>
+    <!--/.Login page-footer -->
+
   </div>
-  <!-- /.login-box -->
-  <hr />
-  <!--/.Login page-footer -->
-  <div style="text-align: left;padding-left:20px">
+  <div class="main-footer">
     <p class="copyright">
       &copy;DMS, <script>
         var currentYear = new Date().getFullYear();
@@ -105,7 +99,6 @@ if (isset($_GET['logout'])) {
   <!-- iCheck -->
   <script src="plugins/iCheck/icheck.min.js" type="text/javascript"></script>
   <script src="js/main.js" type="text/javascript"></script>
-
 </body>
 
 </html>

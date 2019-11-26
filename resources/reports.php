@@ -28,8 +28,8 @@
 
         <tr>
           <td>6.</td>
-          <td><img src="images/pdf.jfif" width="30px" height="30px" /><a target="_BLANK" href="system_reports/defenseList" title="Click to Download">DEFENSE LIST REPORT</a></td>
-          <td><button class="btn btn-sm btn-primary" title="List of students due defense Presentation">Details</button><a target="_BLANK" href="system_reports/defenseList" class="btn btn-sm bg-green">Download</a></td>
+          <td><img src="images/pdf.jfif" width="30px" height="30px" /><a target="_BLANK" href="#" title="Click to Download">DEFENSE LIST REPORT</a></td>
+          <td><button class="btn btn-sm btn-primary" title="List of students due defense Presentation">Details</button><a target="_BLANK" href="#" class="btn btn-sm bg-green">Download</a></td>
         </tr>
       </table>
     </div>

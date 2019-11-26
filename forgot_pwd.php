@@ -13,10 +13,10 @@ if (isset($_GET['logout'])) {
 
 <head>
   <meta charset="UTF-8">
-  <title>Dissertation Management System || Password Recovery</title>
+  <title>Dissertation Management System</title>
   <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
   <!-- favicon -->
-  <link rel="shortcut icon" href="images/dms_logo.jpg" alt="Dissertation Management System" />
+  <link rel="shortcut icon" href="images/avatar.png" alt="Dissertation Management System" />
   <!-- Bootstrap 3.3.2 -->
   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
   <!-- Font Awesome Icons -->
@@ -64,52 +64,45 @@ if (isset($_GET['logout'])) {
     });
   </script>
   <style>
-    .page-body {
-      background: #fefefe;
-      background-repeat: no-repeat;
-      background-size: cover
-    }
-
     .login-box {
       opacity: 0.9;
       position: relative;
     }
-
-    .submit-button {
-      background-color: rgb(17, 122, 101);
-      color: #ffff
-    }
   </style>
 </head>
 
-<body class="login-page page-body">
-  <h3 style="padding-left:20px">DMS SYSTEM <a href="https://www.desoletech.co.ke"><span class="fa fa-book" style="float:right;padding-right:20px;font-size:17px"> Docs</span></h3>
-  </a>
-  <hr />
-  <div class="login-box">
-    <div class="statusMsg"></div>
-    <div class="login-box-body">
-      <form method="POST" enctype="multipart/form-data" id="forgotPassForm">
-        <fieldset>
-          <legend style="color:rgb(17, 122, 101)">Forgot your password?</legend>
-          <p>Enter your registration Email Address and we will send you a password reset link.
-          </p>
-          <div class="form-group has-feedback">
-            <label for="Email Address">Email Address:</label>
-            <input type="text" id="u_name" name="u_name" class="form-control" placeholder="e.g kamau@example.com" autofocus required />
-            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-          </div>
-          <div class="form-group has-feedback">
-            <input type="submit" name="submit" class="btn btn-md btn-block submitBtn submit-button" value="Send" />
-          </div>
-          <h4>Already have an account? <a href="index" style="color:rgb(17, 122, 101)">Log In </a></h4>
-        </fieldset>
-      </form>
+<body>
+  <div class="login-page page-body">
+    <div class="main-header">
+      <h3 style="padding-left:20px">DMS SYSTEM <a href="https://www.desoletech.co.ke"><span class="fa fa-book" style="float:right;padding-right:20px;font-size:17px"> Docs</span></h3>
+      </a>
+    </div>
+    <hr />
+    <div class="login-box">
+      <div class="statusMsg"></div>
+      <div class="login-box-body">
+        <form method="POST" enctype="multipart/form-data" id="forgotPassForm">
+          <fieldset>
+            <legend style="color:rgb(17, 122, 101)">Forgot your password?</legend>
+            <p>Enter your registration Email Address and we will send you a password reset link.
+            </p>
+            <div class="form-group has-feedback">
+              <label for="Email Address">Email Address:</label>
+              <input type="text" id="u_name" name="u_name" class="form-control" placeholder="e.g kamau@example.com" autofocus required />
+              <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+              <input type="submit" name="submit" class="btn btn-md btn-block submitBtn submit-button" value="Send" />
+            </div>
+            <h4>Already have an account? <a href="index" style="color:rgb(17, 122, 101)">Log In </a></h4>
+          </fieldset>
+        </form>
+      </div>
     </div>
   </div>
-  <hr />
+
   <!--/.Login page-footer -->
-  <div style="text-align: left;padding-left:20px">
+  <div class="main-footer">
     <p class="copyright">
       &copy;DMS, <script>
         var currentYear = new Date().getFullYear();

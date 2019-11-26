@@ -22,12 +22,11 @@ $columns = array(
 
   0 => 'topic_name',
   1 => 'created_by',
-  2 => 'u_code',
-  3 => 'created_by',
+  2 => 'topic_id'
 
 );
 
-$sql = "SELECT created_by,topic_name,u_code";
+$sql = "SELECT created_by,topic_name,topic_id";
 $sql .= " FROM d_topics WHERE status ='4'";
 
 $query = mysqli_query($conn, $sql) or die("Global_Research_list.php: get Research Topics");
@@ -39,7 +38,7 @@ if (!empty($requestData['search']['value'])) {
   // if there is a search parameter, $requestData['search']['value'] contains search parameter
   $sql .= " AND ( topic_name LIKE '%" . $requestData['search']['value'] . "%' ";
 
-  $sql .= " OR u_code LIKE '" . $requestData['search']['value'] . "%' ";
+  $sql .= " OR topic_id LIKE '" . $requestData['search']['value'] . "%' ";
 
   $sql .= " OR created_by LIKE '" . $requestData['search']['value'] . "%' )";
 }
@@ -56,12 +55,9 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array
 
   $nestedData[] = $row["topic_name"];
   $nestedData[] = profileName($row["created_by"]);
-  $nestedData[] = university($row["u_code"]);
-  $nestedData[] =  profileName(supervisor($row["created_by"]));
+  $nestedData[] = profileName(supervisor($row["created_by"]));
   $data[] = $nestedData;
 }
-
-
 
 $json_data = array(
   "draw"            => intval($requestData['draw']),   // for every request/draw by clientside , they send a number as a parameter, when they recieve a response/data they first check the draw number, so we are sending same number in draw.
