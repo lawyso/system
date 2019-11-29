@@ -83,14 +83,7 @@ if (isset($_GET['logout'])) {
     <!--/.Login page-footer -->
 
   </div>
-  <div class="main-footer">
-    <p class="copyright">
-      &copy;DMS, <script>
-        var currentYear = new Date().getFullYear();
-        document.write(currentYear);
-      </script>,
-      All Rights Reserved. </p>
-  </div>
+
   <!--/.Login page-footer -->
   <!-- jQuery 2.1.3 -->
   <script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
@@ -100,5 +93,13 @@ if (isset($_GET['logout'])) {
   <script src="plugins/iCheck/icheck.min.js" type="text/javascript"></script>
   <script src="js/main.js" type="text/javascript"></script>
 </body>
+<div class="main-footer">
+  <p class="copyright">
+    &copy;DMS, <script>
+      var currentYear = new Date().getFullYear();
+      document.write(currentYear);
+    </script>,
+    All Rights Reserved. </p>
+</div>
 
 </html>

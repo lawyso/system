@@ -65,8 +65,13 @@ if (isset($_GET['logout'])) {
   </script>
   <style>
     .login-box {
-      opacity: 0.9;
+      opacity: 0.8;
       position: relative;
+    }
+
+    .login-button {
+      background-color: rgb(17, 122, 101);
+      color: #ffff
     }
   </style>
 </head>
@@ -92,7 +97,7 @@ if (isset($_GET['logout'])) {
               <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-              <input type="submit" name="submit" class="btn btn-md btn-block submitBtn submit-button" value="Send" />
+              <input type="submit" name="submit" class="btn btn-md login-button btn-block submitBtn submit-button" value="Send" />
             </div>
             <h4>Already have an account? <a href="index" style="color:rgb(17, 122, 101)">Log In </a></h4>
           </fieldset>

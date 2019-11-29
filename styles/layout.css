@@ -5,9 +5,10 @@
 !*/
 html,
 body {
-    max-height: 100%;
-    background: #fefefe;
+    min-height: 100%;
+    background: #fff;
     position: relative;
+    margin: 0 0 50px;
 }
 
 .layout-fixed html,
@@ -21,8 +22,8 @@ body {
     font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 400;
     overflow-x: hidden;
-    overflow-y: auto;
-    background-color: #fefefe;
+    overflow-y: hidden;
+    background-color: #fff;
 }
 
 .wrapper {
@@ -116,6 +117,10 @@ body {
     color: #444;
     border-top: 1px solid #eee;
     display: block;
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+
 }
 
 .fixed .main-header,
